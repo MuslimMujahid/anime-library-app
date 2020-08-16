@@ -5,17 +5,13 @@ import styled from 'styled-components'
 import { SimpleCard } from '../templates/Card'
 
 const CustomCardStyle = styled(SimpleCard)`
+
     &:hover {
         cursor: pointer;
     }
 
     &:hover img {
         object-fit: contain;
-        margin-bottom: 18px;
-    }
-
-    .itemDesc {
-        background-color: red;
     }
 `
 

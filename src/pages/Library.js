@@ -28,6 +28,19 @@ const Page = styled.div`
             color: #b5b5b5;
         }
     }
+
+    .pageBody {
+        margin-top: 70px;
+        padding: 0 2vw;
+    }
+
+    .pageBody .pageTitle {
+        font-size: 42px;
+        /* font-weight: bold; */
+        text-align: center;
+        margin-bottom: 24px;
+        letter-spacing: .4rem
+    }
 `
 
 const Library = () => {
@@ -48,7 +61,10 @@ const Library = () => {
                     
                 </ul>
             </SimpleNav>    
-            <LibraryList />
+            <div className="pageBody">
+                <div className="pageTitle">Library</div>
+                <LibraryList />
+            </div>
         </Page>
     )
 }

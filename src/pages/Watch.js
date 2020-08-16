@@ -75,34 +75,34 @@ class Watch extends Component {
     
     render() {
         const { Data, EpsPlaying, title } = this.state 
-        if (Data != null) {
-            const { epsLink } = Data
-            const VideoUrl = `http://localhost:5000/library/${title}/${epsLink[EpsPlaying]}` 
-            const epsList = epsLink.map((eps, index) => <option value={index}>{index+1}</option>)
-            return (    
-                <Page>
-                    <CustomNav>
-                        <Link to="/"> <ArrowBackIcon /> </Link>
-                        <div className="titleName">{title}</div>
-                        <StyledInputSelect 
-                            className="selectEps" 
-                            onChange={this.changeEpsPlayingHandler}
-                        >
-                            {epsList}
-                        </StyledInputSelect>
-                    </CustomNav>
-                    <video 
-                        key={VideoUrl} 
-                        className="Player" 
-                        id="video" 
-                        controls autoPlay 
-                        preload="metadata"
+        if (!Data) return 'Loading'
+        
+        const { epsLink } = Data
+        const VideoUrl = `http://localhost:5000/library/${title}/${epsLink[EpsPlaying]}` 
+        const epsList = epsLink.map((eps, index) => <option value={index}>{index+1}</option>)
+        return (    
+            <Page>
+                <CustomNav>
+                    <Link to="/"> <ArrowBackIcon /> </Link>
+                    <div className="titleName">{title}</div>
+                    <StyledInputSelect 
+                        className="selectEps" 
+                        onChange={this.changeEpsPlayingHandler}
                     >
-                        <source src={VideoUrl} type="video/mp4" />
-                    </video>
-                </Page>
-            )
-        } else { return 'Loading' }
+                        {epsList}
+                    </StyledInputSelect>
+                </CustomNav>
+                <video 
+                    key={VideoUrl} 
+                    className="Player" 
+                    id="video" 
+                    controls autoPlay 
+                    preload="metadata"
+                >
+                    <source src={VideoUrl} type="video/mp4" />
+                </video>
+            </Page>
+        )
     }
     
     
