@@ -15,7 +15,7 @@ function LibraryList()  {
     
     const { titles, covers } = data
     const MovieList = titles.map((title, index) => 
-        <Link key={index} to={`/watch/${title}`}>
+        <Link key={title} to={`/watch/${title}`}>
             <ListItemCard title={title} cover={covers[index]}/>
         </Link>
     )

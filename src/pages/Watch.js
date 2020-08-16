@@ -1,20 +1,18 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useReducer, useState } from 'react'
 import styled from 'styled-components'
 import { SimpleNav } from '../templates/StyledNavbar'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import { StyledInputSelect } from '../templates/StyledInput'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import Player from '../components/VideoPlayer'
 
 const Page = styled.div`
-    position: relative;
+    /* position: relative; */
     .Player {
         width: 100%;
-        top: 70px;
-        position: relative;
-    }
-    .selectEps {
-        width: 60px;
+        margin-top: 70px;
+        /* position: absolute; */
     }
 `
 
@@ -24,53 +22,77 @@ const CustomNav = styled(SimpleNav)`
     align-items: center;
 `
 
+const CustomInputSelect = styled(StyledInputSelect)`
+    width: 60px;
+`
+
+const TitleContainer = styled.div``
+
+const Action = {
+    FETCH_SUCCESS: 'FETCH_SUCCESS',
+    FETCH_ERROR: 'FETCH_ERROR'
+}
+
+const reducer = (state, action) => {
+    switch (action.type) {
+        case Action.FETCH_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                data: action.payload
+            }
+        case Action.FETCH_ERROR:
+            return {
+                ...state,
+                loading: true,
+                data: {}
+            }
+        default:
+            return state
+    }
+}
+
 function Watch(props) {
 
-    const [state, setState] = useState({
-        title: props.match.params.title,
-        Data: undefined,
-        EpsPlaying: 0
-    })
+    const initialState = {
+        loading: true,
+        data: {}
+    }
+    
+    const [state, dispatch] = useReducer(reducer, initialState)
+    const [epsPlaying, setEpsPlaying] = useState(0)
 
     useEffect(() => {
-        const url = `http://localhost:5000/anime/${state.title}`
-        axios.get(url).then(res => {
-            setState({ ...state, Data: res.data })
-        })
-    }, [])
+        axios
+            .get(`http://localhost:5000/anime/${props.match.params.title}`)
+            .then(res => {
+                dispatch({ type: Action.FETCH_SUCCESS, payload: res.data })
+            }).catch(error => {
+                dispatch({ type: Action.FETCH_ERROR })
+            })
+    }, [props.match.params.title])
 
     function changeEpsPlayingHandler(event) {
         event.persist()
-        setState({ ...state, EpsPlaying: event.target.value })
+        setEpsPlaying(event.target.value)
     }
 
-    const { Data, EpsPlaying, title } = state 
-    if (!Data) return 'Loading ...'
+    if (state.loading) return 'Loading ...'
 
-    const { epsLink } = Data
-    const VideoUrl = `http://localhost:5000/library/${title}/${epsLink[EpsPlaying]}` 
-    const epsList = epsLink.map((eps, index) => <option value={index}>{index+1}</option>)
+    const { epsLink } = state.data
+    const title = props.match.params.title
+    const VideoUrl = `http://localhost:5000/library/${title}/${epsLink[epsPlaying]}` 
+    const epsList = epsLink.map((eps, index) => <option key={eps} value={index}>{index+1}</option>)
     return (    
         <Page>
             <CustomNav>
                 <Link to="/"> <ArrowBackIcon /> </Link>
-                <div className="titleName">{title}</div>
-                <StyledInputSelect 
-                    className="selectEps" 
-                    onChange={changeEpsPlayingHandler}
-                >
+                <TitleContainer>{title}</TitleContainer>
+                <CustomInputSelect onChange={changeEpsPlayingHandler}>
                     {epsList}
-                </StyledInputSelect>
+                </CustomInputSelect>
             </CustomNav>
-            <video 
-                key={VideoUrl} 
-                className="Player" 
-                id="video" 
-                controls autoPlay 
-                preload="metadata"
-            >
-                <source src={VideoUrl} type="video/mp4" />
-            </video>
+            <Player key={VideoUrl} src={VideoUrl} className="Player" />
         </Page>
     )
 }
