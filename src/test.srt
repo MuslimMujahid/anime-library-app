@@ -1,0 +1,10651 @@
+1
+00:00:04,690 --> 00:00:08,750
+[Applause]
+
+2
+00:00:05,550 --> 00:00:08,750
+
+
+
+3
+00:00:05,560 --> 00:00:08,750
+[Music]
+
+4
+00:00:17,590 --> 00:00:17,590
+
+
+
+5
+00:00:17,600 --> 00:00:22,770
+hey guys thank you for joining the
+
+6
+00:00:20,600 --> 00:00:22,770
+
+
+
+7
+00:00:20,610 --> 00:00:24,560
+livestream as you can see from the title
+
+8
+00:00:22,760 --> 00:00:24,560
+
+
+
+9
+00:00:22,770 --> 00:00:28,830
+this video is going to be about
+
+10
+00:00:24,550 --> 00:00:28,830
+
+
+
+11
+00:00:24,560 --> 00:00:30,330
+embedding payloads in android apk this
+
+12
+00:00:28,820 --> 00:00:30,330
+
+
+
+13
+00:00:28,830 --> 00:00:34,199
+is a video that has been requested
+
+14
+00:00:30,320 --> 00:00:34,199
+
+
+
+15
+00:00:30,330 --> 00:00:36,000
+for quite some time and so i'm gonna be
+
+16
+00:00:34,189 --> 00:00:36,000
+
+
+
+17
+00:00:34,199 --> 00:00:38,940
+showing you that in this particular
+
+18
+00:00:35,990 --> 00:00:38,940
+
+
+
+19
+00:00:36,000 --> 00:00:41,879
+video so again the whole idea was to do
+
+20
+00:00:38,930 --> 00:00:41,879
+
+
+
+21
+00:00:38,940 --> 00:00:43,739
+it manually so that's primarily what I'm
+
+22
+00:00:41,869 --> 00:00:43,739
+
+
+
+23
+00:00:41,879 --> 00:00:46,080
+going to be doing so by default I
+
+24
+00:00:43,729 --> 00:00:46,080
+
+
+
+25
+00:00:43,739 --> 00:00:48,269
+already have downloaded in an apk here
+
+26
+00:00:46,070 --> 00:00:48,269
+
+
+
+27
+00:00:46,080 --> 00:00:51,450
+I'm going to be using the Bitcoin wallet
+
+28
+00:00:48,259 --> 00:00:51,450
+
+
+
+29
+00:00:48,269 --> 00:00:53,220
+to be demonstrating this so I'll be
+
+30
+00:00:51,440 --> 00:00:53,220
+
+
+
+31
+00:00:51,450 --> 00:00:55,649
+taking you through the overall process
+
+32
+00:00:53,210 --> 00:00:55,649
+
+
+
+33
+00:00:53,220 --> 00:00:57,570
+of doing it so the first thing that
+
+34
+00:00:55,639 --> 00:00:57,570
+
+
+
+35
+00:00:55,649 --> 00:01:00,360
+we're going to be doing is generating
+
+36
+00:00:57,560 --> 00:01:00,360
+
+
+
+37
+00:00:57,570 --> 00:01:05,220
+the payload with MSF venom so no
+
+38
+00:01:00,350 --> 00:01:05,220
+
+
+
+39
+00:01:00,360 --> 00:01:07,500
+obfuscation yet so after we regenerate
+
+40
+00:01:05,210 --> 00:01:07,500
+
+
+
+41
+00:01:05,220 --> 00:01:10,440
+the payload we're then gonna within a
+
+42
+00:01:07,490 --> 00:01:10,440
+
+
+
+43
+00:01:07,500 --> 00:01:12,680
+kinetic compile the payload with apktool
+
+44
+00:01:10,430 --> 00:01:12,680
+
+
+
+45
+00:01:10,440 --> 00:01:15,180
+and then we'll also use our our
+
+46
+00:01:12,670 --> 00:01:15,180
+
+
+
+47
+00:01:12,680 --> 00:01:16,530
+particular APK of choice and also
+
+48
+00:01:15,170 --> 00:01:16,530
+
+
+
+49
+00:01:15,180 --> 00:01:18,810
+decompile it and i'll show you how to
+
+50
+00:01:16,520 --> 00:01:18,810
+
+
+
+51
+00:01:16,530 --> 00:01:21,690
+embed the payload or inject the payload
+
+52
+00:01:18,800 --> 00:01:21,690
+
+
+
+53
+00:01:18,810 --> 00:01:26,310
+into a particular application or APK
+
+54
+00:01:21,680 --> 00:01:26,310
+
+
+
+55
+00:01:21,690 --> 00:01:27,810
+file alright so let us get started here
+
+56
+00:01:26,300 --> 00:01:27,810
+
+
+
+57
+00:01:26,310 --> 00:01:29,700
+so the first thing of course we are
+
+58
+00:01:27,800 --> 00:01:29,700
+
+
+
+59
+00:01:27,810 --> 00:01:32,340
+going to need to do is we are going to
+
+60
+00:01:29,690 --> 00:01:32,340
+
+
+
+61
+00:01:29,700 --> 00:01:34,410
+need to generate our our payload with
+
+62
+00:01:32,330 --> 00:01:34,410
+
+
+
+63
+00:01:32,340 --> 00:01:38,610
+MSF venom alright so let's do that right
+
+64
+00:01:34,400 --> 00:01:38,610
+
+
+
+65
+00:01:34,410 --> 00:01:40,050
+now so I myself venom Peep and that
+
+66
+00:01:38,600 --> 00:01:40,050
+
+
+
+67
+00:01:38,610 --> 00:01:42,539
+that's our payload and of course with
+
+68
+00:01:40,040 --> 00:01:42,539
+
+
+
+69
+00:01:40,050 --> 00:01:43,920
+metadata there are various modules that
+
+70
+00:01:42,529 --> 00:01:43,920
+
+
+
+71
+00:01:42,539 --> 00:01:46,770
+you can use so for example you can use
+
+72
+00:01:43,910 --> 00:01:46,770
+
+
+
+73
+00:01:43,920 --> 00:01:49,649
+the reverse tcp reverse https etc so
+
+74
+00:01:46,760 --> 00:01:49,649
+
+
+
+75
+00:01:46,770 --> 00:01:53,039
+river android the temperature and
+
+76
+00:01:49,639 --> 00:01:53,039
+
+
+
+77
+00:01:49,649 --> 00:01:55,229
+reverse tcp I'll be stopping during the
+
+78
+00:01:53,029 --> 00:01:55,229
+
+
+
+79
+00:01:53,039 --> 00:01:57,390
+video to answer your questions so yeah
+
+80
+00:01:55,219 --> 00:01:57,390
+
+
+
+81
+00:01:55,229 --> 00:01:58,950
+you can just post them right over there
+
+82
+00:01:57,380 --> 00:01:58,950
+
+
+
+83
+00:01:57,390 --> 00:02:02,220
+and I'll be answering them so
+
+84
+00:01:58,940 --> 00:02:02,220
+
+
+
+85
+00:01:58,950 --> 00:02:05,179
+meterpreter reverse reverse TCP and then
+
+86
+00:02:02,210 --> 00:02:05,179
+
+
+
+87
+00:02:02,220 --> 00:02:09,270
+of course you can set your L host to
+
+88
+00:02:05,169 --> 00:02:09,270
+
+
+
+89
+00:02:05,179 --> 00:02:11,610
+192.168.1.1 o8 and your airport I'll set
+
+90
+00:02:09,260 --> 00:02:11,610
+
+
+
+91
+00:02:09,270 --> 00:02:13,440
+that to just 1 2 3 4 and again you then
+
+92
+00:02:11,600 --> 00:02:13,440
+
+
+
+93
+00:02:11,610 --> 00:02:15,630
+you then move on to search or to
+
+94
+00:02:13,430 --> 00:02:15,630
+
+
+
+95
+00:02:13,440 --> 00:02:18,900
+actually outputting the file so we'll
+
+96
+00:02:15,620 --> 00:02:18,900
+
+
+
+97
+00:02:15,630 --> 00:02:21,599
+just call this a payload dot apk and oh
+
+98
+00:02:18,890 --> 00:02:21,599
+
+
+
+99
+00:02:18,900 --> 00:02:23,970
+my I'm on my desktop but anyway I'll
+
+100
+00:02:21,589 --> 00:02:23,970
+
+
+
+101
+00:02:21,599 --> 00:02:25,799
+just copy that file there so I will
+
+102
+00:02:23,960 --> 00:02:25,799
+
+
+
+103
+00:02:23,970 --> 00:02:28,049
+generate the payload and then we can
+
+104
+00:02:25,789 --> 00:02:28,049
+
+
+
+105
+00:02:25,799 --> 00:02:29,370
+then also we'll start decompiling the
+
+106
+00:02:28,039 --> 00:02:29,370
+
+
+
+107
+00:02:28,049 --> 00:02:29,880
+payload first I'll show you how to do
+
+108
+00:02:29,360 --> 00:02:29,880
+
+
+
+109
+00:02:29,370 --> 00:02:31,950
+that with
+
+110
+00:02:29,870 --> 00:02:31,950
+
+
+
+111
+00:02:29,880 --> 00:02:34,650
+pick a tool so that's the first thing
+
+112
+00:02:31,940 --> 00:02:34,650
+
+
+
+113
+00:02:31,950 --> 00:02:36,620
+we'll be doing and then we can start we
+
+114
+00:02:34,640 --> 00:02:36,620
+
+
+
+115
+00:02:34,650 --> 00:02:39,570
+can actually start decompiling
+
+116
+00:02:36,610 --> 00:02:39,570
+
+
+
+117
+00:02:36,620 --> 00:02:41,580
+the the other Android application so
+
+118
+00:02:39,560 --> 00:02:41,580
+
+
+
+119
+00:02:39,570 --> 00:02:46,260
+there are many applications that you can
+
+120
+00:02:41,570 --> 00:02:46,260
+
+
+
+121
+00:02:41,580 --> 00:02:48,780
+use so yeah I'm gonna be answering the
+
+122
+00:02:46,250 --> 00:02:48,780
+
+
+
+123
+00:02:46,260 --> 00:02:50,640
+questions as the video essentially takes
+
+124
+00:02:48,770 --> 00:02:50,640
+
+
+
+125
+00:02:48,780 --> 00:02:52,710
+its time during the process apologies if
+
+126
+00:02:50,630 --> 00:02:52,710
+
+
+
+127
+00:02:50,640 --> 00:02:54,630
+my machine is a bit slow here I'm using
+
+128
+00:02:52,700 --> 00:02:54,630
+
+
+
+129
+00:02:52,710 --> 00:02:56,670
+a virtual machine with very stringent
+
+130
+00:02:54,620 --> 00:02:56,670
+
+
+
+131
+00:02:54,630 --> 00:02:59,430
+resources so there we are the payload
+
+132
+00:02:56,660 --> 00:02:59,430
+
+
+
+133
+00:02:56,670 --> 00:03:01,350
+has been generated and we can actually
+
+134
+00:02:59,420 --> 00:03:01,350
+
+
+
+135
+00:02:59,430 --> 00:03:03,060
+get started now alright so I'm just
+
+136
+00:03:01,340 --> 00:03:03,060
+
+
+
+137
+00:03:01,350 --> 00:03:08,280
+going to copy the payload from this
+
+138
+00:03:03,050 --> 00:03:08,280
+
+
+
+139
+00:03:03,060 --> 00:03:10,710
+directory into our desktop here and we
+
+140
+00:03:08,270 --> 00:03:10,710
+
+
+
+141
+00:03:08,280 --> 00:03:13,440
+move into our desktop now and we have
+
+142
+00:03:10,700 --> 00:03:13,440
+
+
+
+143
+00:03:10,710 --> 00:03:15,510
+our apk right over here so - you are
+
+144
+00:03:13,430 --> 00:03:15,510
+
+
+
+145
+00:03:13,440 --> 00:03:19,890
+actually decompile an application with
+
+146
+00:03:15,500 --> 00:03:19,890
+
+
+
+147
+00:03:15,510 --> 00:03:22,080
+apktool we can I can click an apk tool
+
+148
+00:03:19,880 --> 00:03:22,080
+
+
+
+149
+00:03:19,890 --> 00:03:25,080
+here and then of course we decompile
+
+150
+00:03:22,070 --> 00:03:25,080
+
+
+
+151
+00:03:22,080 --> 00:03:26,790
+which is denoted by the D command and we
+
+152
+00:03:25,070 --> 00:03:26,790
+
+
+
+153
+00:03:25,080 --> 00:03:29,700
+use the F command and then we specify
+
+154
+00:03:26,780 --> 00:03:29,700
+
+
+
+155
+00:03:26,790 --> 00:03:31,740
+the application so payload apk that is
+
+156
+00:03:29,690 --> 00:03:31,740
+
+
+
+157
+00:03:29,700 --> 00:03:34,200
+if it is in D working
+
+158
+00:03:31,730 --> 00:03:34,200
+
+
+
+159
+00:03:31,740 --> 00:03:35,820
+if it is in the working directory so
+
+160
+00:03:34,190 --> 00:03:35,820
+
+
+
+161
+00:03:34,200 --> 00:03:39,300
+otherwise you need to specify the
+
+162
+00:03:35,810 --> 00:03:39,300
+
+
+
+163
+00:03:35,820 --> 00:03:41,490
+directory of the application so then we
+
+164
+00:03:39,290 --> 00:03:41,490
+
+
+
+165
+00:03:39,300 --> 00:03:42,990
+then move on to the output where we want
+
+166
+00:03:41,480 --> 00:03:42,990
+
+
+
+167
+00:03:41,490 --> 00:03:45,900
+to output the file so I'm just going to
+
+168
+00:03:42,980 --> 00:03:45,900
+
+
+
+169
+00:03:42,990 --> 00:03:47,250
+say root desktop the decompiled
+
+170
+00:03:45,890 --> 00:03:47,250
+
+
+
+171
+00:03:45,900 --> 00:03:49,680
+information and I'll just call it
+
+172
+00:03:47,240 --> 00:03:49,680
+
+
+
+173
+00:03:47,250 --> 00:03:51,900
+payload into the payload folder and hit
+
+174
+00:03:49,670 --> 00:03:51,900
+
+
+
+175
+00:03:49,680 --> 00:03:54,930
+enter and that is going to start ddeok
+
+176
+00:03:51,890 --> 00:03:54,930
+
+
+
+177
+00:03:51,900 --> 00:03:57,840
+the decompiling the application alright
+
+178
+00:03:54,920 --> 00:03:57,840
+
+
+
+179
+00:03:54,930 --> 00:04:01,770
+so we will then move on and let me turn
+
+180
+00:03:57,830 --> 00:04:01,770
+
+
+
+181
+00:03:57,840 --> 00:04:04,530
+on some questions here so the syste
+
+182
+00:04:01,760 --> 00:04:04,530
+
+
+
+183
+00:04:01,770 --> 00:04:07,290
+internals have a decompiler sysinternals
+
+184
+00:04:04,520 --> 00:04:07,290
+
+
+
+185
+00:04:04,530 --> 00:04:09,300
+is more focused on windows and windows
+
+186
+00:04:07,280 --> 00:04:09,300
+
+
+
+187
+00:04:07,290 --> 00:04:14,070
+management I'll be making a video on
+
+188
+00:04:09,290 --> 00:04:14,070
+
+
+
+189
+00:04:09,300 --> 00:04:15,720
+that as well this payload only works on
+
+190
+00:04:14,060 --> 00:04:15,720
+
+
+
+191
+00:04:14,070 --> 00:04:18,330
+your local network or you can set up
+
+192
+00:04:15,710 --> 00:04:18,330
+
+
+
+193
+00:04:15,720 --> 00:04:22,410
+port forwarding that is if you have
+
+194
+00:04:18,320 --> 00:04:22,410
+
+
+
+195
+00:04:18,330 --> 00:04:24,390
+static IP so that it does work unless if
+
+196
+00:04:22,400 --> 00:04:24,390
+
+
+
+197
+00:04:22,410 --> 00:04:26,610
+you have a dynamic IP then if it's going
+
+198
+00:04:24,380 --> 00:04:26,610
+
+
+
+199
+00:04:24,390 --> 00:04:28,650
+to keep on changing then you might not
+
+200
+00:04:26,600 --> 00:04:28,650
+
+
+
+201
+00:04:26,610 --> 00:04:30,890
+have a persistent session so it's always
+
+202
+00:04:28,640 --> 00:04:30,890
+
+
+
+203
+00:04:28,650 --> 00:04:33,450
+good to have a static IP for that
+
+204
+00:04:30,880 --> 00:04:33,450
+
+
+
+205
+00:04:30,890 --> 00:04:35,010
+alright so the D compilation is
+
+206
+00:04:33,440 --> 00:04:35,010
+
+
+
+207
+00:04:33,450 --> 00:04:36,720
+completed so I'm just gonna list the
+
+208
+00:04:35,000 --> 00:04:36,720
+
+
+
+209
+00:04:35,010 --> 00:04:38,790
+files in here and you can see that we
+
+210
+00:04:36,710 --> 00:04:38,790
+
+
+
+211
+00:04:36,720 --> 00:04:40,650
+have the payload folder right over here
+
+212
+00:04:38,780 --> 00:04:40,650
+
+
+
+213
+00:04:38,790 --> 00:04:42,610
+now the interesting thing that you can
+
+214
+00:04:40,640 --> 00:04:42,610
+
+
+
+215
+00:04:40,650 --> 00:04:45,340
+actually do with with
+
+216
+00:04:42,600 --> 00:04:45,340
+
+
+
+217
+00:04:42,610 --> 00:04:46,599
+payload so if I switch into the payload
+
+218
+00:04:45,330 --> 00:04:46,599
+
+
+
+219
+00:04:45,340 --> 00:04:49,870
+directory here we have the
+
+220
+00:04:46,589 --> 00:04:49,870
+
+
+
+221
+00:04:46,599 --> 00:04:52,360
+androidmanifest.xml we have the apktool
+
+222
+00:04:49,860 --> 00:04:52,360
+
+
+
+223
+00:04:49,870 --> 00:04:53,650
+dot yet at the ml file here which are
+
+224
+00:04:52,350 --> 00:04:53,650
+
+
+
+225
+00:04:52,360 --> 00:04:55,900
+not working with we working with the
+
+226
+00:04:53,640 --> 00:04:55,900
+
+
+
+227
+00:04:53,650 --> 00:04:57,969
+small e folder which is the assembler
+
+228
+00:04:55,890 --> 00:04:57,969
+
+
+
+229
+00:04:55,900 --> 00:04:59,590
+which can be considered an assembler for
+
+230
+00:04:57,959 --> 00:04:59,590
+
+
+
+231
+00:04:57,969 --> 00:05:01,780
+Android so if we go into the small e
+
+232
+00:04:59,580 --> 00:05:01,780
+
+
+
+233
+00:04:59,590 --> 00:05:05,620
+folder this is where we will have our
+
+234
+00:05:01,770 --> 00:05:05,620
+
+
+
+235
+00:05:01,780 --> 00:05:07,629
+comm Metasploit and the stage directory
+
+236
+00:05:05,610 --> 00:05:07,629
+
+
+
+237
+00:05:05,620 --> 00:05:09,610
+all right so if I change into the comm
+
+238
+00:05:07,619 --> 00:05:09,610
+
+
+
+239
+00:05:07,629 --> 00:05:11,560
+right away and we have the Metasploit
+
+240
+00:05:09,600 --> 00:05:11,560
+
+
+
+241
+00:05:09,610 --> 00:05:14,500
+and then you'll find the payload file
+
+242
+00:05:11,550 --> 00:05:14,500
+
+
+
+243
+00:05:11,560 --> 00:05:17,020
+within the Metasploit folder and within
+
+244
+00:05:14,490 --> 00:05:17,020
+
+
+
+245
+00:05:14,500 --> 00:05:20,259
+the this stage so if I just hit enter
+
+246
+00:05:17,010 --> 00:05:20,259
+
+
+
+247
+00:05:17,020 --> 00:05:22,560
+there we are so we have the payload the
+
+248
+00:05:20,249 --> 00:05:22,560
+
+
+
+249
+00:05:20,259 --> 00:05:25,270
+payload small D file right over here so
+
+250
+00:05:22,550 --> 00:05:25,270
+
+
+
+251
+00:05:22,560 --> 00:05:28,539
+general editing of the payload
+
+252
+00:05:25,260 --> 00:05:28,539
+
+
+
+253
+00:05:25,270 --> 00:05:30,699
+application is very very simple so if I
+
+254
+00:05:28,529 --> 00:05:30,699
+
+
+
+255
+00:05:28,539 --> 00:05:32,289
+was to just go back into my previous
+
+256
+00:05:30,689 --> 00:05:32,289
+
+
+
+257
+00:05:30,699 --> 00:05:33,849
+directories here sorry about that let me
+
+258
+00:05:32,279 --> 00:05:33,849
+
+
+
+259
+00:05:32,289 --> 00:05:34,960
+just take you a step back so we can
+
+260
+00:05:33,839 --> 00:05:34,960
+
+
+
+261
+00:05:33,849 --> 00:05:37,000
+actually take a look at the Android
+
+262
+00:05:34,950 --> 00:05:37,000
+
+
+
+263
+00:05:34,960 --> 00:05:38,169
+manifest so the Android manifest is
+
+264
+00:05:36,990 --> 00:05:38,169
+
+
+
+265
+00:05:37,000 --> 00:05:39,639
+where you can essentially edit the
+
+266
+00:05:38,159 --> 00:05:39,639
+
+
+
+267
+00:05:38,169 --> 00:05:40,960
+permissions for your payload but of
+
+268
+00:05:39,629 --> 00:05:40,960
+
+
+
+269
+00:05:39,639 --> 00:05:42,460
+course we'll be looking at that in a
+
+270
+00:05:40,950 --> 00:05:42,460
+
+
+
+271
+00:05:40,960 --> 00:05:44,860
+second so if I just browse onto my
+
+272
+00:05:42,450 --> 00:05:44,860
+
+
+
+273
+00:05:42,460 --> 00:05:47,860
+desktop here let me just open that up
+
+274
+00:05:44,850 --> 00:05:47,860
+
+
+
+275
+00:05:44,860 --> 00:05:50,349
+apologies this is taking a while desktop
+
+276
+00:05:47,850 --> 00:05:50,349
+
+
+
+277
+00:05:47,860 --> 00:05:55,810
+and are we going to our payload here and
+
+278
+00:05:50,339 --> 00:05:55,810
+
+
+
+279
+00:05:50,349 --> 00:05:57,219
+Android manifest dot XML and yeah there
+
+280
+00:05:55,800 --> 00:05:57,219
+
+
+
+281
+00:05:55,810 --> 00:05:59,650
+we are so we have our permissions in
+
+282
+00:05:57,209 --> 00:05:59,650
+
+
+
+283
+00:05:57,219 --> 00:06:01,839
+here and what we'll be looking for one
+
+284
+00:05:59,640 --> 00:06:01,839
+
+
+
+285
+00:05:59,650 --> 00:06:03,190
+will be decompiling or other application
+
+286
+00:06:01,829 --> 00:06:03,190
+
+
+
+287
+00:06:01,839 --> 00:06:05,409
+in which will be embedding the
+
+288
+00:06:03,180 --> 00:06:05,409
+
+
+
+289
+00:06:03,190 --> 00:06:07,120
+particular payload is we're looking for
+
+290
+00:06:05,399 --> 00:06:07,120
+
+
+
+291
+00:06:05,409 --> 00:06:09,339
+the main activity alright now this is
+
+292
+00:06:07,110 --> 00:06:09,339
+
+
+
+293
+00:06:07,120 --> 00:06:11,259
+going to be very important but of course
+
+294
+00:06:09,329 --> 00:06:11,259
+
+
+
+295
+00:06:09,339 --> 00:06:13,270
+this application has no other activity
+
+296
+00:06:11,249 --> 00:06:13,270
+
+
+
+297
+00:06:11,259 --> 00:06:15,279
+so the default one will be the oncreate
+
+298
+00:06:13,260 --> 00:06:15,279
+
+
+
+299
+00:06:13,270 --> 00:06:17,680
+for the main activity if you've ever
+
+300
+00:06:15,269 --> 00:06:17,680
+
+
+
+301
+00:06:15,279 --> 00:06:19,930
+done Android programming all right so
+
+302
+00:06:17,670 --> 00:06:19,930
+
+
+
+303
+00:06:17,680 --> 00:06:21,129
+we're looking particularly for these two
+
+304
+00:06:19,920 --> 00:06:21,129
+
+
+
+305
+00:06:19,930 --> 00:06:23,560
+lines of code we're looking for the
+
+306
+00:06:21,119 --> 00:06:23,560
+
+
+
+307
+00:06:21,129 --> 00:06:25,180
+Android intent action main that is the
+
+308
+00:06:23,550 --> 00:06:25,180
+
+
+
+309
+00:06:23,560 --> 00:06:26,949
+most important one right over here and
+
+310
+00:06:25,170 --> 00:06:26,949
+
+
+
+311
+00:06:25,180 --> 00:06:29,379
+from that you'll get the application
+
+312
+00:06:26,939 --> 00:06:29,379
+
+
+
+313
+00:06:26,949 --> 00:06:32,319
+source so right over here is where you
+
+314
+00:06:29,369 --> 00:06:32,319
+
+
+
+315
+00:06:29,379 --> 00:06:33,460
+can edit your your permissions but these
+
+316
+00:06:32,309 --> 00:06:33,460
+
+
+
+317
+00:06:32,319 --> 00:06:36,639
+are going to be important especially
+
+318
+00:06:33,450 --> 00:06:36,639
+
+
+
+319
+00:06:33,460 --> 00:06:39,400
+when embedding the Metasploit payload
+
+320
+00:06:36,629 --> 00:06:39,400
+
+
+
+321
+00:06:36,639 --> 00:06:42,099
+into your into your other other Android
+
+322
+00:06:39,390 --> 00:06:42,099
+
+
+
+323
+00:06:39,400 --> 00:06:43,779
+application so let's get let's actually
+
+324
+00:06:42,089 --> 00:06:43,779
+
+
+
+325
+00:06:42,099 --> 00:06:45,310
+get started on that right now so what
+
+326
+00:06:43,769 --> 00:06:45,310
+
+
+
+327
+00:06:43,779 --> 00:06:48,659
+I'm going to do is I'm just going to
+
+328
+00:06:45,300 --> 00:06:48,659
+
+
+
+329
+00:06:45,310 --> 00:06:51,159
+take a step back here and I'll just copy
+
+330
+00:06:48,649 --> 00:06:51,159
+
+
+
+331
+00:06:48,659 --> 00:06:53,259
+the application which is the Bitcoin
+
+332
+00:06:51,149 --> 00:06:53,259
+
+
+
+333
+00:06:51,159 --> 00:06:55,120
+wallet I believe I'll sorry that is in
+
+334
+00:06:53,249 --> 00:06:55,120
+
+
+
+335
+00:06:53,259 --> 00:06:58,150
+my downloads folder
+
+336
+00:06:55,110 --> 00:06:58,150
+
+
+
+337
+00:06:55,120 --> 00:07:00,370
+my downloads folder like so and that is
+
+338
+00:06:58,140 --> 00:07:00,370
+
+
+
+339
+00:06:58,150 --> 00:07:03,220
+in comm I believe what is the
+
+340
+00:07:00,360 --> 00:07:03,220
+
+
+
+341
+00:07:00,370 --> 00:07:06,940
+application name not sure it's telling
+
+342
+00:07:03,210 --> 00:07:06,940
+
+
+
+343
+00:07:03,220 --> 00:07:08,770
+me what my application name is did I
+
+344
+00:07:06,930 --> 00:07:08,770
+
+
+
+345
+00:07:06,940 --> 00:07:10,030
+actually download the application let me
+
+346
+00:07:08,760 --> 00:07:10,030
+
+
+
+347
+00:07:08,770 --> 00:07:12,070
+just check
+
+348
+00:07:10,020 --> 00:07:12,070
+
+
+
+349
+00:07:10,030 --> 00:07:14,560
+I should have got it right over here
+
+350
+00:07:12,060 --> 00:07:14,560
+
+
+
+351
+00:07:12,070 --> 00:07:16,120
+yeah there we are it is the the shell
+
+352
+00:07:14,550 --> 00:07:16,120
+
+
+
+353
+00:07:14,560 --> 00:07:18,340
+bat or wallet so let me just copy it
+
+354
+00:07:16,110 --> 00:07:18,340
+
+
+
+355
+00:07:16,120 --> 00:07:20,140
+here directly so we can actually speed
+
+356
+00:07:18,330 --> 00:07:20,140
+
+
+
+357
+00:07:18,340 --> 00:07:24,400
+this up all right so we can get started
+
+358
+00:07:20,130 --> 00:07:24,400
+
+
+
+359
+00:07:20,140 --> 00:07:26,080
+with the D compilation all right so in
+
+360
+00:07:24,390 --> 00:07:26,080
+
+
+
+361
+00:07:24,400 --> 00:07:30,340
+here we can start D compiling this so
+
+362
+00:07:26,070 --> 00:07:30,340
+
+
+
+363
+00:07:26,080 --> 00:07:32,530
+apktool again APK to be compiled F and
+
+364
+00:07:30,330 --> 00:07:32,530
+
+
+
+365
+00:07:30,340 --> 00:07:35,170
+then we specify the application here
+
+366
+00:07:32,520 --> 00:07:35,170
+
+
+
+367
+00:07:32,530 --> 00:07:35,620
+sorry this is on my Android yeah sorry
+
+368
+00:07:35,160 --> 00:07:35,620
+
+
+
+369
+00:07:35,170 --> 00:07:38,080
+about that
+
+370
+00:07:35,610 --> 00:07:38,080
+
+
+
+371
+00:07:35,620 --> 00:07:41,650
+the the application here we output this
+
+372
+00:07:38,070 --> 00:07:41,650
+
+
+
+373
+00:07:38,080 --> 00:07:44,620
+I'll just call this desktop and we will
+
+374
+00:07:41,640 --> 00:07:44,620
+
+
+
+375
+00:07:41,650 --> 00:07:47,220
+call this the original the original APK
+
+376
+00:07:44,610 --> 00:07:47,220
+
+
+
+377
+00:07:44,620 --> 00:07:47,220
+and hit enter
+
+378
+00:07:52,390 --> 00:07:52,390
+
+
+
+379
+00:07:52,400 --> 00:07:57,550
+all right let me take a look at the
+
+380
+00:07:53,830 --> 00:07:57,550
+
+
+
+381
+00:07:53,840 --> 00:08:00,580
+questions here that we're getting Ryan
+
+382
+00:07:57,540 --> 00:08:00,580
+
+
+
+383
+00:07:57,550 --> 00:08:04,250
+no that's that's not a question for me
+
+384
+00:08:00,570 --> 00:08:04,250
+
+
+
+385
+00:08:00,580 --> 00:08:07,130
+how to get a static IP that will depend
+
+386
+00:08:04,240 --> 00:08:07,130
+
+
+
+387
+00:08:04,250 --> 00:08:11,169
+on your ISP and how many and what IPS
+
+388
+00:08:07,120 --> 00:08:11,169
+
+
+
+389
+00:08:07,130 --> 00:08:15,220
+they've given you max fire says noob
+
+390
+00:08:11,159 --> 00:08:15,220
+
+
+
+391
+00:08:11,169 --> 00:08:15,220
+yeah if you say so
+
+392
+00:08:16,050 --> 00:08:16,050
+
+
+
+393
+00:08:16,060 --> 00:08:24,139
+good hustle how's everyone doing alright
+
+394
+00:08:22,030 --> 00:08:24,139
+
+
+
+395
+00:08:22,040 --> 00:08:27,320
+a DD compilation is complete we can
+
+396
+00:08:24,129 --> 00:08:27,320
+
+
+
+397
+00:08:24,139 --> 00:08:29,090
+actually move on alright so now we need
+
+398
+00:08:27,310 --> 00:08:29,090
+
+
+
+399
+00:08:27,320 --> 00:08:31,580
+to go into the original folder here and
+
+400
+00:08:29,080 --> 00:08:31,580
+
+
+
+401
+00:08:29,090 --> 00:08:33,710
+this is what we'll be doing most of the
+
+402
+00:08:31,570 --> 00:08:33,710
+
+
+
+403
+00:08:31,580 --> 00:08:36,320
+editing so again the first thing you
+
+404
+00:08:33,700 --> 00:08:36,320
+
+
+
+405
+00:08:33,710 --> 00:08:39,770
+want to do is you want to actually
+
+406
+00:08:36,310 --> 00:08:39,770
+
+
+
+407
+00:08:36,320 --> 00:08:41,479
+create the Metasploit stage folder
+
+408
+00:08:39,760 --> 00:08:41,479
+
+
+
+409
+00:08:39,770 --> 00:08:44,570
+within the smally folders also you have
+
+410
+00:08:41,469 --> 00:08:44,570
+
+
+
+411
+00:08:41,479 --> 00:08:46,279
+to do there under calm so smally we
+
+412
+00:08:44,560 --> 00:08:46,279
+
+
+
+413
+00:08:44,570 --> 00:08:49,310
+enter here so don't go into the forum
+
+414
+00:08:46,269 --> 00:08:49,310
+
+
+
+415
+00:08:46,279 --> 00:08:51,350
+directory we hit enter and in here we
+
+416
+00:08:49,300 --> 00:08:51,350
+
+
+
+417
+00:08:49,310 --> 00:08:53,120
+need to create the Metasploit so we just
+
+418
+00:08:51,340 --> 00:08:53,120
+
+
+
+419
+00:08:51,350 --> 00:08:58,040
+we just create the Metasploit stage
+
+420
+00:08:53,110 --> 00:08:58,040
+
+
+
+421
+00:08:53,120 --> 00:09:02,000
+folder so m'kay there are Metasploit CD
+
+422
+00:08:58,030 --> 00:09:02,000
+
+
+
+423
+00:08:58,040 --> 00:09:04,279
+Metasploit and make directory we'll just
+
+424
+00:09:01,990 --> 00:09:04,279
+
+
+
+425
+00:09:02,000 --> 00:09:06,350
+call this stage and that will change our
+
+426
+00:09:04,269 --> 00:09:06,350
+
+
+
+427
+00:09:04,279 --> 00:09:08,150
+directory into stage so now what we need
+
+428
+00:09:06,340 --> 00:09:08,150
+
+
+
+429
+00:09:06,350 --> 00:09:11,330
+to do is we need to copy that initial
+
+430
+00:09:08,140 --> 00:09:11,330
+
+
+
+431
+00:09:08,150 --> 00:09:14,240
+payload from the Metasploit stage folder
+
+432
+00:09:11,320 --> 00:09:14,240
+
+
+
+433
+00:09:11,330 --> 00:09:16,279
+into the the small EECOM Metasploit
+
+434
+00:09:14,230 --> 00:09:16,279
+
+
+
+435
+00:09:14,240 --> 00:09:17,810
+stage folder as well so that's the first
+
+436
+00:09:16,269 --> 00:09:17,810
+
+
+
+437
+00:09:16,279 --> 00:09:19,160
+thing we need to transfer the payload
+
+438
+00:09:17,800 --> 00:09:19,160
+
+
+
+439
+00:09:17,810 --> 00:09:21,890
+and then I'll show you how to actually
+
+440
+00:09:19,150 --> 00:09:21,890
+
+
+
+441
+00:09:19,160 --> 00:09:24,589
+add that line of code after we do during
+
+442
+00:09:21,880 --> 00:09:24,589
+
+
+
+443
+00:09:21,890 --> 00:09:27,589
+the main activity so what I'll be doing
+
+444
+00:09:24,579 --> 00:09:27,589
+
+
+
+445
+00:09:24,589 --> 00:09:29,690
+for this video because I have a few
+
+446
+00:09:27,579 --> 00:09:29,690
+
+
+
+447
+00:09:27,589 --> 00:09:31,580
+minutes left that I can actually live
+
+448
+00:09:29,680 --> 00:09:31,580
+
+
+
+449
+00:09:29,690 --> 00:09:33,830
+stream I'll be actually recording
+
+450
+00:09:31,570 --> 00:09:33,830
+
+
+
+451
+00:09:31,580 --> 00:09:36,620
+follow-up videos for this showing out to
+
+452
+00:09:33,820 --> 00:09:36,620
+
+
+
+453
+00:09:33,830 --> 00:09:39,470
+sign the apks and now to obfuscate them
+
+454
+00:09:36,610 --> 00:09:39,470
+
+
+
+455
+00:09:36,620 --> 00:09:41,540
+so let's do that first so what I'm going
+
+456
+00:09:39,460 --> 00:09:41,540
+
+
+
+457
+00:09:39,470 --> 00:09:43,700
+to resolve is gonna say coffee root
+
+458
+00:09:41,530 --> 00:09:43,700
+
+
+
+459
+00:09:41,540 --> 00:09:46,339
+desktop and we are looking for the
+
+460
+00:09:43,690 --> 00:09:46,339
+
+
+
+461
+00:09:43,700 --> 00:09:48,860
+payload so payload what what are the
+
+462
+00:09:46,329 --> 00:09:48,860
+
+
+
+463
+00:09:46,339 --> 00:09:50,000
+directories we have in here so failure
+
+464
+00:09:48,850 --> 00:09:50,000
+
+
+
+465
+00:09:48,860 --> 00:09:52,910
+there we are
+
+466
+00:09:49,990 --> 00:09:52,910
+
+
+
+467
+00:09:50,000 --> 00:09:54,920
+we have the smoly folder and we want to
+
+468
+00:09:52,900 --> 00:09:54,920
+
+
+
+469
+00:09:52,910 --> 00:09:58,160
+go into comm Metasploit and we want the
+
+470
+00:09:54,910 --> 00:09:58,160
+
+
+
+471
+00:09:54,920 --> 00:10:00,620
+payload the if we actually get the stage
+
+472
+00:09:58,150 --> 00:10:00,620
+
+
+
+473
+00:09:58,160 --> 00:10:03,110
+and the payload that's Molly file right
+
+474
+00:10:00,610 --> 00:10:03,110
+
+
+
+475
+00:10:00,620 --> 00:10:05,199
+over here and we will copy that again
+
+476
+00:10:03,100 --> 00:10:05,199
+
+
+
+477
+00:10:03,110 --> 00:10:08,699
+from that directory
+
+478
+00:10:05,189 --> 00:10:08,699
+
+
+
+479
+00:10:05,199 --> 00:10:13,499
+rude desktop and we are moving into the
+
+480
+00:10:08,689 --> 00:10:13,499
+
+
+
+481
+00:10:08,699 --> 00:10:19,389
+original so original small e small e
+
+482
+00:10:13,489 --> 00:10:19,389
+
+
+
+483
+00:10:13,499 --> 00:10:21,009
+comm Metasploit stage and enter and we
+
+484
+00:10:19,379 --> 00:10:21,009
+
+
+
+485
+00:10:19,389 --> 00:10:23,459
+should have the file in there alright so
+
+486
+00:10:20,999 --> 00:10:23,459
+
+
+
+487
+00:10:21,009 --> 00:10:29,109
+that is the payload right over here
+
+488
+00:10:23,449 --> 00:10:29,109
+
+
+
+489
+00:10:23,459 --> 00:10:30,879
+before we actually move on exploit will
+
+490
+00:10:29,099 --> 00:10:30,879
+
+
+
+491
+00:10:29,109 --> 00:10:32,889
+this video be accessible after the
+
+492
+00:10:30,869 --> 00:10:32,889
+
+
+
+493
+00:10:30,879 --> 00:10:34,689
+stream yes it will be
+
+494
+00:10:32,879 --> 00:10:34,689
+
+
+
+495
+00:10:32,889 --> 00:10:41,290
+that's primarily was making this video
+
+496
+00:10:34,679 --> 00:10:41,290
+
+
+
+497
+00:10:34,689 --> 00:10:44,230
+because it was just Narayan mahoto asks
+
+498
+00:10:41,280 --> 00:10:44,230
+
+
+
+499
+00:10:41,290 --> 00:10:47,559
+me what I'm doing and a very obscure way
+
+500
+00:10:44,220 --> 00:10:47,559
+
+
+
+501
+00:10:44,230 --> 00:10:52,089
+but anyway I'll just I'll just forget
+
+502
+00:10:47,549 --> 00:10:52,089
+
+
+
+503
+00:10:47,559 --> 00:10:55,540
+that ever happened so now that we have
+
+504
+00:10:52,079 --> 00:10:55,540
+
+
+
+505
+00:10:52,089 --> 00:10:57,040
+the payload dot small e file within the
+
+506
+00:10:55,530 --> 00:10:57,040
+
+
+
+507
+00:10:55,540 --> 00:10:59,230
+Metasploit stage folder created under
+
+508
+00:10:57,030 --> 00:10:59,230
+
+
+
+509
+00:10:57,040 --> 00:11:02,169
+the array original APK file we can
+
+510
+00:10:59,220 --> 00:11:02,169
+
+
+
+511
+00:10:59,230 --> 00:11:04,119
+actually get started with editing with
+
+512
+00:11:02,159 --> 00:11:04,119
+
+
+
+513
+00:11:02,169 --> 00:11:05,350
+editing the the Android manifest file
+
+514
+00:11:04,109 --> 00:11:05,350
+
+
+
+515
+00:11:04,119 --> 00:11:07,749
+however the first thing as I mentioned
+
+516
+00:11:05,340 --> 00:11:07,749
+
+
+
+517
+00:11:05,350 --> 00:11:10,929
+we need to do is we need to look for the
+
+518
+00:11:07,739 --> 00:11:10,929
+
+
+
+519
+00:11:07,749 --> 00:11:12,669
+the main activity that is going to be
+
+520
+00:11:10,919 --> 00:11:12,669
+
+
+
+521
+00:11:10,929 --> 00:11:14,799
+launched when the application starts off
+
+522
+00:11:12,659 --> 00:11:14,799
+
+
+
+523
+00:11:12,669 --> 00:11:16,629
+first so what happens is when we start
+
+524
+00:11:14,789 --> 00:11:16,629
+
+
+
+525
+00:11:14,799 --> 00:11:18,639
+that the application first for the first
+
+526
+00:11:16,619 --> 00:11:18,639
+
+
+
+527
+00:11:16,629 --> 00:11:20,949
+time as you do with Android for any of
+
+528
+00:11:18,629 --> 00:11:20,949
+
+
+
+529
+00:11:18,639 --> 00:11:22,899
+you have done Android programming the
+
+530
+00:11:20,939 --> 00:11:22,899
+
+
+
+531
+00:11:20,949 --> 00:11:24,610
+main activity is what is started so we
+
+532
+00:11:22,889 --> 00:11:24,610
+
+
+
+533
+00:11:22,899 --> 00:11:25,989
+are primarily looking for that so we're
+
+534
+00:11:24,600 --> 00:11:25,989
+
+
+
+535
+00:11:24,610 --> 00:11:29,169
+gonna go into original Android manifest
+
+536
+00:11:25,979 --> 00:11:29,169
+
+
+
+537
+00:11:25,989 --> 00:11:30,549
+open with text editor and now this is
+
+538
+00:11:29,159 --> 00:11:30,549
+
+
+
+539
+00:11:29,169 --> 00:11:32,139
+where the exciting stuff is so you can
+
+540
+00:11:30,539 --> 00:11:32,139
+
+
+
+541
+00:11:30,549 --> 00:11:36,519
+go ahead and take a look at the minimum
+
+542
+00:11:32,129 --> 00:11:36,519
+
+
+
+543
+00:11:32,139 --> 00:11:39,279
+SDK requirements and again what we're
+
+544
+00:11:36,509 --> 00:11:39,279
+
+
+
+545
+00:11:36,519 --> 00:11:41,769
+looking for is the Android intent action
+
+546
+00:11:39,269 --> 00:11:41,769
+
+
+
+547
+00:11:39,279 --> 00:11:44,769
+dot main and the activity will be just
+
+548
+00:11:41,759 --> 00:11:44,769
+
+
+
+549
+00:11:41,769 --> 00:11:47,559
+listed as a as the top right over here
+
+550
+00:11:44,759 --> 00:11:47,559
+
+
+
+551
+00:11:44,769 --> 00:11:49,600
+so this these two go under the the
+
+552
+00:11:47,549 --> 00:11:49,600
+
+
+
+553
+00:11:47,559 --> 00:11:52,079
+activity alias which is listed as well
+
+554
+00:11:49,590 --> 00:11:52,079
+
+
+
+555
+00:11:49,600 --> 00:11:54,999
+over here so we're looking for
+
+556
+00:11:52,069 --> 00:11:54,999
+
+
+
+557
+00:11:52,079 --> 00:11:57,220
+de-shelled batch wallet UI wallet wallet
+
+558
+00:11:54,989 --> 00:11:57,220
+
+
+
+559
+00:11:54,999 --> 00:12:00,309
+activity alright so we're gonna look for
+
+560
+00:11:57,210 --> 00:12:00,309
+
+
+
+561
+00:11:57,220 --> 00:12:02,859
+that directory right now so that is de
+
+562
+00:12:00,299 --> 00:12:02,859
+
+
+
+563
+00:12:00,309 --> 00:12:04,239
+and that is under small e again so small
+
+564
+00:12:02,849 --> 00:12:04,239
+
+
+
+565
+00:12:02,859 --> 00:12:07,600
+e de
+
+566
+00:12:04,229 --> 00:12:07,600
+
+
+
+567
+00:12:04,239 --> 00:12:09,279
+shell batch wallet and we're looking for
+
+568
+00:12:07,590 --> 00:12:09,279
+
+
+
+569
+00:12:07,600 --> 00:12:11,559
+the UI so we're going to look for the UI
+
+570
+00:12:09,269 --> 00:12:11,559
+
+
+
+571
+00:12:09,279 --> 00:12:15,999
+folder here and we're looking for the
+
+572
+00:12:11,549 --> 00:12:15,999
+
+
+
+573
+00:12:11,559 --> 00:12:17,709
+wallet activity alright so we can hold
+
+574
+00:12:15,989 --> 00:12:17,709
+
+
+
+575
+00:12:15,999 --> 00:12:18,880
+activity there we are and we can open
+
+576
+00:12:17,699 --> 00:12:18,880
+
+
+
+577
+00:12:17,709 --> 00:12:21,040
+that up with TextEdit
+
+578
+00:12:18,870 --> 00:12:21,040
+
+
+
+579
+00:12:18,880 --> 00:12:24,370
+and now we're looking for the oncreate
+
+580
+00:12:21,030 --> 00:12:24,370
+
+
+
+581
+00:12:21,040 --> 00:12:26,560
+function all right so the uncrate again
+
+582
+00:12:24,360 --> 00:12:26,560
+
+
+
+583
+00:12:24,370 --> 00:12:28,720
+is very important because we are looking
+
+584
+00:12:26,550 --> 00:12:28,720
+
+
+
+585
+00:12:26,560 --> 00:12:31,480
+for the land raid OS bundle so we can
+
+586
+00:12:28,710 --> 00:12:31,480
+
+
+
+587
+00:12:28,720 --> 00:12:33,160
+add the line right over here now many of
+
+588
+00:12:31,470 --> 00:12:33,160
+
+
+
+589
+00:12:31,480 --> 00:12:36,100
+you will be wondering now we like will
+
+590
+00:12:33,150 --> 00:12:36,100
+
+
+
+591
+00:12:33,160 --> 00:12:37,750
+actually and it will add it a be below
+
+592
+00:12:36,090 --> 00:12:37,750
+
+
+
+593
+00:12:36,100 --> 00:12:39,399
+the invoke super so this is a we're
+
+594
+00:12:37,740 --> 00:12:39,399
+
+
+
+595
+00:12:37,750 --> 00:12:41,709
+going to be invoking a static one and
+
+596
+00:12:39,389 --> 00:12:41,709
+
+
+
+597
+00:12:39,399 --> 00:12:44,829
+that again is going to be launching the
+
+598
+00:12:41,699 --> 00:12:44,829
+
+
+
+599
+00:12:41,709 --> 00:12:46,540
+payload on well during an on create
+
+600
+00:12:44,819 --> 00:12:46,540
+
+
+
+601
+00:12:44,829 --> 00:12:49,180
+function which again is going to utilize
+
+602
+00:12:46,530 --> 00:12:49,180
+
+
+
+603
+00:12:46,540 --> 00:12:52,899
+a deal android right over here
+
+604
+00:12:49,170 --> 00:12:52,899
+
+
+
+605
+00:12:49,180 --> 00:12:54,670
+alright so now we can actually get
+
+606
+00:12:52,889 --> 00:12:54,670
+
+
+
+607
+00:12:52,899 --> 00:12:56,019
+started here so the first thing as i
+
+608
+00:12:54,660 --> 00:12:56,019
+
+
+
+609
+00:12:54,670 --> 00:12:59,290
+mentioned we're going to get started
+
+610
+00:12:56,009 --> 00:12:59,290
+
+
+
+611
+00:12:56,019 --> 00:13:02,190
+with is we need to start copying those
+
+612
+00:12:59,280 --> 00:13:02,190
+
+
+
+613
+00:12:59,290 --> 00:13:04,509
+particular files so before we actually
+
+614
+00:13:02,180 --> 00:13:04,509
+
+
+
+615
+00:13:02,190 --> 00:13:06,339
+before you actually move ahead with this
+
+616
+00:13:04,499 --> 00:13:06,339
+
+
+
+617
+00:13:04,509 --> 00:13:09,550
+video let me just explain what's going
+
+618
+00:13:06,329 --> 00:13:09,550
+
+
+
+619
+00:13:06,339 --> 00:13:11,110
+on so we are going to be going into the
+
+620
+00:13:09,540 --> 00:13:11,110
+
+
+
+621
+00:13:09,550 --> 00:13:13,029
+wallet activity which is going to be
+
+622
+00:13:11,100 --> 00:13:13,029
+
+
+
+623
+00:13:11,110 --> 00:13:14,529
+launched during the b1 the application
+
+624
+00:13:13,019 --> 00:13:14,529
+
+
+
+625
+00:13:13,029 --> 00:13:15,639
+is launched and so during that
+
+626
+00:13:14,519 --> 00:13:15,639
+
+
+
+627
+00:13:14,529 --> 00:13:18,699
+application we're going to use the
+
+628
+00:13:15,629 --> 00:13:18,699
+
+
+
+629
+00:13:15,639 --> 00:13:20,649
+oncreate as well here to essentially
+
+630
+00:13:18,689 --> 00:13:20,649
+
+
+
+631
+00:13:18,699 --> 00:13:22,509
+load up the payload thoughts mali file
+
+632
+00:13:20,639 --> 00:13:22,509
+
+
+
+633
+00:13:20,649 --> 00:13:25,089
+that we actually copied alright so let
+
+634
+00:13:22,499 --> 00:13:25,089
+
+
+
+635
+00:13:22,509 --> 00:13:26,319
+us actually get started so what i'm
+
+636
+00:13:25,079 --> 00:13:26,319
+
+
+
+637
+00:13:25,089 --> 00:13:27,910
+gonna do is let me just go through your
+
+638
+00:13:26,309 --> 00:13:27,910
+
+
+
+639
+00:13:26,319 --> 00:13:29,680
+questions or i'll actually go through
+
+640
+00:13:27,900 --> 00:13:29,680
+
+
+
+641
+00:13:27,910 --> 00:13:31,529
+them after this so the first thing we're
+
+642
+00:13:29,670 --> 00:13:31,529
+
+
+
+643
+00:13:29,680 --> 00:13:34,120
+gonna do is we're going to go to a line
+
+644
+00:13:31,519 --> 00:13:34,120
+
+
+
+645
+00:13:31,529 --> 00:13:37,029
+we will go right over here we need to
+
+646
+00:13:34,110 --> 00:13:37,029
+
+
+
+647
+00:13:34,120 --> 00:13:39,069
+have it below the on cradle android that
+
+648
+00:13:37,019 --> 00:13:39,069
+
+
+
+649
+00:13:37,029 --> 00:13:41,620
+users utilizes the OS bundle here so
+
+650
+00:13:39,059 --> 00:13:41,620
+
+
+
+651
+00:13:39,069 --> 00:13:43,060
+we're gonna say sorry there we are there
+
+652
+00:13:41,610 --> 00:13:43,060
+
+
+
+653
+00:13:41,620 --> 00:13:47,019
+there it is so I'm just gonna indent
+
+654
+00:13:43,050 --> 00:13:47,019
+
+
+
+655
+00:13:43,060 --> 00:13:49,689
+appropriately so invoke static and again
+
+656
+00:13:47,009 --> 00:13:49,689
+
+
+
+657
+00:13:47,019 --> 00:13:52,569
+we're going to use a p0 so p0 here in
+
+658
+00:13:49,679 --> 00:13:52,569
+
+
+
+659
+00:13:49,689 --> 00:13:54,189
+curly braces so p0 and I'll explain what
+
+660
+00:13:52,559 --> 00:13:54,189
+
+
+
+661
+00:13:52,569 --> 00:13:56,319
+all of this is I'm plan on making a
+
+662
+00:13:54,179 --> 00:13:56,319
+
+
+
+663
+00:13:54,189 --> 00:13:58,360
+separate video for this because again I
+
+664
+00:13:56,309 --> 00:13:58,360
+
+
+
+665
+00:13:56,319 --> 00:14:01,209
+am going to be stop confusing people if
+
+666
+00:13:58,350 --> 00:14:01,209
+
+
+
+667
+00:13:58,360 --> 00:14:02,709
+I go on with that so invoke static and
+
+668
+00:14:01,199 --> 00:14:02,709
+
+
+
+669
+00:14:01,209 --> 00:14:04,839
+then we're gonna use the alcohol which
+
+670
+00:14:02,699 --> 00:14:04,839
+
+
+
+671
+00:14:02,709 --> 00:14:07,750
+is the the comm folder so al comm and
+
+672
+00:14:04,829 --> 00:14:07,750
+
+
+
+673
+00:14:04,839 --> 00:14:10,779
+then the Metasploit folder Metasploit
+
+674
+00:14:07,740 --> 00:14:10,779
+
+
+
+675
+00:14:07,750 --> 00:14:12,130
+and then you have your stage and the OPP
+
+676
+00:14:10,769 --> 00:14:12,130
+
+
+
+677
+00:14:10,779 --> 00:14:14,319
+up you have your payload here which
+
+678
+00:14:12,120 --> 00:14:14,319
+
+
+
+679
+00:14:12,130 --> 00:14:16,509
+again is in payload you don't need to
+
+680
+00:14:14,309 --> 00:14:16,509
+
+
+
+681
+00:14:14,319 --> 00:14:18,850
+specify that it is a small e file so you
+
+682
+00:14:16,499 --> 00:14:18,850
+
+
+
+683
+00:14:16,509 --> 00:14:21,430
+can leave the extension so then that is
+
+684
+00:14:18,840 --> 00:14:21,430
+
+
+
+685
+00:14:18,850 --> 00:14:24,670
+going to bring us up into the oncreate
+
+686
+00:14:21,420 --> 00:14:24,670
+
+
+
+687
+00:14:21,430 --> 00:14:26,529
+function so on on create and then now
+
+688
+00:14:24,660 --> 00:14:26,529
+
+
+
+689
+00:14:24,670 --> 00:14:28,720
+we're utilizing land roid again so all
+
+690
+00:14:26,519 --> 00:14:28,720
+
+
+
+691
+00:14:26,529 --> 00:14:30,580
+Android the content and in the context
+
+692
+00:14:28,710 --> 00:14:30,580
+
+
+
+693
+00:14:28,720 --> 00:14:33,519
+so we'll it launch every time
+
+694
+00:14:30,570 --> 00:14:33,519
+
+
+
+695
+00:14:30,580 --> 00:14:35,230
+the the wallet activity is started up
+
+696
+00:14:33,509 --> 00:14:35,230
+
+
+
+697
+00:14:33,519 --> 00:14:36,970
+which is the main activity when the
+
+698
+00:14:35,220 --> 00:14:36,970
+
+
+
+699
+00:14:35,230 --> 00:14:38,740
+application starts up so yeah there we
+
+700
+00:14:36,960 --> 00:14:38,740
+
+
+
+701
+00:14:36,970 --> 00:14:40,240
+are so that'll essentially launch any
+
+702
+00:14:38,730 --> 00:14:40,240
+
+
+
+703
+00:14:38,740 --> 00:14:41,880
+payload and if you have created the
+
+704
+00:14:40,230 --> 00:14:41,880
+
+
+
+705
+00:14:40,240 --> 00:14:44,440
+payload appropriately you set up your
+
+706
+00:14:41,870 --> 00:14:44,440
+
+
+
+707
+00:14:41,880 --> 00:14:45,820
+your exploit multi handler and you're
+
+708
+00:14:44,430 --> 00:14:45,820
+
+
+
+709
+00:14:44,440 --> 00:14:47,829
+pretty good right over there to get
+
+710
+00:14:45,810 --> 00:14:47,829
+
+
+
+711
+00:14:45,820 --> 00:14:51,640
+started so on create and then we're
+
+712
+00:14:47,819 --> 00:14:51,640
+
+
+
+713
+00:14:47,829 --> 00:14:53,260
+using the we're using land right orell
+
+714
+00:14:51,630 --> 00:14:53,260
+
+
+
+715
+00:14:51,640 --> 00:14:57,399
+Android whatever your Nepal it for those
+
+716
+00:14:53,250 --> 00:14:57,399
+
+
+
+717
+00:14:53,260 --> 00:14:59,110
+of you content and then context context
+
+718
+00:14:57,389 --> 00:14:59,110
+
+
+
+719
+00:14:57,399 --> 00:15:03,779
+and then we close that up and we use the
+
+720
+00:14:59,100 --> 00:15:03,779
+
+
+
+721
+00:14:59,110 --> 00:15:06,490
+capital V and we can then save this file
+
+722
+00:15:03,769 --> 00:15:06,490
+
+
+
+723
+00:15:03,779 --> 00:15:08,769
+alright now that we're done with that
+
+724
+00:15:06,480 --> 00:15:08,769
+
+
+
+725
+00:15:06,490 --> 00:15:10,420
+you now need to start copying the
+
+726
+00:15:08,759 --> 00:15:10,420
+
+
+
+727
+00:15:08,769 --> 00:15:12,519
+permissions you require and this is
+
+728
+00:15:10,410 --> 00:15:12,519
+
+
+
+729
+00:15:10,420 --> 00:15:15,160
+unique for every application because as
+
+730
+00:15:12,509 --> 00:15:15,160
+
+
+
+731
+00:15:12,519 --> 00:15:18,100
+you can see the Bitcoin wallet
+
+732
+00:15:15,150 --> 00:15:18,100
+
+
+
+733
+00:15:15,160 --> 00:15:19,810
+application allows for these permissions
+
+734
+00:15:18,090 --> 00:15:19,810
+
+
+
+735
+00:15:18,100 --> 00:15:21,339
+okay they allows the camera to be used
+
+736
+00:15:19,800 --> 00:15:21,339
+
+
+
+737
+00:15:19,810 --> 00:15:21,790
+it allows a wakelock which is very very
+
+738
+00:15:21,329 --> 00:15:21,790
+
+
+
+739
+00:15:21,339 --> 00:15:25,269
+good
+
+740
+00:15:21,780 --> 00:15:25,269
+
+
+
+741
+00:15:21,790 --> 00:15:26,860
+a lot of Bluetooth NFC the network state
+
+742
+00:15:25,259 --> 00:15:26,860
+
+
+
+743
+00:15:25,269 --> 00:15:28,420
+allows you to access the network state
+
+744
+00:15:26,850 --> 00:15:28,420
+
+
+
+745
+00:15:26,860 --> 00:15:30,820
+so it has many of the important ones
+
+746
+00:15:28,410 --> 00:15:30,820
+
+
+
+747
+00:15:28,420 --> 00:15:34,060
+that we have here so what we're going to
+
+748
+00:15:30,810 --> 00:15:34,060
+
+
+
+749
+00:15:30,820 --> 00:15:36,010
+do is we are going to copy the important
+
+750
+00:15:34,050 --> 00:15:36,010
+
+
+
+751
+00:15:34,060 --> 00:15:39,399
+ones and those are going to be are going
+
+752
+00:15:36,000 --> 00:15:39,399
+
+
+
+753
+00:15:36,010 --> 00:15:41,560
+to do with the the course location the
+
+754
+00:15:39,389 --> 00:15:41,560
+
+
+
+755
+00:15:39,399 --> 00:15:44,079
+file location the phone state send them
+
+756
+00:15:41,550 --> 00:15:44,079
+
+
+
+757
+00:15:41,560 --> 00:15:46,450
+as SMS received as a mess record audio
+
+758
+00:15:44,069 --> 00:15:46,450
+
+
+
+759
+00:15:44,079 --> 00:15:48,700
+call phone read contacts write contacts
+
+760
+00:15:46,440 --> 00:15:48,700
+
+
+
+761
+00:15:46,450 --> 00:15:52,390
+record audio camera write external
+
+762
+00:15:48,690 --> 00:15:52,390
+
+
+
+763
+00:15:48,700 --> 00:15:54,100
+storage we don't need the wallpaper
+
+764
+00:15:52,380 --> 00:15:54,100
+
+
+
+765
+00:15:52,390 --> 00:15:57,910
+panel just get rid of it from there so
+
+766
+00:15:54,090 --> 00:15:57,910
+
+
+
+767
+00:15:54,100 --> 00:16:01,300
+we'll copy these will copy the Android
+
+768
+00:15:57,900 --> 00:16:01,300
+
+
+
+769
+00:15:57,910 --> 00:16:04,000
+permissions here and we will paste it in
+
+770
+00:16:01,290 --> 00:16:04,000
+
+
+
+771
+00:16:01,300 --> 00:16:07,450
+and delete the duplicates from here so
+
+772
+00:16:03,990 --> 00:16:07,450
+
+
+
+773
+00:16:04,000 --> 00:16:09,700
+again I will delete did the the
+
+774
+00:16:07,440 --> 00:16:09,700
+
+
+
+775
+00:16:07,450 --> 00:16:11,620
+duplicates so let me just look for one
+
+776
+00:16:09,690 --> 00:16:11,620
+
+
+
+777
+00:16:09,700 --> 00:16:12,790
+of them that I know we did have here
+
+778
+00:16:11,610 --> 00:16:12,790
+
+
+
+779
+00:16:11,620 --> 00:16:16,020
+that was the wakelock
+
+780
+00:16:12,780 --> 00:16:16,020
+
+
+
+781
+00:16:12,790 --> 00:16:18,790
+which I'm sure was up right over here
+
+782
+00:16:16,010 --> 00:16:18,790
+
+
+
+783
+00:16:16,020 --> 00:16:20,170
+write call log set wallpaper we don't
+
+784
+00:16:18,780 --> 00:16:20,170
+
+
+
+785
+00:16:18,790 --> 00:16:23,680
+need that one so let's get rid of that
+
+786
+00:16:20,160 --> 00:16:23,680
+
+
+
+787
+00:16:20,170 --> 00:16:25,660
+first receive boot completed camera
+
+788
+00:16:23,670 --> 00:16:25,660
+
+
+
+789
+00:16:23,680 --> 00:16:32,350
+settings right settings yeah that's fine
+
+790
+00:16:25,650 --> 00:16:32,350
+
+
+
+791
+00:16:25,660 --> 00:16:34,899
+I believe I saw wake lock here but I
+
+792
+00:16:32,340 --> 00:16:34,899
+
+
+
+793
+00:16:32,350 --> 00:16:36,130
+think yeah that should be it so yeah we
+
+794
+00:16:34,889 --> 00:16:36,130
+
+
+
+795
+00:16:34,899 --> 00:16:37,690
+don't have any duplicates so that's
+
+796
+00:16:36,120 --> 00:16:37,690
+
+
+
+797
+00:16:36,130 --> 00:16:40,029
+excellent so we're gonna save that
+
+798
+00:16:37,680 --> 00:16:40,029
+
+
+
+799
+00:16:37,690 --> 00:16:41,770
+manifest file here and we are ready to
+
+800
+00:16:40,019 --> 00:16:41,770
+
+
+
+801
+00:16:40,029 --> 00:16:43,449
+go we're ready to compile the
+
+802
+00:16:41,760 --> 00:16:43,449
+
+
+
+803
+00:16:41,770 --> 00:16:44,410
+application so what we have done
+
+804
+00:16:43,439 --> 00:16:44,410
+
+
+
+805
+00:16:43,449 --> 00:16:46,180
+essentially till
+
+806
+00:16:44,400 --> 00:16:46,180
+
+
+
+807
+00:16:44,410 --> 00:16:48,670
+let me answer some questions before we
+
+808
+00:16:46,170 --> 00:16:48,670
+
+
+
+809
+00:16:46,180 --> 00:16:53,139
+actually recompile so what we have done
+
+810
+00:16:48,660 --> 00:16:53,139
+
+
+
+811
+00:16:48,670 --> 00:16:56,170
+till now is we have we have essentially
+
+812
+00:16:53,129 --> 00:16:56,170
+
+
+
+813
+00:16:53,139 --> 00:16:57,910
+embedded the the MSF venom payload now
+
+814
+00:16:56,160 --> 00:16:57,910
+
+
+
+815
+00:16:56,170 --> 00:17:01,600
+one thing to take into consideration is
+
+816
+00:16:57,900 --> 00:17:01,600
+
+
+
+817
+00:16:57,910 --> 00:17:03,879
+we have not particularly obfuscated the
+
+818
+00:17:01,590 --> 00:17:03,879
+
+
+
+819
+00:17:01,600 --> 00:17:07,569
+Android application which means there is
+
+820
+00:17:03,869 --> 00:17:07,569
+
+
+
+821
+00:17:03,879 --> 00:17:08,770
+going to be some detection some level of
+
+822
+00:17:07,559 --> 00:17:08,770
+
+
+
+823
+00:17:07,569 --> 00:17:10,750
+detection I'll probably be making
+
+824
+00:17:08,760 --> 00:17:10,750
+
+
+
+825
+00:17:08,770 --> 00:17:12,520
+another video on this where I'll
+
+826
+00:17:10,740 --> 00:17:12,520
+
+
+
+827
+00:17:10,750 --> 00:17:15,010
+actually show you how to perform the
+
+828
+00:17:12,510 --> 00:17:15,010
+
+
+
+829
+00:17:12,520 --> 00:17:16,270
+obfuscation on a particular Android
+
+830
+00:17:15,000 --> 00:17:16,270
+
+
+
+831
+00:17:15,010 --> 00:17:18,970
+application and your if you want to
+
+832
+00:17:16,260 --> 00:17:18,970
+
+
+
+833
+00:17:16,270 --> 00:17:20,260
+perform obfuscation I believe I have one
+
+834
+00:17:18,960 --> 00:17:20,260
+
+
+
+835
+00:17:18,970 --> 00:17:23,110
+of these links here that we used to use
+
+836
+00:17:20,250 --> 00:17:23,110
+
+
+
+837
+00:17:20,260 --> 00:17:25,150
+before and that is apk wash apk wash
+
+838
+00:17:23,100 --> 00:17:25,150
+
+
+
+839
+00:17:23,110 --> 00:17:27,250
+allows you to essentially obfuscate or
+
+840
+00:17:25,140 --> 00:17:27,250
+
+
+
+841
+00:17:25,150 --> 00:17:29,980
+generate as you can see right over the
+
+842
+00:17:27,240 --> 00:17:29,980
+
+
+
+843
+00:17:27,250 --> 00:17:31,990
+android apk antivirus evasion for MSF
+
+844
+00:17:29,970 --> 00:17:31,990
+
+
+
+845
+00:17:29,980 --> 00:17:35,230
+venom generated payload so this allows
+
+846
+00:17:31,980 --> 00:17:35,230
+
+
+
+847
+00:17:31,990 --> 00:17:37,780
+you to obfuscate various MSM MSF venom
+
+848
+00:17:35,220 --> 00:17:37,780
+
+
+
+849
+00:17:35,230 --> 00:17:40,179
+payloads and of course I know that
+
+850
+00:17:37,770 --> 00:17:40,179
+
+
+
+851
+00:17:37,780 --> 00:17:43,450
+embedding or injecting a payload with
+
+852
+00:17:40,169 --> 00:17:43,450
+
+
+
+853
+00:17:40,179 --> 00:17:44,740
+MSF venom all already exists and yeah
+
+854
+00:17:43,440 --> 00:17:44,740
+
+
+
+855
+00:17:43,450 --> 00:17:46,600
+someone is just pointed out that the
+
+856
+00:17:44,730 --> 00:17:46,600
+
+
+
+857
+00:17:44,740 --> 00:17:48,669
+camera is a duplicate permission so let
+
+858
+00:17:46,590 --> 00:17:48,669
+
+
+
+859
+00:17:46,600 --> 00:17:51,460
+me just check that out right now
+
+860
+00:17:48,659 --> 00:17:51,460
+
+
+
+861
+00:17:48,669 --> 00:17:53,700
+looks like we have we also have read
+
+862
+00:17:51,450 --> 00:17:53,700
+
+
+
+863
+00:17:51,460 --> 00:17:58,059
+context of those read and write contacts
+
+864
+00:17:53,690 --> 00:17:58,059
+
+
+
+865
+00:17:53,700 --> 00:18:00,309
+let me check this right over here I can
+
+866
+00:17:58,049 --> 00:18:00,309
+
+
+
+867
+00:17:58,059 --> 00:18:01,720
+see camera right here let's see if we
+
+868
+00:18:00,299 --> 00:18:01,720
+
+
+
+869
+00:18:00,309 --> 00:18:03,539
+can find there we are thank you very
+
+870
+00:18:01,710 --> 00:18:03,539
+
+
+
+871
+00:18:01,720 --> 00:18:05,590
+much for pointing that out
+
+872
+00:18:03,529 --> 00:18:05,590
+
+
+
+873
+00:18:03,539 --> 00:18:07,690
+thanks for pointing that out really
+
+874
+00:18:05,580 --> 00:18:07,690
+
+
+
+875
+00:18:05,590 --> 00:18:09,970
+appreciate that I was probably looking
+
+876
+00:18:07,680 --> 00:18:09,970
+
+
+
+877
+00:18:07,690 --> 00:18:12,700
+for wakelock as well but it really
+
+878
+00:18:09,960 --> 00:18:12,700
+
+
+
+879
+00:18:09,970 --> 00:18:14,140
+shouldn't cause an issue so let me just
+
+880
+00:18:12,690 --> 00:18:14,140
+
+
+
+881
+00:18:12,700 --> 00:18:15,880
+save this right now and we can get
+
+882
+00:18:14,130 --> 00:18:15,880
+
+
+
+883
+00:18:14,140 --> 00:18:18,280
+started with it with the recompilation
+
+884
+00:18:15,870 --> 00:18:18,280
+
+
+
+885
+00:18:15,880 --> 00:18:22,240
+all right so we want to recompile the
+
+886
+00:18:18,270 --> 00:18:22,240
+
+
+
+887
+00:18:18,280 --> 00:18:24,850
+original apk here and we can do that
+
+888
+00:18:22,230 --> 00:18:24,850
+
+
+
+889
+00:18:22,240 --> 00:18:26,530
+right now so what we can do is we can
+
+890
+00:18:24,840 --> 00:18:26,530
+
+
+
+891
+00:18:24,850 --> 00:18:29,770
+essentially recompile from any directory
+
+892
+00:18:26,520 --> 00:18:29,770
+
+
+
+893
+00:18:26,530 --> 00:18:31,720
+so apk to and we'll say build and then
+
+894
+00:18:29,760 --> 00:18:31,720
+
+
+
+895
+00:18:29,770 --> 00:18:34,090
+we can specify the directory again so
+
+896
+00:18:31,710 --> 00:18:34,090
+
+
+
+897
+00:18:31,720 --> 00:18:36,429
+root desktop and then we specify the
+
+898
+00:18:34,080 --> 00:18:36,429
+
+
+
+899
+00:18:34,090 --> 00:18:38,110
+original folder here now this is where
+
+900
+00:18:36,419 --> 00:18:38,110
+
+
+
+901
+00:18:36,429 --> 00:18:40,630
+things get very very important when you
+
+902
+00:18:38,100 --> 00:18:40,630
+
+
+
+903
+00:18:38,110 --> 00:18:43,679
+talk about using applications like the
+
+904
+00:18:40,620 --> 00:18:43,679
+
+
+
+905
+00:18:40,630 --> 00:18:46,539
+or scripts like the fat rat for example
+
+906
+00:18:43,669 --> 00:18:46,539
+
+
+
+907
+00:18:43,679 --> 00:18:50,919
+the fat rat is a tool that generates
+
+908
+00:18:46,529 --> 00:18:50,919
+
+
+
+909
+00:18:46,539 --> 00:18:54,669
+most likely to - a - to great success a
+
+910
+00:18:50,909 --> 00:18:54,669
+
+
+
+911
+00:18:50,919 --> 00:18:56,140
+signed payload apart from embedding
+
+912
+00:18:54,659 --> 00:18:56,140
+
+
+
+913
+00:18:54,669 --> 00:18:57,410
+applications which we know is very very
+
+914
+00:18:56,130 --> 00:18:57,410
+
+
+
+915
+00:18:56,140 --> 00:18:59,600
+difficult to do
+
+916
+00:18:57,400 --> 00:18:59,600
+
+
+
+917
+00:18:57,410 --> 00:19:02,270
+matically because you usually get errors
+
+918
+00:18:59,590 --> 00:19:02,270
+
+
+
+919
+00:18:59,600 --> 00:19:03,500
+so if you do get an error here if we do
+
+920
+00:19:02,260 --> 00:19:03,500
+
+
+
+921
+00:19:02,270 --> 00:19:05,750
+get an error then I probably have to
+
+922
+00:19:03,490 --> 00:19:05,750
+
+
+
+923
+00:19:03,500 --> 00:19:07,040
+take a deeper look at the application so
+
+924
+00:19:05,740 --> 00:19:07,040
+
+
+
+925
+00:19:05,750 --> 00:19:10,250
+I'm just going to try and compile it
+
+926
+00:19:07,030 --> 00:19:10,250
+
+
+
+927
+00:19:07,040 --> 00:19:11,690
+once to recompile it once if it doesn't
+
+928
+00:19:10,240 --> 00:19:11,690
+
+
+
+929
+00:19:10,250 --> 00:19:13,220
+compile then I'll probably have to find
+
+930
+00:19:11,680 --> 00:19:13,220
+
+
+
+931
+00:19:11,690 --> 00:19:15,500
+another application but I just wanted to
+
+932
+00:19:13,210 --> 00:19:15,500
+
+
+
+933
+00:19:13,220 --> 00:19:18,080
+make a quick live stream for this video
+
+934
+00:19:15,490 --> 00:19:18,080
+
+
+
+935
+00:19:15,500 --> 00:19:22,130
+so let me just answer a few questions
+
+936
+00:19:18,070 --> 00:19:22,130
+
+
+
+937
+00:19:18,080 --> 00:19:24,560
+before we carry on use T mocks and I
+
+938
+00:19:22,120 --> 00:19:24,560
+
+
+
+939
+00:19:22,130 --> 00:19:26,060
+wrote it under advice yes more hundred
+
+940
+00:19:24,550 --> 00:19:26,060
+
+
+
+941
+00:19:24,560 --> 00:19:30,410
+videos are coming that's primarily why
+
+942
+00:19:26,050 --> 00:19:30,410
+
+
+
+943
+00:19:26,060 --> 00:19:32,360
+I've started with this right now term ax
+
+944
+00:19:30,400 --> 00:19:32,360
+
+
+
+945
+00:19:30,410 --> 00:19:38,270
+hacking excellent yes it is it's very
+
+946
+00:19:32,350 --> 00:19:38,270
+
+
+
+947
+00:19:32,360 --> 00:19:39,710
+very good very good application yeah we
+
+948
+00:19:38,260 --> 00:19:39,710
+
+
+
+949
+00:19:38,270 --> 00:19:42,050
+have a good question here telling us
+
+950
+00:19:39,700 --> 00:19:42,050
+
+
+
+951
+00:19:39,710 --> 00:19:44,360
+I've tried the fat rat it failed with
+
+952
+00:19:42,040 --> 00:19:44,360
+
+
+
+953
+00:19:42,050 --> 00:19:46,550
+signing yes that's probably because it
+
+954
+00:19:44,350 --> 00:19:46,550
+
+
+
+955
+00:19:44,360 --> 00:19:48,080
+uses zipper line and I'm not sure if
+
+956
+00:19:46,540 --> 00:19:48,080
+
+
+
+957
+00:19:46,550 --> 00:19:50,450
+we'll get an error right now we probably
+
+958
+00:19:48,070 --> 00:19:50,450
+
+
+
+959
+00:19:48,080 --> 00:19:53,210
+will but let's see what error we get and
+
+960
+00:19:50,440 --> 00:19:53,210
+
+
+
+961
+00:19:50,450 --> 00:19:55,640
+I'll probably try and and understand
+
+962
+00:19:53,200 --> 00:19:55,640
+
+
+
+963
+00:19:53,210 --> 00:19:57,170
+what's going on now this is where real
+
+964
+00:19:55,630 --> 00:19:57,170
+
+
+
+965
+00:19:55,640 --> 00:20:00,050
+skill comes into play because if you're
+
+966
+00:19:57,160 --> 00:20:00,050
+
+
+
+967
+00:19:57,170 --> 00:20:02,240
+going to manually embed if you're going
+
+968
+00:20:00,040 --> 00:20:02,240
+
+
+
+969
+00:20:00,050 --> 00:20:04,280
+to manually embed these these payloads
+
+970
+00:20:02,230 --> 00:20:04,280
+
+
+
+971
+00:20:02,240 --> 00:20:06,410
+into applications it also gives you an
+
+972
+00:20:04,270 --> 00:20:06,410
+
+
+
+973
+00:20:04,280 --> 00:20:08,330
+opportunity to test which applications
+
+974
+00:20:06,400 --> 00:20:08,330
+
+
+
+975
+00:20:06,410 --> 00:20:10,460
+allow you to embed these various
+
+976
+00:20:08,320 --> 00:20:10,460
+
+
+
+977
+00:20:08,330 --> 00:20:12,560
+payloads because some applications will
+
+978
+00:20:10,450 --> 00:20:12,560
+
+
+
+979
+00:20:10,460 --> 00:20:13,670
+not recompile at all so it's very very
+
+980
+00:20:12,550 --> 00:20:13,670
+
+
+
+981
+00:20:12,560 --> 00:20:16,640
+important to take that into
+
+982
+00:20:13,660 --> 00:20:16,640
+
+
+
+983
+00:20:13,670 --> 00:20:18,860
+consideration so I've recently started
+
+984
+00:20:16,630 --> 00:20:18,860
+
+
+
+985
+00:20:16,640 --> 00:20:20,060
+the recompilation process and this looks
+
+986
+00:20:18,850 --> 00:20:20,060
+
+
+
+987
+00:20:18,860 --> 00:20:22,280
+like it's going to work and again it
+
+988
+00:20:20,050 --> 00:20:22,280
+
+
+
+989
+00:20:20,060 --> 00:20:24,830
+tells us that it failed right over here
+
+990
+00:20:22,270 --> 00:20:24,830
+
+
+
+991
+00:20:22,280 --> 00:20:26,540
+so let's take a look at what actually
+
+992
+00:20:24,820 --> 00:20:26,540
+
+
+
+993
+00:20:24,830 --> 00:20:28,520
+caused the error and immediately we get
+
+994
+00:20:26,530 --> 00:20:28,520
+
+
+
+995
+00:20:26,540 --> 00:20:33,320
+the a apt error which I'm not going to
+
+996
+00:20:28,510 --> 00:20:33,320
+
+
+
+997
+00:20:28,520 --> 00:20:41,420
+explain what it is right now so if we
+
+998
+00:20:33,310 --> 00:20:41,420
+
+
+
+999
+00:20:33,320 --> 00:20:44,630
+take so all right so if we take a look
+
+1000
+00:20:41,410 --> 00:20:44,630
+
+
+
+1001
+00:20:41,420 --> 00:20:45,500
+at this right over here you can see that
+
+1002
+00:20:44,620 --> 00:20:45,500
+
+
+
+1003
+00:20:44,630 --> 00:20:47,420
+by default
+
+1004
+00:20:45,490 --> 00:20:47,420
+
+
+
+1005
+00:20:45,500 --> 00:20:49,190
+yes I'll be uploading the video after
+
+1006
+00:20:47,410 --> 00:20:49,190
+
+
+
+1007
+00:20:47,420 --> 00:20:50,600
+you can see that we've got an error and
+
+1008
+00:20:49,180 --> 00:20:50,600
+
+
+
+1009
+00:20:49,190 --> 00:20:52,580
+it's all is giving us an error in the
+
+1010
+00:20:50,590 --> 00:20:52,580
+
+
+
+1011
+00:20:50,600 --> 00:20:54,530
+Android manifest file first but the main
+
+1012
+00:20:52,570 --> 00:20:54,530
+
+
+
+1013
+00:20:52,580 --> 00:20:57,070
+issue is with the aapt which means we
+
+1014
+00:20:54,520 --> 00:20:57,070
+
+
+
+1015
+00:20:54,530 --> 00:21:00,790
+probably need the Android SDK installed
+
+1016
+00:20:57,060 --> 00:21:00,790
+
+
+
+1017
+00:20:57,070 --> 00:21:03,200
+because of the various requirements so
+
+1018
+00:21:00,780 --> 00:21:03,200
+
+
+
+1019
+00:21:00,790 --> 00:21:04,730
+what we can do is we can just try and
+
+1020
+00:21:03,190 --> 00:21:04,730
+
+
+
+1021
+00:21:03,200 --> 00:21:06,860
+download another application here
+
+1022
+00:21:04,720 --> 00:21:06,860
+
+
+
+1023
+00:21:04,730 --> 00:21:08,440
+probably a simpler application let me
+
+1024
+00:21:06,850 --> 00:21:08,440
+
+
+
+1025
+00:21:06,860 --> 00:21:12,850
+just find one that's very
+
+1026
+00:21:08,430 --> 00:21:12,850
+
+
+
+1027
+00:21:08,440 --> 00:21:14,790
+again very very simple I'll just let me
+
+1028
+00:21:12,840 --> 00:21:14,790
+
+
+
+1029
+00:21:12,850 --> 00:21:17,230
+see if I can find another application
+
+1030
+00:21:14,780 --> 00:21:17,230
+
+
+
+1031
+00:21:14,790 --> 00:21:18,850
+what if the main activity is hidden
+
+1032
+00:21:17,220 --> 00:21:18,850
+
+
+
+1033
+00:21:17,230 --> 00:21:20,080
+there must be a main activity that's a
+
+1034
+00:21:18,840 --> 00:21:20,080
+
+
+
+1035
+00:21:18,850 --> 00:21:22,060
+very very good question
+
+1036
+00:21:20,070 --> 00:21:22,060
+
+
+
+1037
+00:21:20,080 --> 00:21:27,070
+in fact I'll just answer question I'll
+
+1038
+00:21:22,050 --> 00:21:27,070
+
+
+
+1039
+00:21:22,060 --> 00:21:28,330
+make a separate video on this even if
+
+1040
+00:21:27,060 --> 00:21:28,330
+
+
+
+1041
+00:21:27,070 --> 00:21:30,220
+the main activities yeah that's a very
+
+1042
+00:21:28,320 --> 00:21:30,220
+
+
+
+1043
+00:21:28,330 --> 00:21:32,470
+good question so every application will
+
+1044
+00:21:30,210 --> 00:21:32,470
+
+
+
+1045
+00:21:30,220 --> 00:21:34,390
+be designed differently and usually what
+
+1046
+00:21:32,460 --> 00:21:34,390
+
+
+
+1047
+00:21:32,470 --> 00:21:37,000
+again what you're looking for is the
+
+1048
+00:21:34,380 --> 00:21:37,000
+
+
+
+1049
+00:21:34,390 --> 00:21:39,040
+Android dot intent not main if you can
+
+1050
+00:21:36,990 --> 00:21:39,040
+
+
+
+1051
+00:21:37,000 --> 00:21:41,770
+find those two lines where it actually
+
+1052
+00:21:39,030 --> 00:21:41,770
+
+
+
+1053
+00:21:39,040 --> 00:21:45,310
+specifies the intent dot main and it
+
+1054
+00:21:41,760 --> 00:21:45,310
+
+
+
+1055
+00:21:41,770 --> 00:21:47,890
+also specifies the icon or the drawable
+
+1056
+00:21:45,300 --> 00:21:47,890
+
+
+
+1057
+00:21:45,310 --> 00:21:50,830
+icon if it's right over there then you
+
+1058
+00:21:47,880 --> 00:21:50,830
+
+
+
+1059
+00:21:47,890 --> 00:21:53,290
+essentially know that the one of the the
+
+1060
+00:21:50,820 --> 00:21:53,290
+
+
+
+1061
+00:21:50,830 --> 00:21:55,570
+the the top group right over there that
+
+1062
+00:21:53,280 --> 00:21:55,570
+
+
+
+1063
+00:21:53,290 --> 00:21:57,190
+contains the the activity is going to be
+
+1064
+00:21:55,560 --> 00:21:57,190
+
+
+
+1065
+00:21:55,570 --> 00:22:02,410
+the main activity so your job is to look
+
+1066
+00:21:57,180 --> 00:22:02,410
+
+
+
+1067
+00:21:57,190 --> 00:22:03,760
+for that within these small E is to look
+
+1068
+00:22:02,400 --> 00:22:03,760
+
+
+
+1069
+00:22:02,410 --> 00:22:04,380
+with for that within the small e
+
+1070
+00:22:03,750 --> 00:22:04,380
+
+
+
+1071
+00:22:03,760 --> 00:22:08,980
+compiler
+
+1072
+00:22:04,370 --> 00:22:08,980
+
+
+
+1073
+00:22:04,380 --> 00:22:11,080
+alright so also the fat reduction yes
+
+1074
+00:22:08,970 --> 00:22:11,080
+
+
+
+1075
+00:22:08,980 --> 00:22:13,030
+that's a very good question the fat rat
+
+1076
+00:22:11,070 --> 00:22:13,030
+
+
+
+1077
+00:22:11,080 --> 00:22:15,610
+does not provide obfuscation it simply
+
+1078
+00:22:13,020 --> 00:22:15,610
+
+
+
+1079
+00:22:13,030 --> 00:22:17,680
+signs the application so if I was to
+
+1080
+00:22:15,600 --> 00:22:17,680
+
+
+
+1081
+00:22:15,610 --> 00:22:20,620
+compile this application I remember the
+
+1082
+00:22:17,670 --> 00:22:20,620
+
+
+
+1083
+00:22:17,680 --> 00:22:22,210
+Google now launcher did work with the
+
+1084
+00:22:20,610 --> 00:22:22,210
+
+
+
+1085
+00:22:20,620 --> 00:22:24,580
+recompilation so I'll do that for you
+
+1086
+00:22:22,200 --> 00:22:24,580
+
+
+
+1087
+00:22:22,210 --> 00:22:27,010
+guys once more time or once again so
+
+1088
+00:22:24,570 --> 00:22:27,010
+
+
+
+1089
+00:22:24,580 --> 00:22:30,790
+I'll download this here and I'll do it
+
+1090
+00:22:27,000 --> 00:22:30,790
+
+
+
+1091
+00:22:27,010 --> 00:22:33,580
+again with you guys this this did work
+
+1092
+00:22:30,780 --> 00:22:33,580
+
+
+
+1093
+00:22:30,790 --> 00:22:35,650
+what you will find is after I have
+
+1094
+00:22:33,570 --> 00:22:35,650
+
+
+
+1095
+00:22:33,580 --> 00:22:37,750
+recompile the application I need to sign
+
+1096
+00:22:35,640 --> 00:22:37,750
+
+
+
+1097
+00:22:35,650 --> 00:22:39,460
+it and that's where probably I can use
+
+1098
+00:22:37,740 --> 00:22:39,460
+
+
+
+1099
+00:22:37,750 --> 00:22:40,870
+the fat rat or I'll actually be making a
+
+1100
+00:22:39,450 --> 00:22:40,870
+
+
+
+1101
+00:22:39,460 --> 00:22:43,690
+separate video showing you how to do
+
+1102
+00:22:40,860 --> 00:22:43,690
+
+
+
+1103
+00:22:40,870 --> 00:22:45,340
+this so I have downloaded the
+
+1104
+00:22:43,680 --> 00:22:45,340
+
+
+
+1105
+00:22:43,690 --> 00:22:48,250
+application let me just wait for that to
+
+1106
+00:22:45,330 --> 00:22:48,250
+
+
+
+1107
+00:22:45,340 --> 00:22:50,590
+complete let me see if that is a
+
+1108
+00:22:48,240 --> 00:22:50,590
+
+
+
+1109
+00:22:48,250 --> 00:22:52,000
+downloading I probably yeah any well
+
+1110
+00:22:50,580 --> 00:22:52,000
+
+
+
+1111
+00:22:50,590 --> 00:22:54,460
+I'll just wait for that to complete so
+
+1112
+00:22:51,990 --> 00:22:54,460
+
+
+
+1113
+00:22:52,000 --> 00:22:57,970
+in the meantime what I'll do is I will
+
+1114
+00:22:54,450 --> 00:22:57,970
+
+
+
+1115
+00:22:54,460 --> 00:23:00,940
+just go back to to my desktop here we'll
+
+1116
+00:22:57,960 --> 00:23:00,940
+
+
+
+1117
+00:22:57,970 --> 00:23:04,060
+keep the payload I'll get rid of the the
+
+1118
+00:23:00,930 --> 00:23:04,060
+
+
+
+1119
+00:23:00,940 --> 00:23:05,940
+Bitcoin wallet application here and I
+
+1120
+00:23:04,050 --> 00:23:05,940
+
+
+
+1121
+00:23:04,060 --> 00:23:09,010
+will get rid of the original folder
+
+1122
+00:23:05,930 --> 00:23:09,010
+
+
+
+1123
+00:23:05,940 --> 00:23:10,660
+which contained our our decompiled
+
+1124
+00:23:09,000 --> 00:23:10,660
+
+
+
+1125
+00:23:09,010 --> 00:23:14,410
+application so we have the payload at
+
+1126
+00:23:10,650 --> 00:23:14,410
+
+
+
+1127
+00:23:10,660 --> 00:23:16,720
+our APK here which we D compiled and if
+
+1128
+00:23:14,400 --> 00:23:16,720
+
+
+
+1129
+00:23:14,410 --> 00:23:18,250
+we just list the files in here sorry for
+
+1130
+00:23:16,710 --> 00:23:18,250
+
+
+
+1131
+00:23:16,720 --> 00:23:19,780
+that if we list the files we have the
+
+1132
+00:23:18,240 --> 00:23:19,780
+
+
+
+1133
+00:23:18,250 --> 00:23:21,370
+payload folder which contains the
+
+1134
+00:23:19,770 --> 00:23:21,370
+
+
+
+1135
+00:23:19,780 --> 00:23:22,320
+payload itself which is the most
+
+1136
+00:23:21,360 --> 00:23:22,320
+
+
+
+1137
+00:23:21,370 --> 00:23:25,350
+important bit
+
+1138
+00:23:22,310 --> 00:23:25,350
+
+
+
+1139
+00:23:22,320 --> 00:23:28,620
+we thought was once we start embedding
+
+1140
+00:23:25,340 --> 00:23:28,620
+
+
+
+1141
+00:23:25,350 --> 00:23:30,960
+so again hopefully this just finishes
+
+1142
+00:23:28,610 --> 00:23:30,960
+
+
+
+1143
+00:23:28,620 --> 00:23:32,880
+downloading for some reason it did not
+
+1144
+00:23:30,950 --> 00:23:32,880
+
+
+
+1145
+00:23:30,960 --> 00:23:34,529
+start downloading apologies for that let
+
+1146
+00:23:32,870 --> 00:23:34,529
+
+
+
+1147
+00:23:32,880 --> 00:23:37,139
+me just try and save my internet does
+
+1148
+00:23:34,519 --> 00:23:37,139
+
+
+
+1149
+00:23:34,529 --> 00:23:39,889
+not seem to be working right now or has
+
+1150
+00:23:37,129 --> 00:23:39,889
+
+
+
+1151
+00:23:37,139 --> 00:23:43,200
+it downloaded my browser is unresponsive
+
+1152
+00:23:39,879 --> 00:23:43,200
+
+
+
+1153
+00:23:39,889 --> 00:23:49,889
+sadly so let me just read let me just
+
+1154
+00:23:43,190 --> 00:23:49,889
+
+
+
+1155
+00:23:43,200 --> 00:23:52,529
+list let me just list my downloads
+
+1156
+00:23:49,879 --> 00:23:52,529
+
+
+
+1157
+00:23:49,889 --> 00:23:54,299
+folder here looks like we do have the
+
+1158
+00:23:52,519 --> 00:23:54,299
+
+
+
+1159
+00:23:52,529 --> 00:23:57,330
+the application has completed
+
+1160
+00:23:54,289 --> 00:23:57,330
+
+
+
+1161
+00:23:54,299 --> 00:23:59,519
+downloading so if I can just check the
+
+1162
+00:23:57,320 --> 00:23:59,519
+
+
+
+1163
+00:23:57,330 --> 00:24:01,259
+size of this looks like one of them is 8
+
+1164
+00:23:59,509 --> 00:24:01,259
+
+
+
+1165
+00:23:59,519 --> 00:24:04,559
+megabytes yep so that looks like it's
+
+1166
+00:24:01,249 --> 00:24:04,559
+
+
+
+1167
+00:24:01,259 --> 00:24:11,220
+completed so I'll just copy that um I'll
+
+1168
+00:24:04,549 --> 00:24:11,220
+
+
+
+1169
+00:24:04,559 --> 00:24:14,820
+just copy the Downloads that let me just
+
+1170
+00:24:11,210 --> 00:24:14,820
+
+
+
+1171
+00:24:11,220 --> 00:24:16,230
+get rid of that there and we'll just
+
+1172
+00:24:14,810 --> 00:24:16,230
+
+
+
+1173
+00:24:14,820 --> 00:24:17,970
+copy the I will just copy the
+
+1174
+00:24:16,220 --> 00:24:17,970
+
+
+
+1175
+00:24:16,230 --> 00:24:22,460
+application to the desktop and we can DD
+
+1176
+00:24:17,960 --> 00:24:22,460
+
+
+
+1177
+00:24:17,970 --> 00:24:25,169
+compile that immediately alright so copy
+
+1178
+00:24:22,450 --> 00:24:25,169
+
+
+
+1179
+00:24:22,460 --> 00:24:29,279
+the downloads and we'll copy the com
+
+1180
+00:24:25,159 --> 00:24:29,279
+
+
+
+1181
+00:24:25,169 --> 00:24:38,360
+Android launcher desktop and on it enter
+
+1182
+00:24:29,269 --> 00:24:38,360
+
+
+
+1183
+00:24:29,279 --> 00:24:38,360
+and for some reason looks like the files
+
+1184
+00:24:38,490 --> 00:24:38,490
+
+
+
+1185
+00:24:38,500 --> 00:24:42,269
+[Applause]
+
+1186
+00:24:40,730 --> 00:24:42,269
+
+
+
+1187
+00:24:40,740 --> 00:24:46,470
+looks like the Downloads did not
+
+1188
+00:24:42,259 --> 00:24:46,470
+
+
+
+1189
+00:24:42,269 --> 00:24:48,299
+complete sorry root downloads keep keep
+
+1190
+00:24:46,460 --> 00:24:48,299
+
+
+
+1191
+00:24:46,470 --> 00:24:49,710
+getting confused with that let me just
+
+1192
+00:24:48,289 --> 00:24:49,710
+
+
+
+1193
+00:24:48,299 --> 00:24:51,090
+check the downloads it looks like they
+
+1194
+00:24:49,700 --> 00:24:51,090
+
+
+
+1195
+00:24:49,710 --> 00:24:54,659
+haven't completed yet but for some
+
+1196
+00:24:51,080 --> 00:24:54,659
+
+
+
+1197
+00:24:51,090 --> 00:24:56,129
+reason my my my browser isn't working
+
+1198
+00:24:54,649 --> 00:24:56,129
+
+
+
+1199
+00:24:54,659 --> 00:24:58,860
+let's see if it does prompt us to
+
+1200
+00:24:56,119 --> 00:24:58,860
+
+
+
+1201
+00:24:56,129 --> 00:25:01,259
+actually download that in any case I'll
+
+1202
+00:24:58,850 --> 00:25:01,259
+
+
+
+1203
+00:24:58,860 --> 00:25:02,960
+just copy I'll just delete the the
+
+1204
+00:25:01,249 --> 00:25:02,960
+
+
+
+1205
+00:25:01,259 --> 00:25:05,720
+duplicate one right over here and
+
+1206
+00:25:02,950 --> 00:25:05,720
+
+
+
+1207
+00:25:02,960 --> 00:25:09,440
+hopefully we can actually copy them now
+
+1208
+00:25:05,710 --> 00:25:09,440
+
+
+
+1209
+00:25:05,720 --> 00:25:09,440
+so I'll just copy this
+
+1210
+00:25:13,070 --> 00:25:13,070
+
+
+
+1211
+00:25:13,080 --> 00:25:17,850
+alright enough to speed through this
+
+1212
+00:25:14,779 --> 00:25:17,850
+
+
+
+1213
+00:25:14,789 --> 00:25:20,369
+process now so that I can actually show
+
+1214
+00:25:17,840 --> 00:25:20,369
+
+
+
+1215
+00:25:17,850 --> 00:25:22,529
+you that the compilation does work so
+
+1216
+00:25:20,359 --> 00:25:22,529
+
+
+
+1217
+00:25:20,369 --> 00:25:27,119
+what we'll do now is we will use the
+
+1218
+00:25:22,519 --> 00:25:27,119
+
+
+
+1219
+00:25:22,529 --> 00:25:30,600
+apktool apktool decompile and we'll come
+
+1220
+00:25:27,109 --> 00:25:30,600
+
+
+
+1221
+00:25:27,119 --> 00:25:36,929
+go go right over here and we'll call
+
+1222
+00:25:30,590 --> 00:25:36,929
+
+
+
+1223
+00:25:30,600 --> 00:25:39,119
+this original hit enter for some reason
+
+1224
+00:25:36,919 --> 00:25:39,119
+
+
+
+1225
+00:25:36,929 --> 00:25:41,070
+oh sorry I forgot the output file that
+
+1226
+00:25:39,109 --> 00:25:41,070
+
+
+
+1227
+00:25:39,119 --> 00:25:43,830
+is the output parameter right over here
+
+1228
+00:25:41,060 --> 00:25:43,830
+
+
+
+1229
+00:25:41,070 --> 00:25:46,590
+and we're just gonna wait for this to
+
+1230
+00:25:43,820 --> 00:25:46,590
+
+
+
+1231
+00:25:43,830 --> 00:25:49,379
+decompile so let me just answer some of
+
+1232
+00:25:46,580 --> 00:25:49,379
+
+
+
+1233
+00:25:46,590 --> 00:25:53,460
+the questions yes I have duplicates just
+
+1234
+00:25:49,369 --> 00:25:53,460
+
+
+
+1235
+00:25:49,379 --> 00:25:54,989
+saw that download it the fault twice so
+
+1236
+00:25:53,450 --> 00:25:54,989
+
+
+
+1237
+00:25:53,460 --> 00:25:58,289
+yeah we've decompiled the application
+
+1238
+00:25:54,979 --> 00:25:58,289
+
+
+
+1239
+00:25:54,989 --> 00:26:01,889
+let me just try and answer one more
+
+1240
+00:25:58,279 --> 00:26:01,889
+
+
+
+1241
+00:25:58,289 --> 00:26:04,639
+question let me just see if we have any
+
+1242
+00:26:01,879 --> 00:26:04,639
+
+
+
+1243
+00:26:01,889 --> 00:26:06,960
+other questions before I continue
+
+1244
+00:26:04,629 --> 00:26:06,960
+
+
+
+1245
+00:26:04,639 --> 00:26:09,960
+what is this for this video is focused
+
+1246
+00:26:06,950 --> 00:26:09,960
+
+
+
+1247
+00:26:06,960 --> 00:26:16,200
+on how to manually embed payloads msfn
+
+1248
+00:26:09,950 --> 00:26:16,200
+
+
+
+1249
+00:26:09,960 --> 00:26:17,460
+and payloads are in android apks at
+
+1250
+00:26:16,190 --> 00:26:17,460
+
+
+
+1251
+00:26:16,200 --> 00:26:21,450
+least I got to see you brother
+
+1252
+00:26:17,450 --> 00:26:21,450
+
+
+
+1253
+00:26:17,460 --> 00:26:28,830
+Salam hello Naheed thank you for joining
+
+1254
+00:26:21,440 --> 00:26:28,830
+
+
+
+1255
+00:26:21,450 --> 00:26:30,509
+the stream yeah the slaw looks to be
+
+1256
+00:26:28,820 --> 00:26:30,509
+
+
+
+1257
+00:26:28,830 --> 00:26:33,179
+like the only questions there all right
+
+1258
+00:26:30,499 --> 00:26:33,179
+
+
+
+1259
+00:26:30,509 --> 00:26:34,470
+so we can get started now so I'm just
+
+1260
+00:26:33,169 --> 00:26:34,470
+
+
+
+1261
+00:26:33,179 --> 00:26:37,320
+going to change the directory into the
+
+1262
+00:26:34,460 --> 00:26:37,320
+
+
+
+1263
+00:26:34,470 --> 00:26:38,460
+original folder here and again we're
+
+1264
+00:26:37,310 --> 00:26:38,460
+
+
+
+1265
+00:26:37,320 --> 00:26:40,739
+going to go into the Smalley fold
+
+1266
+00:26:38,450 --> 00:26:40,739
+
+
+
+1267
+00:26:38,460 --> 00:26:43,889
+against malli list the files in their CD
+
+1268
+00:26:40,729 --> 00:26:43,889
+
+
+
+1269
+00:26:40,739 --> 00:26:48,960
+form and we will create our Metasploit
+
+1270
+00:26:43,879 --> 00:26:48,960
+
+
+
+1271
+00:26:43,889 --> 00:26:54,989
+directory again Metasploit CD Metasploit
+
+1272
+00:26:48,950 --> 00:26:54,989
+
+
+
+1273
+00:26:48,960 --> 00:26:56,249
+again here stage and we can just leave
+
+1274
+00:26:54,979 --> 00:26:56,249
+
+
+
+1275
+00:26:54,989 --> 00:26:58,139
+the stage in there so what we're going
+
+1276
+00:26:56,239 --> 00:26:58,139
+
+
+
+1277
+00:26:56,249 --> 00:26:59,669
+to do is we're gonna say CD root desktop
+
+1278
+00:26:58,129 --> 00:26:59,669
+
+
+
+1279
+00:26:58,139 --> 00:27:02,809
+or so we're going to copy the payload
+
+1280
+00:26:59,659 --> 00:27:02,809
+
+
+
+1281
+00:26:59,669 --> 00:27:05,249
+file here so copy root desktop payload
+
+1282
+00:27:02,799 --> 00:27:05,249
+
+
+
+1283
+00:27:02,809 --> 00:27:08,759
+small E and we're looking for the
+
+1284
+00:27:05,239 --> 00:27:08,759
+
+
+
+1285
+00:27:05,249 --> 00:27:11,759
+Metasploit comm Metasploit sorry and
+
+1286
+00:27:08,749 --> 00:27:11,759
+
+
+
+1287
+00:27:08,759 --> 00:27:16,409
+this stage and we failed that smoly file
+
+1288
+00:27:11,749 --> 00:27:16,409
+
+
+
+1289
+00:27:11,759 --> 00:27:20,129
+into the root desktop original and we're
+
+1290
+00:27:16,399 --> 00:27:20,129
+
+
+
+1291
+00:27:16,409 --> 00:27:22,919
+looking for the small e form Metasploit
+
+1292
+00:27:20,119 --> 00:27:22,919
+
+
+
+1293
+00:27:20,129 --> 00:27:24,169
+stage directory hit enter we list the
+
+1294
+00:27:22,909 --> 00:27:24,169
+
+
+
+1295
+00:27:22,919 --> 00:27:26,119
+files in there so it's
+
+1296
+00:27:24,159 --> 00:27:26,119
+
+
+
+1297
+00:27:24,169 --> 00:27:27,859
+a list the files in here we have the
+
+1298
+00:27:26,109 --> 00:27:27,859
+
+
+
+1299
+00:27:26,119 --> 00:27:30,080
+payload file alright so now we can move
+
+1300
+00:27:27,849 --> 00:27:30,080
+
+
+
+1301
+00:27:27,859 --> 00:27:31,759
+on into the Android manifest file once
+
+1302
+00:27:30,070 --> 00:27:31,759
+
+
+
+1303
+00:27:30,080 --> 00:27:33,710
+more to actually explore what's going on
+
+1304
+00:27:31,749 --> 00:27:33,710
+
+
+
+1305
+00:27:31,759 --> 00:27:35,450
+so we'll go to the original Android
+
+1306
+00:27:33,700 --> 00:27:35,450
+
+
+
+1307
+00:27:33,710 --> 00:27:37,879
+manifest file let me just close the
+
+1308
+00:27:35,440 --> 00:27:37,879
+
+
+
+1309
+00:27:35,450 --> 00:27:40,039
+previous ones here because I don't want
+
+1310
+00:27:37,869 --> 00:27:40,039
+
+
+
+1311
+00:27:37,879 --> 00:27:41,509
+to get confused with the other ones that
+
+1312
+00:27:40,029 --> 00:27:41,509
+
+
+
+1313
+00:27:40,039 --> 00:27:43,519
+we had for the other application and
+
+1314
+00:27:41,499 --> 00:27:43,519
+
+
+
+1315
+00:27:41,509 --> 00:27:44,989
+we'll get I will get rid of this as well
+
+1316
+00:27:43,509 --> 00:27:44,989
+
+
+
+1317
+00:27:43,519 --> 00:27:49,749
+because we're not working with that
+
+1318
+00:27:44,979 --> 00:27:49,749
+
+
+
+1319
+00:27:44,989 --> 00:27:51,980
+activity file so androidmanifest.xml and
+
+1320
+00:27:49,739 --> 00:27:51,980
+
+
+
+1321
+00:27:49,749 --> 00:27:54,259
+now you can see with a simple
+
+1322
+00:27:51,970 --> 00:27:54,259
+
+
+
+1323
+00:27:51,980 --> 00:27:55,669
+application again all we're looking for
+
+1324
+00:27:54,249 --> 00:27:55,669
+
+
+
+1325
+00:27:54,259 --> 00:27:57,169
+is we're looking for the action right
+
+1326
+00:27:55,659 --> 00:27:57,169
+
+
+
+1327
+00:27:55,669 --> 00:27:59,929
+over here so the Android intent dot
+
+1328
+00:27:57,159 --> 00:27:59,929
+
+
+
+1329
+00:27:57,169 --> 00:28:01,909
+action main and just above this you will
+
+1330
+00:27:59,919 --> 00:28:01,909
+
+
+
+1331
+00:27:59,929 --> 00:28:03,320
+get the Android name right over here so
+
+1332
+00:28:01,899 --> 00:28:03,320
+
+
+
+1333
+00:28:01,909 --> 00:28:05,779
+you have Chrome Google Android launcher
+
+1334
+00:28:03,310 --> 00:28:05,779
+
+
+
+1335
+00:28:03,320 --> 00:28:08,629
+stub app alright so that is the activity
+
+1336
+00:28:05,769 --> 00:28:08,629
+
+
+
+1337
+00:28:05,779 --> 00:28:10,549
+that we are primarily looking for okay
+
+1338
+00:28:08,619 --> 00:28:10,549
+
+
+
+1339
+00:28:08,629 --> 00:28:11,989
+so we need to look for that activity and
+
+1340
+00:28:10,539 --> 00:28:11,989
+
+
+
+1341
+00:28:10,549 --> 00:28:14,269
+the directories listed right over here
+
+1342
+00:28:11,979 --> 00:28:14,269
+
+
+
+1343
+00:28:11,989 --> 00:28:18,320
+so you have com Google so if your go-to
+
+1344
+00:28:14,259 --> 00:28:18,320
+
+
+
+1345
+00:28:14,269 --> 00:28:20,269
+smoly comm Google Android launcher and
+
+1346
+00:28:18,310 --> 00:28:20,269
+
+
+
+1347
+00:28:18,320 --> 00:28:22,129
+we're looking for the stub app alright
+
+1348
+00:28:20,259 --> 00:28:22,129
+
+
+
+1349
+00:28:20,269 --> 00:28:24,289
+so again you can simply just find it
+
+1350
+00:28:22,119 --> 00:28:24,289
+
+
+
+1351
+00:28:22,129 --> 00:28:28,789
+right over here stop app and we can open
+
+1352
+00:28:24,279 --> 00:28:28,789
+
+
+
+1353
+00:28:24,289 --> 00:28:31,970
+that up with a text editor and we are
+
+1354
+00:28:28,779 --> 00:28:31,970
+
+
+
+1355
+00:28:28,789 --> 00:28:33,799
+looking for on create sorry on create
+
+1356
+00:28:31,960 --> 00:28:33,799
+
+
+
+1357
+00:28:31,970 --> 00:28:35,450
+and there we are we have the oncreate
+
+1358
+00:28:33,789 --> 00:28:35,450
+
+
+
+1359
+00:28:33,799 --> 00:28:37,700
+right over here so again we're going to
+
+1360
+00:28:35,440 --> 00:28:37,700
+
+
+
+1361
+00:28:35,450 --> 00:28:38,809
+create our invoke static so let me just
+
+1362
+00:28:37,690 --> 00:28:38,809
+
+
+
+1363
+00:28:37,700 --> 00:28:42,909
+do that really really quickly
+
+1364
+00:28:38,799 --> 00:28:42,909
+
+
+
+1365
+00:28:38,809 --> 00:28:45,080
+invoke static and are we looking for p0
+
+1366
+00:28:42,899 --> 00:28:45,080
+
+
+
+1367
+00:28:42,909 --> 00:28:47,929
+curly braces always when specifying
+
+1368
+00:28:45,070 --> 00:28:47,929
+
+
+
+1369
+00:28:45,080 --> 00:28:50,619
+arguments with our android sorry and
+
+1370
+00:28:47,919 --> 00:28:50,619
+
+
+
+1371
+00:28:47,929 --> 00:28:53,299
+then we're looking for the ill android
+
+1372
+00:28:50,609 --> 00:28:53,299
+
+
+
+1373
+00:28:50,619 --> 00:28:55,700
+and of course with the land right now
+
+1374
+00:28:53,289 --> 00:28:55,700
+
+
+
+1375
+00:28:53,299 --> 00:28:58,850
+you can with with this I need to also
+
+1376
+00:28:55,690 --> 00:28:58,850
+
+
+
+1377
+00:28:55,700 --> 00:29:01,100
+explain something something important if
+
+1378
+00:28:58,840 --> 00:29:01,100
+
+
+
+1379
+00:28:58,850 --> 00:29:03,710
+you do want to if you have created a
+
+1380
+00:29:01,090 --> 00:29:03,710
+
+
+
+1381
+00:29:01,100 --> 00:29:05,840
+payload that does use an activity this
+
+1382
+00:29:03,700 --> 00:29:05,840
+
+
+
+1383
+00:29:03,710 --> 00:29:07,249
+is a great place of doing it alright I
+
+1384
+00:29:05,830 --> 00:29:07,249
+
+
+
+1385
+00:29:05,840 --> 00:29:08,840
+just wanted to make sure that you guys
+
+1386
+00:29:07,239 --> 00:29:08,840
+
+
+
+1387
+00:29:07,249 --> 00:29:11,989
+understood that before we continue all
+
+1388
+00:29:08,830 --> 00:29:11,989
+
+
+
+1389
+00:29:08,840 --> 00:29:16,340
+right so the land ride Metasploit stage
+
+1390
+00:29:11,979 --> 00:29:16,340
+
+
+
+1391
+00:29:11,989 --> 00:29:18,249
+so again let us Floyd Metasploit stage
+
+1392
+00:29:16,330 --> 00:29:18,249
+
+
+
+1393
+00:29:16,340 --> 00:29:21,679
+let me just get the right yeah stage
+
+1394
+00:29:18,239 --> 00:29:21,679
+
+
+
+1395
+00:29:18,249 --> 00:29:23,659
+Metasploit stage our payload and we're
+
+1396
+00:29:21,669 --> 00:29:23,659
+
+
+
+1397
+00:29:21,679 --> 00:29:28,539
+looking for this particular on create
+
+1398
+00:29:23,649 --> 00:29:28,539
+
+
+
+1399
+00:29:23,659 --> 00:29:31,460
+method so on on create land roid and
+
+1400
+00:29:28,529 --> 00:29:31,460
+
+
+
+1401
+00:29:28,539 --> 00:29:35,030
+we're using the content and the context
+
+1402
+00:29:31,450 --> 00:29:35,030
+
+
+
+1403
+00:29:31,460 --> 00:29:37,550
+here so content based on the content
+
+1404
+00:29:35,020 --> 00:29:37,550
+
+
+
+1405
+00:29:35,030 --> 00:29:40,520
+and the context context is always in
+
+1406
+00:29:37,540 --> 00:29:40,520
+
+
+
+1407
+00:29:37,550 --> 00:29:43,040
+capital and we'll close that up capital
+
+1408
+00:29:40,510 --> 00:29:43,040
+
+
+
+1409
+00:29:40,520 --> 00:29:44,990
+V and we'll save that all right now we
+
+1410
+00:29:43,030 --> 00:29:44,990
+
+
+
+1411
+00:29:43,040 --> 00:29:46,520
+can deal with the the original
+
+1412
+00:29:44,980 --> 00:29:46,520
+
+
+
+1413
+00:29:44,990 --> 00:29:48,470
+androidmanifest and I'm gonna open up
+
+1414
+00:29:46,510 --> 00:29:48,470
+
+
+
+1415
+00:29:46,520 --> 00:29:51,380
+the Android manifest for the payload
+
+1416
+00:29:48,460 --> 00:29:51,380
+
+
+
+1417
+00:29:48,470 --> 00:29:55,400
+application because this particular
+
+1418
+00:29:51,370 --> 00:29:55,400
+
+
+
+1419
+00:29:51,380 --> 00:30:00,110
+Google launcher does not have any any
+
+1420
+00:29:55,390 --> 00:30:00,110
+
+
+
+1421
+00:29:55,400 --> 00:30:02,990
+useful any useful permissions so we only
+
+1422
+00:30:00,100 --> 00:30:02,990
+
+
+
+1423
+00:30:00,110 --> 00:30:05,810
+have read settings and write settings so
+
+1424
+00:30:02,980 --> 00:30:05,810
+
+
+
+1425
+00:30:02,990 --> 00:30:07,790
+what I'll do is we can essentially just
+
+1426
+00:30:05,800 --> 00:30:07,790
+
+
+
+1427
+00:30:05,810 --> 00:30:10,160
+copy everything so we do need internet
+
+1428
+00:30:07,780 --> 00:30:10,160
+
+
+
+1429
+00:30:07,790 --> 00:30:12,530
+we need the Wi-Fi state we'll just copy
+
+1430
+00:30:10,150 --> 00:30:12,530
+
+
+
+1431
+00:30:10,160 --> 00:30:15,980
+everything here we'll get real get rid
+
+1432
+00:30:12,520 --> 00:30:15,980
+
+
+
+1433
+00:30:12,530 --> 00:30:18,290
+of the right settings option as well and
+
+1434
+00:30:15,970 --> 00:30:18,290
+
+
+
+1435
+00:30:15,980 --> 00:30:19,930
+the we can also do that right here we
+
+1436
+00:30:18,280 --> 00:30:19,930
+
+
+
+1437
+00:30:18,290 --> 00:30:21,860
+don't want to muck with the original
+
+1438
+00:30:19,920 --> 00:30:21,860
+
+
+
+1439
+00:30:19,930 --> 00:30:24,140
+application permission otherwise that
+
+1440
+00:30:21,850 --> 00:30:24,140
+
+
+
+1441
+00:30:21,860 --> 00:30:28,150
+can affect its functionality so again
+
+1442
+00:30:24,130 --> 00:30:28,150
+
+
+
+1443
+00:30:24,140 --> 00:30:31,730
+we'll get rid of right settings here
+
+1444
+00:30:28,140 --> 00:30:31,730
+
+
+
+1445
+00:30:28,150 --> 00:30:33,860
+I'll get rid of right settings and now
+
+1446
+00:30:31,720 --> 00:30:33,860
+
+
+
+1447
+00:30:31,730 --> 00:30:35,090
+we can save this file and hopefully we
+
+1448
+00:30:33,850 --> 00:30:35,090
+
+
+
+1449
+00:30:33,860 --> 00:30:37,190
+should be able to compile this
+
+1450
+00:30:35,080 --> 00:30:37,190
+
+
+
+1451
+00:30:35,090 --> 00:30:38,870
+application now without any errors as
+
+1452
+00:30:37,180 --> 00:30:38,870
+
+
+
+1453
+00:30:37,190 --> 00:30:40,760
+far as I remember this was the only one
+
+1454
+00:30:38,860 --> 00:30:40,760
+
+
+
+1455
+00:30:38,870 --> 00:30:44,110
+working so again before we do that let
+
+1456
+00:30:40,750 --> 00:30:44,110
+
+
+
+1457
+00:30:40,760 --> 00:30:44,110
+me just try and answer some questions
+
+1458
+00:30:48,060 --> 00:30:48,060
+
+
+
+1459
+00:30:48,070 --> 00:30:52,790
+harsh
+
+1460
+00:30:49,390 --> 00:30:52,790
+
+
+
+1461
+00:30:49,400 --> 00:30:54,650
+de nani I love the videos I'm a commerce
+
+1462
+00:30:52,780 --> 00:30:54,650
+
+
+
+1463
+00:30:52,790 --> 00:30:56,660
+students a practice that's excellent
+
+1464
+00:30:54,640 --> 00:30:56,660
+
+
+
+1465
+00:30:54,650 --> 00:30:58,400
+that's primarily why these videos are
+
+1466
+00:30:56,650 --> 00:30:58,400
+
+
+
+1467
+00:30:56,660 --> 00:31:00,860
+there so go ahead just enjoy practicing
+
+1468
+00:30:58,390 --> 00:31:00,860
+
+
+
+1469
+00:30:58,400 --> 00:31:03,590
+that's what it's all about so again
+
+1470
+00:31:00,850 --> 00:31:03,590
+
+
+
+1471
+00:31:00,860 --> 00:31:07,010
+we'll use the apk tool and we will build
+
+1472
+00:31:03,580 --> 00:31:07,010
+
+
+
+1473
+00:31:03,590 --> 00:31:09,080
+so build a root desktop and we'll use
+
+1474
+00:31:07,000 --> 00:31:09,080
+
+
+
+1475
+00:31:07,010 --> 00:31:12,560
+the original folder in it and hopefully
+
+1476
+00:31:09,070 --> 00:31:12,560
+
+
+
+1477
+00:31:09,080 --> 00:31:14,420
+now the application there we are the
+
+1478
+00:31:12,550 --> 00:31:14,420
+
+
+
+1479
+00:31:12,560 --> 00:31:16,250
+application was successfully compiled we
+
+1480
+00:31:14,410 --> 00:31:16,250
+
+
+
+1481
+00:31:14,420 --> 00:31:18,320
+did get the a apt error but that was
+
+1482
+00:31:16,240 --> 00:31:18,320
+
+
+
+1483
+00:31:16,250 --> 00:31:21,050
+very very a very very small error and if
+
+1484
+00:31:18,310 --> 00:31:21,050
+
+
+
+1485
+00:31:18,320 --> 00:31:24,710
+we just take a look at the sorry if we
+
+1486
+00:31:21,040 --> 00:31:24,710
+
+
+
+1487
+00:31:21,050 --> 00:31:26,330
+just take a look at the we just list the
+
+1488
+00:31:24,700 --> 00:31:26,330
+
+
+
+1489
+00:31:24,710 --> 00:31:28,970
+files here sorry let me just list the
+
+1490
+00:31:26,320 --> 00:31:28,970
+
+
+
+1491
+00:31:26,330 --> 00:31:31,970
+files you can see that under the dist
+
+1492
+00:31:28,960 --> 00:31:31,970
+
+
+
+1493
+00:31:28,970 --> 00:31:34,280
+folder under the dist folder we have the
+
+1494
+00:31:31,960 --> 00:31:34,280
+
+
+
+1495
+00:31:31,970 --> 00:31:35,930
+compiled application here and now that
+
+1496
+00:31:34,270 --> 00:31:35,930
+
+
+
+1497
+00:31:34,280 --> 00:31:37,550
+is not signed that is something to take
+
+1498
+00:31:35,920 --> 00:31:37,550
+
+
+
+1499
+00:31:35,930 --> 00:31:40,580
+into consideration but we have
+
+1500
+00:31:37,540 --> 00:31:40,580
+
+
+
+1501
+00:31:37,550 --> 00:31:43,130
+successfully embedded the payload within
+
+1502
+00:31:40,570 --> 00:31:43,130
+
+
+
+1503
+00:31:40,580 --> 00:31:44,810
+the Android application so now that we
+
+1504
+00:31:43,120 --> 00:31:44,810
+
+
+
+1505
+00:31:43,130 --> 00:31:47,740
+have embedded it whenever we launch this
+
+1506
+00:31:44,800 --> 00:31:47,740
+
+
+
+1507
+00:31:44,810 --> 00:31:50,410
+application and because it is a launcher
+
+1508
+00:31:47,730 --> 00:31:50,410
+
+
+
+1509
+00:31:47,740 --> 00:31:52,360
+certainly be active and whenever the
+
+1510
+00:31:50,400 --> 00:31:52,360
+
+
+
+1511
+00:31:50,410 --> 00:31:54,820
+main activity is triggered we will get
+
+1512
+00:31:52,350 --> 00:31:54,820
+
+
+
+1513
+00:31:52,360 --> 00:31:56,860
+our payload session now the other videos
+
+1514
+00:31:54,810 --> 00:31:56,860
+
+
+
+1515
+00:31:54,820 --> 00:31:58,870
+that I want to make is we need to
+
+1516
+00:31:56,850 --> 00:31:58,870
+
+
+
+1517
+00:31:56,860 --> 00:32:00,700
+obfuscate well we need to focus on
+
+1518
+00:31:58,860 --> 00:32:00,700
+
+
+
+1519
+00:31:58,870 --> 00:32:02,500
+obfuscation because that is primarily
+
+1520
+00:32:00,690 --> 00:32:02,500
+
+
+
+1521
+00:32:00,700 --> 00:32:04,330
+going to be how you get the application
+
+1522
+00:32:02,490 --> 00:32:04,330
+
+
+
+1523
+00:32:02,500 --> 00:32:06,010
+on a particular device and then the
+
+1524
+00:32:04,320 --> 00:32:06,010
+
+
+
+1525
+00:32:04,330 --> 00:32:07,360
+other one is persistence through either
+
+1526
+00:32:06,000 --> 00:32:07,360
+
+
+
+1527
+00:32:06,010 --> 00:32:10,390
+creating a script and of course that's
+
+1528
+00:32:07,350 --> 00:32:10,390
+
+
+
+1529
+00:32:07,360 --> 00:32:12,309
+going to depend on on on creating a
+
+1530
+00:32:10,380 --> 00:32:12,309
+
+
+
+1531
+00:32:10,390 --> 00:32:13,900
+persistent script and essentially
+
+1532
+00:32:12,299 --> 00:32:13,900
+
+
+
+1533
+00:32:12,309 --> 00:32:15,670
+getting the application to run and then
+
+1534
+00:32:13,890 --> 00:32:15,670
+
+
+
+1535
+00:32:13,900 --> 00:32:17,920
+finally the video i'll be making last is
+
+1536
+00:32:15,660 --> 00:32:17,920
+
+
+
+1537
+00:32:15,670 --> 00:32:20,770
+how to hide the application from the
+
+1538
+00:32:17,910 --> 00:32:20,770
+
+
+
+1539
+00:32:17,920 --> 00:32:22,240
+application draw alright so that's
+
+1540
+00:32:20,760 --> 00:32:22,240
+
+
+
+1541
+00:32:20,770 --> 00:32:24,550
+pretty much what i'm going to be
+
+1542
+00:32:22,230 --> 00:32:24,550
+
+
+
+1543
+00:32:22,240 --> 00:32:27,130
+covering for this livestream i know you
+
+1544
+00:32:24,540 --> 00:32:27,130
+
+
+
+1545
+00:32:24,550 --> 00:32:29,170
+guys wanted me to cover quite a bit more
+
+1546
+00:32:27,120 --> 00:32:29,170
+
+
+
+1547
+00:32:27,130 --> 00:32:30,370
+but there that's all I have time for and
+
+1548
+00:32:29,160 --> 00:32:30,370
+
+
+
+1549
+00:32:29,170 --> 00:32:32,290
+I'll be making the other videos
+
+1550
+00:32:30,360 --> 00:32:32,290
+
+
+
+1551
+00:32:30,370 --> 00:32:34,090
+following up so my next video on Android
+
+1552
+00:32:32,280 --> 00:32:34,090
+
+
+
+1553
+00:32:32,290 --> 00:32:36,370
+will be signing the application then
+
+1554
+00:32:34,080 --> 00:32:36,370
+
+
+
+1555
+00:32:34,090 --> 00:32:38,470
+making it a fully undetectable as best
+
+1556
+00:32:36,360 --> 00:32:38,470
+
+
+
+1557
+00:32:36,370 --> 00:32:40,960
+as possible but for those of you who are
+
+1558
+00:32:38,460 --> 00:32:40,960
+
+
+
+1559
+00:32:38,470 --> 00:32:45,340
+curious you can also use the backwash
+
+1560
+00:32:40,950 --> 00:32:45,340
+
+
+
+1561
+00:32:40,960 --> 00:32:47,920
+apk the backwash script so yeah I don't
+
+1562
+00:32:45,330 --> 00:32:47,920
+
+
+
+1563
+00:32:45,340 --> 00:32:50,580
+Mike telling me to change my ISP yes I
+
+1564
+00:32:47,910 --> 00:32:50,580
+
+
+
+1565
+00:32:47,920 --> 00:32:50,580
+am working on that
+
+1566
+00:32:51,320 --> 00:32:51,320
+
+
+
+1567
+00:32:51,330 --> 00:32:57,309
+thanks bro for this video yes this video
+
+1568
+00:32:54,270 --> 00:32:57,309
+
+
+
+1569
+00:32:54,280 --> 00:32:59,020
+will be available off to the stream can
+
+1570
+00:32:57,299 --> 00:32:59,020
+
+
+
+1571
+00:32:57,309 --> 00:33:01,480
+we do it to any apps above ten megabytes
+
+1572
+00:32:59,010 --> 00:33:01,480
+
+
+
+1573
+00:32:59,020 --> 00:33:03,220
+yes you can do it most of the
+
+1574
+00:33:01,470 --> 00:33:03,220
+
+
+
+1575
+00:33:01,480 --> 00:33:05,800
+applications but again it's all about
+
+1576
+00:33:03,210 --> 00:33:05,800
+
+
+
+1577
+00:33:03,220 --> 00:33:08,230
+how the application was developed if the
+
+1578
+00:33:05,790 --> 00:33:08,230
+
+
+
+1579
+00:33:05,800 --> 00:33:12,309
+application was developed differently
+
+1580
+00:33:08,220 --> 00:33:12,309
+
+
+
+1581
+00:33:08,230 --> 00:33:14,530
+then in the sense that they have various
+
+1582
+00:33:12,299 --> 00:33:14,530
+
+
+
+1583
+00:33:12,309 --> 00:33:16,600
+renaming for the activities for the main
+
+1584
+00:33:14,520 --> 00:33:16,600
+
+
+
+1585
+00:33:14,530 --> 00:33:23,710
+activities then you pretty much will be
+
+1586
+00:33:16,590 --> 00:33:23,710
+
+
+
+1587
+00:33:16,600 --> 00:33:25,960
+will have some errors we have a message
+
+1588
+00:33:23,700 --> 00:33:25,960
+
+
+
+1589
+00:33:23,710 --> 00:33:27,670
+from photo /a know it on the state in
+
+1590
+00:33:25,950 --> 00:33:27,670
+
+
+
+1591
+00:33:25,960 --> 00:33:29,530
+action you'll see it in action in the
+
+1592
+00:33:27,660 --> 00:33:29,530
+
+
+
+1593
+00:33:27,670 --> 00:33:31,630
+next video I'll use the exact same
+
+1594
+00:33:29,520 --> 00:33:31,630
+
+
+
+1595
+00:33:29,530 --> 00:33:32,980
+application and I'll show you what
+
+1596
+00:33:31,620 --> 00:33:32,980
+
+
+
+1597
+00:33:31,630 --> 00:33:34,900
+happens when you try and install it
+
+1598
+00:33:32,970 --> 00:33:34,900
+
+
+
+1599
+00:33:32,980 --> 00:33:37,120
+directly on the latest version of
+
+1600
+00:33:34,890 --> 00:33:37,120
+
+
+
+1601
+00:33:34,900 --> 00:33:39,550
+Android which is Android 9 what will
+
+1602
+00:33:37,110 --> 00:33:39,550
+
+
+
+1603
+00:33:37,120 --> 00:33:41,170
+happen on Android 9 is it'll actually
+
+1604
+00:33:39,540 --> 00:33:41,170
+
+
+
+1605
+00:33:39,550 --> 00:33:43,090
+warn you that the application is
+
+1606
+00:33:41,160 --> 00:33:43,090
+
+
+
+1607
+00:33:41,170 --> 00:33:44,980
+malicious and that's primarily because
+
+1608
+00:33:43,080 --> 00:33:44,980
+
+
+
+1609
+00:33:43,090 --> 00:33:48,880
+we're using the reverse TCP payload if
+
+1610
+00:33:44,970 --> 00:33:48,880
+
+
+
+1611
+00:33:44,980 --> 00:33:52,030
+we were using the reverse HTTP or HTTPS
+
+1612
+00:33:48,870 --> 00:33:52,030
+
+
+
+1613
+00:33:48,880 --> 00:33:55,420
+and we with port 443 than that should
+
+1614
+00:33:52,020 --> 00:33:55,420
+
+
+
+1615
+00:33:52,030 --> 00:33:57,880
+should potentially avoid detection but
+
+1616
+00:33:55,410 --> 00:33:57,880
+
+
+
+1617
+00:33:55,420 --> 00:34:00,130
+again obvious question will be quite
+
+1618
+00:33:57,870 --> 00:34:00,130
+
+
+
+1619
+00:33:57,880 --> 00:34:01,480
+important alright so I'll answer few
+
+1620
+00:34:00,120 --> 00:34:01,480
+
+
+
+1621
+00:34:00,130 --> 00:34:04,210
+more questions
+
+1622
+00:34:01,470 --> 00:34:04,210
+
+
+
+1623
+00:34:01,480 --> 00:34:05,919
+and in the stream here so again I really
+
+1624
+00:34:04,200 --> 00:34:05,919
+
+
+
+1625
+00:34:04,210 --> 00:34:10,750
+really appreciate you guys watching the
+
+1626
+00:34:05,909 --> 00:34:10,750
+
+
+
+1627
+00:34:05,919 --> 00:34:14,369
+stream are you from Kenya yes I am in
+
+1628
+00:34:10,740 --> 00:34:14,369
+
+
+
+1629
+00:34:10,750 --> 00:34:14,369
+Kenya majority of the time for work
+
+1630
+00:34:22,480 --> 00:34:22,480
+
+
+
+1631
+00:34:22,490 --> 00:34:28,890
+let's see how do I feel about the use of
+
+1632
+00:34:25,909 --> 00:34:28,890
+
+
+
+1633
+00:34:25,919 --> 00:34:30,630
+ATP shell ADB is very very powerful I'm
+
+1634
+00:34:28,880 --> 00:34:30,630
+
+
+
+1635
+00:34:28,890 --> 00:34:33,000
+guessing you're talking about forensics
+
+1636
+00:34:30,620 --> 00:34:33,000
+
+
+
+1637
+00:34:30,630 --> 00:34:43,200
+right not too sure just give me a bit of
+
+1638
+00:34:32,990 --> 00:34:43,200
+
+
+
+1639
+00:34:33,000 --> 00:34:45,150
+give me a bit more information no more
+
+1640
+00:34:43,190 --> 00:34:45,150
+
+
+
+1641
+00:34:43,200 --> 00:34:46,830
+questions you can use the hackers ploy
+
+1642
+00:34:45,140 --> 00:34:46,830
+
+
+
+1643
+00:34:45,150 --> 00:34:53,910
+tag so I can see your message a bit more
+
+1644
+00:34:46,820 --> 00:34:53,910
+
+
+
+1645
+00:34:46,830 --> 00:34:55,770
+clearly yes I've heard of West parklands
+
+1646
+00:34:53,900 --> 00:34:55,770
+
+
+
+1647
+00:34:53,910 --> 00:34:58,550
+I'm not sure where sparklings but I know
+
+1648
+00:34:55,760 --> 00:34:58,550
+
+
+
+1649
+00:34:55,770 --> 00:34:58,550
+about parklands
+
+1650
+00:34:59,530 --> 00:34:59,530
+
+
+
+1651
+00:34:59,540 --> 00:35:06,570
+let's see what's my career I mentioned
+
+1652
+00:35:05,210 --> 00:35:06,570
+
+
+
+1653
+00:35:05,220 --> 00:35:12,450
+this previously I'm a network
+
+1654
+00:35:06,560 --> 00:35:12,450
+
+
+
+1655
+00:35:06,570 --> 00:35:14,430
+penetration tester yeah we'll also cover
+
+1656
+00:35:12,440 --> 00:35:14,430
+
+
+
+1657
+00:35:12,450 --> 00:35:15,570
+sharing methods um yeah I will do I'm
+
+1658
+00:35:14,420 --> 00:35:15,570
+
+
+
+1659
+00:35:14,430 --> 00:35:17,930
+guessing you're talking about social
+
+1660
+00:35:15,560 --> 00:35:17,930
+
+
+
+1661
+00:35:15,570 --> 00:35:20,550
+engineering one of my qualifications
+
+1662
+00:35:17,920 --> 00:35:20,550
+
+
+
+1663
+00:35:17,930 --> 00:35:24,900
+well I'm a penetration tester so I have
+
+1664
+00:35:20,540 --> 00:35:24,900
+
+
+
+1665
+00:35:20,550 --> 00:35:31,620
+Network plus Linux plus and osep those
+
+1666
+00:35:24,890 --> 00:35:31,620
+
+
+
+1667
+00:35:24,900 --> 00:35:35,850
+are my professional certifications yeah
+
+1668
+00:35:31,610 --> 00:35:35,850
+
+
+
+1669
+00:35:31,620 --> 00:35:37,620
+pernais colita how make it how to make
+
+1670
+00:35:35,840 --> 00:35:37,620
+
+
+
+1671
+00:35:35,850 --> 00:35:39,060
+it fully undetectable yes I will be
+
+1672
+00:35:37,610 --> 00:35:39,060
+
+
+
+1673
+00:35:37,620 --> 00:35:41,790
+making a video on that that is a very
+
+1674
+00:35:39,050 --> 00:35:41,790
+
+
+
+1675
+00:35:39,060 --> 00:35:44,010
+again very tricky and it does involve a
+
+1676
+00:35:41,780 --> 00:35:44,010
+
+
+
+1677
+00:35:41,790 --> 00:35:45,560
+bit of manual work so the scripts really
+
+1678
+00:35:44,000 --> 00:35:45,560
+
+
+
+1679
+00:35:44,010 --> 00:35:48,240
+don't work nowadays
+
+1680
+00:35:45,550 --> 00:35:48,240
+
+
+
+1681
+00:35:45,560 --> 00:35:49,890
+thanks bro enjoy your day I love your
+
+1682
+00:35:48,230 --> 00:35:49,890
+
+
+
+1683
+00:35:48,240 --> 00:35:51,990
+channel from Ethiopia thank you very
+
+1684
+00:35:49,880 --> 00:35:51,990
+
+
+
+1685
+00:35:49,890 --> 00:35:54,110
+much love to Ethiopia I appreciate your
+
+1686
+00:35:51,980 --> 00:35:54,110
+
+
+
+1687
+00:35:51,990 --> 00:35:54,110
+support
+
+1688
+00:36:06,739 --> 00:36:06,739
+
+
+
+1689
+00:36:06,749 --> 00:36:14,200
+the videos are gonna come daily as I
+
+1690
+00:36:09,239 --> 00:36:14,200
+
+
+
+1691
+00:36:09,249 --> 00:36:16,029
+mentioned you can go over port
+
+1692
+00:36:14,190 --> 00:36:16,029
+
+
+
+1693
+00:36:14,200 --> 00:36:17,529
+forwarding yes I am gonna make a video
+
+1694
+00:36:16,019 --> 00:36:17,529
+
+
+
+1695
+00:36:16,029 --> 00:36:19,390
+on port forwarding manual port
+
+1696
+00:36:17,519 --> 00:36:19,390
+
+
+
+1697
+00:36:17,529 --> 00:36:21,069
+forwarding they have a course on udemy
+
+1698
+00:36:19,380 --> 00:36:21,069
+
+
+
+1699
+00:36:19,390 --> 00:36:23,710
+yes I have one as I said we are
+
+1700
+00:36:21,059 --> 00:36:23,710
+
+
+
+1701
+00:36:21,069 --> 00:36:26,559
+migrating our courses on to the exploit
+
+1702
+00:36:23,700 --> 00:36:26,559
+
+
+
+1703
+00:36:23,710 --> 00:36:28,799
+Academy which is that hack exploit dot
+
+1704
+00:36:26,549 --> 00:36:28,799
+
+
+
+1705
+00:36:26,559 --> 00:36:28,799
+IO
+
+1706
+00:36:31,640 --> 00:36:31,640
+
+
+
+1707
+00:36:31,650 --> 00:36:38,049
+I've been doing my CH certification what
+
+1708
+00:36:35,579 --> 00:36:38,049
+
+
+
+1709
+00:36:35,589 --> 00:36:39,759
+is my best scope I am guessing your best
+
+1710
+00:36:38,039 --> 00:36:39,759
+
+
+
+1711
+00:36:38,049 --> 00:36:41,619
+are opportunities that's what you mean
+
+1712
+00:36:39,749 --> 00:36:41,619
+
+
+
+1713
+00:36:39,759 --> 00:36:43,630
+are there very many opportunities you
+
+1714
+00:36:41,609 --> 00:36:43,630
+
+
+
+1715
+00:36:41,619 --> 00:36:46,119
+can become and you can become a
+
+1716
+00:36:43,620 --> 00:36:46,119
+
+
+
+1717
+00:36:43,630 --> 00:36:48,099
+penetration tester you can work in in
+
+1718
+00:36:46,109 --> 00:36:48,099
+
+
+
+1719
+00:36:46,119 --> 00:36:50,519
+forensics you can do a lot of stuff with
+
+1720
+00:36:48,089 --> 00:36:50,519
+
+
+
+1721
+00:36:48,099 --> 00:36:50,519
+ch
+
+1722
+00:36:52,999 --> 00:36:52,999
+
+
+
+1723
+00:36:53,009 --> 00:36:58,029
+have you tried get dry yes I did try it
+
+1724
+00:36:55,799 --> 00:36:58,029
+
+
+
+1725
+00:36:55,809 --> 00:37:00,630
+I had my one of my friends our who is a
+
+1726
+00:36:58,019 --> 00:37:00,630
+
+
+
+1727
+00:36:58,029 --> 00:37:02,950
+mallow analysis and reverse engineer
+
+1728
+00:37:00,620 --> 00:37:02,950
+
+
+
+1729
+00:37:00,630 --> 00:37:11,079
+make the video on the channel I pretty
+
+1730
+00:37:02,940 --> 00:37:11,079
+
+
+
+1731
+00:37:02,950 --> 00:37:13,599
+much I think you have checked it he's
+
+1732
+00:37:11,069 --> 00:37:13,599
+
+
+
+1733
+00:37:11,079 --> 00:37:17,380
+always CP a bit hard OS CP is all about
+
+1734
+00:37:13,589 --> 00:37:17,380
+
+
+
+1735
+00:37:13,599 --> 00:37:19,420
+practice as far as I know you should
+
+1736
+00:37:17,370 --> 00:37:19,420
+
+
+
+1737
+00:37:17,380 --> 00:37:21,670
+pretty much just practice vuln up I'll
+
+1738
+00:37:19,410 --> 00:37:21,670
+
+
+
+1739
+00:37:19,420 --> 00:37:24,579
+be also making a series on the OS CP
+
+1740
+00:37:21,660 --> 00:37:24,579
+
+
+
+1741
+00:37:21,670 --> 00:37:27,789
+pressed the the prep of machines for
+
+1742
+00:37:24,569 --> 00:37:27,789
+
+
+
+1743
+00:37:24,579 --> 00:37:35,140
+fall knob so I used a MUX yes I do use
+
+1744
+00:37:27,779 --> 00:37:35,140
+
+
+
+1745
+00:37:27,789 --> 00:37:36,670
+the max greetings to Russia thank you
+
+1746
+00:37:35,130 --> 00:37:36,670
+
+
+
+1747
+00:37:35,140 --> 00:37:38,980
+very much for joining the stream even
+
+1748
+00:37:36,660 --> 00:37:38,980
+
+
+
+1749
+00:37:36,670 --> 00:37:44,440
+though it pretty much going to be ending
+
+1750
+00:37:38,970 --> 00:37:44,440
+
+
+
+1751
+00:37:38,980 --> 00:37:47,410
+it in a few minutes I will be releasing
+
+1752
+00:37:44,430 --> 00:37:47,410
+
+
+
+1753
+00:37:44,440 --> 00:37:49,210
+our courses on Lac exploit Academy this
+
+1754
+00:37:47,400 --> 00:37:49,210
+
+
+
+1755
+00:37:47,410 --> 00:37:51,940
+weekend apologies for that let me just
+
+1756
+00:37:49,200 --> 00:37:51,940
+
+
+
+1757
+00:37:49,210 --> 00:37:55,259
+re let me just open up my virtual
+
+1758
+00:37:51,930 --> 00:37:55,259
+
+
+
+1759
+00:37:51,940 --> 00:37:55,259
+machine right over here
+
+1760
+00:37:57,049 --> 00:37:57,049
+
+
+
+1761
+00:37:57,059 --> 00:38:01,359
+his malware analysis stuff I wouldn't
+
+1762
+00:37:59,789 --> 00:38:01,359
+
+
+
+1763
+00:37:59,799 --> 00:38:03,579
+say it's stuff I think it's just really
+
+1764
+00:38:01,349 --> 00:38:03,579
+
+
+
+1765
+00:38:01,359 --> 00:38:05,859
+exciting and very very different for
+
+1766
+00:38:03,569 --> 00:38:05,859
+
+
+
+1767
+00:38:03,579 --> 00:38:08,890
+each piece of malware you start working
+
+1768
+00:38:05,849 --> 00:38:08,890
+
+
+
+1769
+00:38:05,859 --> 00:38:12,400
+with forward most of all thank you so
+
+1770
+00:38:08,880 --> 00:38:12,400
+
+
+
+1771
+00:38:08,890 --> 00:38:18,730
+much from Canada thank you glad you
+
+1772
+00:38:12,390 --> 00:38:18,730
+
+
+
+1773
+00:38:12,400 --> 00:38:20,660
+enjoyed the video greetings from Poland
+
+1774
+00:38:18,720 --> 00:38:20,660
+
+
+
+1775
+00:38:18,730 --> 00:38:24,670
+great love from end
+
+1776
+00:38:20,650 --> 00:38:24,670
+
+
+
+1777
+00:38:20,660 --> 00:38:24,670
+thank you very much I appreciate it
+
+1778
+00:38:25,390 --> 00:38:25,390
+
+
+
+1779
+00:38:25,400 --> 00:38:29,150
+you guys can post any other questions
+
+1780
+00:38:27,220 --> 00:38:29,150
+
+
+
+1781
+00:38:27,230 --> 00:38:30,590
+you have left cause I'm really strapped
+
+1782
+00:38:29,140 --> 00:38:30,590
+
+
+
+1783
+00:38:29,150 --> 00:38:36,530
+for time at the moment so if you have
+
+1784
+00:38:30,580 --> 00:38:36,530
+
+
+
+1785
+00:38:30,590 --> 00:38:40,250
+any important questions go ahead let's
+
+1786
+00:38:36,520 --> 00:38:40,250
+
+
+
+1787
+00:38:36,530 --> 00:38:45,200
+see how many years do you have I have
+
+1788
+00:38:40,240 --> 00:38:45,200
+
+
+
+1789
+00:38:40,250 --> 00:38:47,030
+two years yes I have videos on OP
+
+1790
+00:38:45,190 --> 00:38:47,030
+
+
+
+1791
+00:38:45,200 --> 00:38:49,670
+spoofing you can check my channel just
+
+1792
+00:38:47,020 --> 00:38:49,670
+
+
+
+1793
+00:38:47,030 --> 00:38:52,600
+search for exploit ARP spoofing you
+
+1794
+00:38:49,660 --> 00:38:52,600
+
+
+
+1795
+00:38:49,670 --> 00:38:52,600
+should find the video
+
+1796
+00:38:59,310 --> 00:38:59,310
+
+
+
+1797
+00:38:59,320 --> 00:39:05,860
+I would do a thing of Gaudreau it's a
+
+1798
+00:39:01,500 --> 00:39:05,860
+
+
+
+1799
+00:39:01,510 --> 00:39:07,720
+very good tool Gator I think it's just
+
+1800
+00:39:05,850 --> 00:39:07,720
+
+
+
+1801
+00:39:05,860 --> 00:39:09,340
+very different than what anyone has ever
+
+1802
+00:39:07,710 --> 00:39:09,340
+
+
+
+1803
+00:39:07,720 --> 00:39:13,830
+used before so again it's just about
+
+1804
+00:39:09,330 --> 00:39:13,830
+
+
+
+1805
+00:39:09,340 --> 00:39:13,830
+it's just about getting used to it
+
+1806
+00:39:15,090 --> 00:39:15,090
+
+
+
+1807
+00:39:15,100 --> 00:39:21,670
+tips on OACP learn post exploitation
+
+1808
+00:39:17,580 --> 00:39:21,670
+
+
+
+1809
+00:39:17,590 --> 00:39:24,280
+learn file transfers between Linux Linux
+
+1810
+00:39:21,660 --> 00:39:24,280
+
+
+
+1811
+00:39:21,670 --> 00:39:26,940
+boxes and Linux and windows boxes
+
+1812
+00:39:24,270 --> 00:39:26,940
+
+
+
+1813
+00:39:24,280 --> 00:39:29,310
+learn about exploit a modification
+
+1814
+00:39:26,930 --> 00:39:29,310
+
+
+
+1815
+00:39:26,940 --> 00:39:32,560
+that's very very important
+
+1816
+00:39:29,300 --> 00:39:32,560
+
+
+
+1817
+00:39:29,310 --> 00:39:36,940
+binary CDF yeah a lot of CTF videos come
+
+1818
+00:39:32,550 --> 00:39:36,940
+
+
+
+1819
+00:39:32,560 --> 00:39:39,010
+coming up I have a few of the CTF
+
+1820
+00:39:36,930 --> 00:39:39,010
+
+
+
+1821
+00:39:36,940 --> 00:39:45,400
+challenges I'm also going to be doing
+
+1822
+00:39:39,000 --> 00:39:45,400
+
+
+
+1823
+00:39:39,010 --> 00:39:48,070
+actor box live the next hosting for
+
+1824
+00:39:45,390 --> 00:39:48,070
+
+
+
+1825
+00:39:45,400 --> 00:39:51,130
+Metasploit with all ports open I'm yeah
+
+1826
+00:39:48,060 --> 00:39:51,130
+
+
+
+1827
+00:39:48,070 --> 00:39:52,930
+as I said I'm gonna do manual port
+
+1828
+00:39:51,120 --> 00:39:52,930
+
+
+
+1829
+00:39:51,130 --> 00:40:02,590
+forwarding I'll also show you how to use
+
+1830
+00:39:52,920 --> 00:40:02,590
+
+
+
+1831
+00:39:52,930 --> 00:40:06,100
+the no IP port forwarding live in Kenya
+
+1832
+00:40:02,580 --> 00:40:06,100
+
+
+
+1833
+00:40:02,590 --> 00:40:14,020
+also you like you in Crete or garden not
+
+1834
+00:40:06,090 --> 00:40:14,020
+
+
+
+1835
+00:40:06,100 --> 00:40:16,270
+sure what that means is it necessary to
+
+1836
+00:40:14,010 --> 00:40:16,270
+
+
+
+1837
+00:40:14,020 --> 00:40:18,160
+be grad or self learned or to be a
+
+1838
+00:40:16,260 --> 00:40:18,160
+
+
+
+1839
+00:40:16,270 --> 00:40:20,050
+graduate of self learned have a good
+
+1840
+00:40:18,150 --> 00:40:20,050
+
+
+
+1841
+00:40:18,160 --> 00:40:21,520
+scope I think just having experience in
+
+1842
+00:40:20,040 --> 00:40:21,520
+
+
+
+1843
+00:40:20,050 --> 00:40:25,230
+what and being good in what you do
+
+1844
+00:40:21,510 --> 00:40:25,230
+
+
+
+1845
+00:40:21,520 --> 00:40:25,230
+really good really goes a long way you
+
+1846
+00:40:26,030 --> 00:40:26,030
+
+
+
+1847
+00:40:26,040 --> 00:40:31,690
+can reach me life of akka you can reach
+
+1848
+00:40:28,740 --> 00:40:31,690
+
+
+
+1849
+00:40:28,750 --> 00:40:33,400
+me via my email my email is always
+
+1850
+00:40:31,680 --> 00:40:33,400
+
+
+
+1851
+00:40:31,690 --> 00:40:35,700
+linked in the community section of the
+
+1852
+00:40:33,390 --> 00:40:35,700
+
+
+
+1853
+00:40:33,400 --> 00:40:38,710
+channel or hack exploit at gmail.com
+
+1854
+00:40:35,690 --> 00:40:38,710
+
+
+
+1855
+00:40:35,700 --> 00:40:39,370
+that's my public Gmail Gmail address
+
+1856
+00:40:38,700 --> 00:40:39,370
+
+
+
+1857
+00:40:38,710 --> 00:40:43,000
+that I use
+
+1858
+00:40:39,360 --> 00:40:43,000
+
+
+
+1859
+00:40:39,370 --> 00:40:44,950
+am I an Avenger an Avenger fan no
+
+1860
+00:40:42,990 --> 00:40:44,950
+
+
+
+1861
+00:40:43,000 --> 00:40:46,930
+suddenly I'm not I really haven't been
+
+1862
+00:40:44,940 --> 00:40:46,930
+
+
+
+1863
+00:40:44,950 --> 00:40:51,220
+watching any of the latest movies so
+
+1864
+00:40:46,920 --> 00:40:51,220
+
+
+
+1865
+00:40:46,930 --> 00:40:59,230
+apologies the v-day kolosov hi from
+
+1866
+00:40:51,210 --> 00:40:59,230
+
+
+
+1867
+00:40:51,220 --> 00:41:02,110
+Italy hello you sound like Mufti mink
+
+1868
+00:40:59,220 --> 00:41:02,110
+
+
+
+1869
+00:40:59,230 --> 00:41:04,780
+yes I've got a lot I actually do watch
+
+1870
+00:41:02,100 --> 00:41:04,780
+
+
+
+1871
+00:41:02,110 --> 00:41:07,470
+some of these videos sometimes on
+
+1872
+00:41:04,770 --> 00:41:07,470
+
+
+
+1873
+00:41:04,780 --> 00:41:10,090
+Facebook when I do get sent those videos
+
+1874
+00:41:07,460 --> 00:41:10,090
+
+
+
+1875
+00:41:07,470 --> 00:41:12,690
+telling me that I do sound like him so
+
+1876
+00:41:10,080 --> 00:41:12,690
+
+
+
+1877
+00:41:10,090 --> 00:41:14,730
+yeah I guess so
+
+1878
+00:41:12,680 --> 00:41:14,730
+
+
+
+1879
+00:41:12,690 --> 00:41:16,619
+engi Rock yeah I've made a video on ng
+
+1880
+00:41:14,720 --> 00:41:16,619
+
+
+
+1881
+00:41:14,730 --> 00:41:22,859
+rock you can check that out as well
+
+1882
+00:41:16,609 --> 00:41:22,859
+
+
+
+1883
+00:41:16,619 --> 00:41:24,540
+that's very very good Eugene Lee Aussie
+
+1884
+00:41:22,849 --> 00:41:24,540
+
+
+
+1885
+00:41:22,859 --> 00:41:27,510
+high from Kenya hello
+
+1886
+00:41:24,530 --> 00:41:27,510
+
+
+
+1887
+00:41:24,540 --> 00:41:29,010
+did I use PowerShell no I did not his
+
+1888
+00:41:27,500 --> 00:41:29,010
+
+
+
+1889
+00:41:27,510 --> 00:41:33,349
+partial I've just have a different theme
+
+1890
+00:41:29,000 --> 00:41:33,349
+
+
+
+1891
+00:41:29,010 --> 00:41:36,260
+for my terminal hello from Morocco hello
+
+1892
+00:41:33,339 --> 00:41:36,260
+
+
+
+1893
+00:41:33,349 --> 00:41:39,359
+any video about empire yes I'm making
+
+1894
+00:41:36,250 --> 00:41:39,359
+
+
+
+1895
+00:41:36,260 --> 00:41:43,609
+videos about Android first and I'll move
+
+1896
+00:41:39,349 --> 00:41:43,609
+
+
+
+1897
+00:41:39,359 --> 00:41:43,609
+on to using cobalt strike and Empire
+
+1898
+00:41:44,230 --> 00:41:44,230
+
+
+
+1899
+00:41:44,240 --> 00:41:47,040
+sorry
+
+1900
+00:41:45,410 --> 00:41:47,040
+
+
+
+1901
+00:41:45,420 --> 00:41:48,390
+many of you who guys want me to look at
+
+1902
+00:41:47,030 --> 00:41:48,390
+
+
+
+1903
+00:41:47,040 --> 00:41:49,619
+the camera when answering the question
+
+1904
+00:41:48,380 --> 00:41:49,619
+
+
+
+1905
+00:41:48,390 --> 00:41:52,290
+so I'll do that again
+
+1906
+00:41:49,609 --> 00:41:52,290
+
+
+
+1907
+00:41:49,619 --> 00:41:55,020
+who writes my articles I write I write
+
+1908
+00:41:52,280 --> 00:41:55,020
+
+
+
+1909
+00:41:52,290 --> 00:42:03,750
+them personally at the moment hi from
+
+1910
+00:41:55,010 --> 00:42:03,750
+
+
+
+1911
+00:41:55,020 --> 00:42:04,920
+Hungary hello Bashar Assad yes that
+
+1912
+00:42:03,740 --> 00:42:04,920
+
+
+
+1913
+00:42:03,750 --> 00:42:06,869
+there isn't a course yet we are
+
+1914
+00:42:04,910 --> 00:42:06,869
+
+
+
+1915
+00:42:04,920 --> 00:42:11,280
+releasing this weekend as I mentioned
+
+1916
+00:42:06,859 --> 00:42:11,280
+
+
+
+1917
+00:42:06,869 --> 00:42:13,560
+our first courses both version of Linux
+
+1918
+00:42:11,270 --> 00:42:13,560
+
+
+
+1919
+00:42:11,280 --> 00:42:20,190
+are using a Muni amusing Linux our Kali
+
+1920
+00:42:13,550 --> 00:42:20,190
+
+
+
+1921
+00:42:13,560 --> 00:42:23,790
+Linux 20 19.1 any tips to follow before
+
+1922
+00:42:20,180 --> 00:42:23,790
+
+
+
+1923
+00:42:20,190 --> 00:42:25,920
+scoring well in the CH exam
+
+1924
+00:42:23,780 --> 00:42:25,920
+
+
+
+1925
+00:42:23,790 --> 00:42:28,079
+I guess just read up on your notes or
+
+1926
+00:42:25,910 --> 00:42:28,079
+
+
+
+1927
+00:42:25,920 --> 00:42:30,990
+read up on the handbook it should be a
+
+1928
+00:42:28,069 --> 00:42:30,990
+
+
+
+1929
+00:42:28,079 --> 00:42:32,520
+multiple choice question so CH was
+
+1930
+00:42:30,980 --> 00:42:32,520
+
+
+
+1931
+00:42:30,990 --> 00:42:37,800
+pretty simple for me it shouldn't be a
+
+1932
+00:42:32,510 --> 00:42:37,800
+
+
+
+1933
+00:42:32,520 --> 00:42:42,329
+difficult exam at all have a good day
+
+1934
+00:42:37,790 --> 00:42:42,329
+
+
+
+1935
+00:42:37,800 --> 00:42:45,390
+god bless god bless you too can you make
+
+1936
+00:42:42,319 --> 00:42:45,390
+
+
+
+1937
+00:42:42,329 --> 00:42:47,460
+more videos on fail yes I will make more
+
+1938
+00:42:45,380 --> 00:42:47,460
+
+
+
+1939
+00:42:45,390 --> 00:42:51,329
+videos on veil evasion I believe I have
+
+1940
+00:42:47,450 --> 00:42:51,329
+
+
+
+1941
+00:42:47,460 --> 00:42:54,319
+before but I will follow them up the
+
+1942
+00:42:51,319 --> 00:42:54,319
+
+
+
+1943
+00:42:51,329 --> 00:42:56,760
+problem fail is it whether you using for
+
+1944
+00:42:54,309 --> 00:42:56,760
+
+
+
+1945
+00:42:54,319 --> 00:42:59,300
+example if I use an encoder with msf
+
+1946
+00:42:56,750 --> 00:42:59,300
+
+
+
+1947
+00:42:56,760 --> 00:43:01,770
+venom like Shikata can I for Windows
+
+1948
+00:42:59,290 --> 00:43:01,770
+
+
+
+1949
+00:42:59,300 --> 00:43:03,540
+most of the time if you're working with
+
+1950
+00:43:01,760 --> 00:43:03,540
+
+
+
+1951
+00:43:01,770 --> 00:43:05,220
+Windows 10 because they have Windows
+
+1952
+00:43:03,530 --> 00:43:05,220
+
+
+
+1953
+00:43:03,540 --> 00:43:08,280
+Defender constantly updated with the
+
+1954
+00:43:05,210 --> 00:43:08,280
+
+
+
+1955
+00:43:05,220 --> 00:43:11,660
+latest signatures if pretty much will
+
+1956
+00:43:08,270 --> 00:43:11,660
+
+
+
+1957
+00:43:08,280 --> 00:43:11,660
+not work or will be detected
+
+1958
+00:43:14,460 --> 00:43:14,460
+
+
+
+1959
+00:43:14,470 --> 00:43:20,230
+my ISP doesn't support port forwarding
+
+1960
+00:43:16,829 --> 00:43:20,230
+
+
+
+1961
+00:43:16,839 --> 00:43:22,150
+why is that hands asking for hosting
+
+1962
+00:43:20,220 --> 00:43:22,150
+
+
+
+1963
+00:43:20,230 --> 00:43:26,020
+with all ports or particular ports do
+
+1964
+00:43:22,140 --> 00:43:26,020
+
+
+
+1965
+00:43:22,150 --> 00:43:29,349
+you have access to your main router love
+
+1966
+00:43:26,010 --> 00:43:29,349
+
+
+
+1967
+00:43:26,020 --> 00:43:33,730
+from South Korea same here love to South
+
+1968
+00:43:29,339 --> 00:43:33,730
+
+
+
+1969
+00:43:29,349 --> 00:43:36,430
+Korea have I hacked anyone no I haven't
+
+1970
+00:43:33,720 --> 00:43:36,430
+
+
+
+1971
+00:43:33,730 --> 00:43:40,059
+act anyone do bug bounty do you do but
+
+1972
+00:43:36,420 --> 00:43:40,059
+
+
+
+1973
+00:43:36,430 --> 00:43:46,690
+yes I do do some bug bounty on on bug
+
+1974
+00:43:40,049 --> 00:43:46,690
+
+
+
+1975
+00:43:40,059 --> 00:43:48,760
+crowd what will I do today I've already
+
+1976
+00:43:46,680 --> 00:43:48,760
+
+
+
+1977
+00:43:46,690 --> 00:43:56,049
+recorded or I've already light streamed
+
+1978
+00:43:48,750 --> 00:43:56,049
+
+
+
+1979
+00:43:48,760 --> 00:43:57,700
+the recording of what I wanted to do we
+
+1980
+00:43:56,039 --> 00:43:57,700
+
+
+
+1981
+00:43:56,049 --> 00:44:02,950
+have a good question from James Moreno
+
+1982
+00:43:57,690 --> 00:44:02,950
+
+
+
+1983
+00:43:57,700 --> 00:44:04,990
+we advice please I have a Bachelor of
+
+1984
+00:44:02,940 --> 00:44:04,990
+
+
+
+1985
+00:44:02,950 --> 00:44:07,240
+Science in information systems that's a
+
+1986
+00:44:04,980 --> 00:44:07,240
+
+
+
+1987
+00:44:04,990 --> 00:44:08,650
+good start a very good start and I want
+
+1988
+00:44:07,230 --> 00:44:08,650
+
+
+
+1989
+00:44:07,240 --> 00:44:09,220
+to get into pen testing where should I
+
+1990
+00:44:08,640 --> 00:44:09,220
+
+
+
+1991
+00:44:08,650 --> 00:44:10,869
+go from here
+
+1992
+00:44:09,210 --> 00:44:10,869
+
+
+
+1993
+00:44:09,220 --> 00:44:13,150
+I would recommend taking the Network+
+
+1994
+00:44:10,859 --> 00:44:13,150
+
+
+
+1995
+00:44:10,869 --> 00:44:14,770
+certification as always do if you don't
+
+1996
+00:44:13,140 --> 00:44:14,770
+
+
+
+1997
+00:44:13,150 --> 00:44:16,510
+want to that's fine it just gives you
+
+1998
+00:44:14,760 --> 00:44:16,510
+
+
+
+1999
+00:44:14,770 --> 00:44:18,569
+great information to begin with before
+
+2000
+00:44:16,500 --> 00:44:18,569
+
+
+
+2001
+00:44:16,510 --> 00:44:21,359
+you go into anything like osep I
+
+2002
+00:44:18,559 --> 00:44:21,359
+
+
+
+2003
+00:44:18,569 --> 00:44:26,799
+definitely recommend going for OS CP
+
+2004
+00:44:21,349 --> 00:44:26,799
+
+
+
+2005
+00:44:21,359 --> 00:44:28,329
+security plus and pen test plus as well
+
+2006
+00:44:26,789 --> 00:44:28,329
+
+
+
+2007
+00:44:26,799 --> 00:44:32,200
+which is the one of the latest
+
+2008
+00:44:28,319 --> 00:44:32,200
+
+
+
+2009
+00:44:28,329 --> 00:44:33,579
+certifications CH is also very very good
+
+2010
+00:44:32,190 --> 00:44:33,579
+
+
+
+2011
+00:44:32,200 --> 00:44:40,299
+if you want an introduction into
+
+2012
+00:44:33,569 --> 00:44:40,299
+
+
+
+2013
+00:44:33,579 --> 00:44:43,270
+cybersecurity or I can make a detailed
+
+2014
+00:44:40,289 --> 00:44:43,270
+
+
+
+2015
+00:44:40,299 --> 00:44:45,339
+video on osep tips and bug bounty videos
+
+2016
+00:44:43,260 --> 00:44:45,339
+
+
+
+2017
+00:44:43,270 --> 00:44:47,109
+yes I'm gonna be showing you guys what
+
+2018
+00:44:45,329 --> 00:44:47,109
+
+
+
+2019
+00:44:45,339 --> 00:44:50,319
+environment I've set up for bug bounty
+
+2020
+00:44:47,099 --> 00:44:50,319
+
+
+
+2021
+00:44:47,109 --> 00:44:52,329
+videos have I got paid for any bugs yes
+
+2022
+00:44:50,309 --> 00:44:52,329
+
+
+
+2023
+00:44:50,319 --> 00:44:55,450
+I've got paid for three bugs in my
+
+2024
+00:44:52,319 --> 00:44:55,450
+
+
+
+2025
+00:44:52,329 --> 00:44:58,180
+lifetime I think the total to about
+
+2026
+00:44:55,440 --> 00:44:58,180
+
+
+
+2027
+00:44:55,450 --> 00:45:00,339
+maybe $800 so not really any big bugs
+
+2028
+00:44:58,170 --> 00:45:00,339
+
+
+
+2029
+00:44:58,180 --> 00:45:03,069
+particularly but again it's just that I
+
+2030
+00:45:00,329 --> 00:45:03,069
+
+
+
+2031
+00:45:00,339 --> 00:45:06,480
+don't have the time for bug bounty work
+
+2032
+00:45:03,059 --> 00:45:06,480
+
+
+
+2033
+00:45:03,069 --> 00:45:06,480
+but when I do I usually try it out
+
+2034
+00:45:20,070 --> 00:45:20,070
+
+
+
+2035
+00:45:20,080 --> 00:45:30,220
+greetings to Ukraine with master got it
+
+2036
+00:45:27,750 --> 00:45:30,220
+
+
+
+2037
+00:45:27,760 --> 00:45:32,520
+correct many of the issues with port
+
+2038
+00:45:30,210 --> 00:45:32,520
+
+
+
+2039
+00:45:30,220 --> 00:45:35,940
+folding are because of nut-nut
+
+2040
+00:45:32,510 --> 00:45:35,940
+
+
+
+2041
+00:45:32,520 --> 00:45:38,800
+configurations and if your ISP if is
+
+2042
+00:45:35,930 --> 00:45:38,800
+
+
+
+2043
+00:45:35,940 --> 00:45:41,710
+particularly doing it a connected
+
+2044
+00:45:38,790 --> 00:45:41,710
+
+
+
+2045
+00:45:38,800 --> 00:45:47,560
+Internet to your entire building that is
+
+2046
+00:45:41,700 --> 00:45:47,560
+
+
+
+2047
+00:45:41,710 --> 00:45:49,570
+a common syndrome what's the best way to
+
+2048
+00:45:47,550 --> 00:45:49,570
+
+
+
+2049
+00:45:47,560 --> 00:45:51,310
+get your payloads undetectable by
+
+2050
+00:45:49,560 --> 00:45:51,310
+
+
+
+2051
+00:45:49,570 --> 00:45:53,200
+Windows Defender well I've been working
+
+2052
+00:45:51,300 --> 00:45:53,200
+
+
+
+2053
+00:45:51,310 --> 00:45:55,090
+or I've been taking a look at one of
+
+2054
+00:45:53,190 --> 00:45:55,090
+
+
+
+2055
+00:45:53,200 --> 00:45:57,280
+these scripts here I don't know if I can
+
+2056
+00:45:55,080 --> 00:45:57,280
+
+
+
+2057
+00:45:55,090 --> 00:45:58,840
+just show you this house planning to
+
+2058
+00:45:57,270 --> 00:45:58,840
+
+
+
+2059
+00:45:57,280 --> 00:46:01,750
+make a video on it it is the Phantom
+
+2060
+00:45:58,830 --> 00:46:01,750
+
+
+
+2061
+00:45:58,840 --> 00:46:05,200
+evasion tool phantom evasion tool allows
+
+2062
+00:46:01,740 --> 00:46:05,200
+
+
+
+2063
+00:46:01,750 --> 00:46:07,540
+you here if I can just launch it let me
+
+2064
+00:46:05,190 --> 00:46:07,540
+
+
+
+2065
+00:46:05,200 --> 00:46:11,200
+let me just launch it Python phantom
+
+2066
+00:46:07,530 --> 00:46:11,200
+
+
+
+2067
+00:46:07,540 --> 00:46:14,950
+evasion dot pie so let me just start
+
+2068
+00:46:11,190 --> 00:46:14,950
+
+
+
+2069
+00:46:11,200 --> 00:46:18,130
+this up here phantom evasion allows you
+
+2070
+00:46:14,940 --> 00:46:18,130
+
+
+
+2071
+00:46:14,950 --> 00:46:19,540
+to generate various stages here so I'll
+
+2072
+00:46:18,120 --> 00:46:19,540
+
+
+
+2073
+00:46:18,130 --> 00:46:22,630
+show you this right now so you have your
+
+2074
+00:46:19,530 --> 00:46:22,630
+
+
+
+2075
+00:46:19,540 --> 00:46:25,660
+C meterpreter stage I'll get to that so
+
+2076
+00:46:22,620 --> 00:46:25,660
+
+
+
+2077
+00:46:22,630 --> 00:46:27,010
+you in your Windows modules you have
+
+2078
+00:46:25,650 --> 00:46:27,010
+
+
+
+2079
+00:46:25,660 --> 00:46:28,660
+your shell code injection you have your
+
+2080
+00:46:27,000 --> 00:46:28,660
+
+
+
+2081
+00:46:27,010 --> 00:46:30,400
+stages so if you're looking for stages
+
+2082
+00:46:28,650 --> 00:46:30,400
+
+
+
+2083
+00:46:28,660 --> 00:46:31,990
+which I'm guessing you are you can find
+
+2084
+00:46:30,390 --> 00:46:31,990
+
+
+
+2085
+00:46:30,400 --> 00:46:34,870
+them right over here so if you and your
+
+2086
+00:46:31,980 --> 00:46:34,870
+
+
+
+2087
+00:46:31,990 --> 00:46:37,630
+64-bit stages you have your reverse TCP
+
+2088
+00:46:34,860 --> 00:46:37,630
+
+
+
+2089
+00:46:34,870 --> 00:46:41,370
+virtual lock which works great if you
+
+2090
+00:46:37,620 --> 00:46:41,370
+
+
+
+2091
+00:46:37,630 --> 00:46:44,500
+are looking particularly to do sort of
+
+2092
+00:46:41,360 --> 00:46:44,500
+
+
+
+2093
+00:46:41,370 --> 00:46:45,340
+to essentially prevent detection by
+
+2094
+00:46:44,490 --> 00:46:45,340
+
+
+
+2095
+00:46:44,500 --> 00:46:46,990
+Windows Defender
+
+2096
+00:46:45,330 --> 00:46:46,990
+
+
+
+2097
+00:46:45,340 --> 00:46:49,680
+I would recommend this stage your
+
+2098
+00:46:46,980 --> 00:46:49,680
+
+
+
+2099
+00:46:46,990 --> 00:46:49,680
+modules here
+
+2100
+00:46:56,770 --> 00:46:56,770
+
+
+
+2101
+00:46:56,780 --> 00:47:02,000
+what is my opinion about island security
+
+2102
+00:46:59,620 --> 00:47:02,000
+
+
+
+2103
+00:46:59,630 --> 00:47:03,920
+I haven't I haven't consumed any of
+
+2104
+00:47:01,990 --> 00:47:03,920
+
+
+
+2105
+00:47:02,000 --> 00:47:05,540
+their courses yet but I'll definitely
+
+2106
+00:47:03,910 --> 00:47:05,540
+
+
+
+2107
+00:47:03,920 --> 00:47:11,810
+try them out they look like they have
+
+2108
+00:47:05,530 --> 00:47:11,810
+
+
+
+2109
+00:47:05,540 --> 00:47:13,850
+very very good courses how do you let
+
+2110
+00:47:11,800 --> 00:47:13,850
+
+
+
+2111
+00:47:11,810 --> 00:47:14,720
+the terminal continue suggestions I
+
+2112
+00:47:13,840 --> 00:47:14,720
+
+
+
+2113
+00:47:13,850 --> 00:47:17,270
+think you're talking about
+
+2114
+00:47:14,710 --> 00:47:17,270
+
+
+
+2115
+00:47:14,720 --> 00:47:19,940
+auto-completion that is the tab based on
+
+2116
+00:47:17,260 --> 00:47:19,940
+
+
+
+2117
+00:47:17,270 --> 00:47:21,470
+the current file structure or whether or
+
+2118
+00:47:19,930 --> 00:47:21,470
+
+
+
+2119
+00:47:19,940 --> 00:47:23,570
+not you have the file in that particular
+
+2120
+00:47:21,460 --> 00:47:23,570
+
+
+
+2121
+00:47:21,470 --> 00:47:25,520
+directory so just use your tab key and
+
+2122
+00:47:23,560 --> 00:47:25,520
+
+
+
+2123
+00:47:23,570 --> 00:47:31,610
+that should autocomplete for you to the
+
+2124
+00:47:25,510 --> 00:47:31,610
+
+
+
+2125
+00:47:25,520 --> 00:47:34,310
+nearest approximation yes you can and I
+
+2126
+00:47:31,600 --> 00:47:34,310
+
+
+
+2127
+00:47:31,610 --> 00:47:36,620
+do recommend using reverse HTTP are on
+
+2128
+00:47:34,300 --> 00:47:36,620
+
+
+
+2129
+00:47:34,310 --> 00:47:41,780
+Android because you can actually make it
+
+2130
+00:47:36,610 --> 00:47:41,780
+
+
+
+2131
+00:47:36,620 --> 00:47:43,970
+you can make it sort of undetectable by
+
+2132
+00:47:41,770 --> 00:47:43,970
+
+
+
+2133
+00:47:41,780 --> 00:47:45,230
+by essentially monitoring the traffic
+
+2134
+00:47:43,960 --> 00:47:45,230
+
+
+
+2135
+00:47:43,970 --> 00:47:46,880
+coming from the application because
+
+2136
+00:47:45,220 --> 00:47:46,880
+
+
+
+2137
+00:47:45,230 --> 00:47:50,110
+everything will be going to and from
+
+2138
+00:47:46,870 --> 00:47:50,110
+
+
+
+2139
+00:47:46,880 --> 00:47:50,110
+port 443
+
+2140
+00:48:01,260 --> 00:48:01,260
+
+
+
+2141
+00:48:01,270 --> 00:48:07,190
+grim hues good day from Australia same
+
+2142
+00:48:04,630 --> 00:48:07,190
+
+
+
+2143
+00:48:04,640 --> 00:48:11,600
+to you sir how are you guys doing over
+
+2144
+00:48:07,180 --> 00:48:11,600
+
+
+
+2145
+00:48:07,190 --> 00:48:13,580
+there how to start model analysis that's
+
+2146
+00:48:11,590 --> 00:48:13,580
+
+
+
+2147
+00:48:11,600 --> 00:48:15,800
+a good question a lot of things to cover
+
+2148
+00:48:13,570 --> 00:48:15,800
+
+
+
+2149
+00:48:13,580 --> 00:48:19,480
+I'll probably have to make an
+
+2150
+00:48:15,790 --> 00:48:19,480
+
+
+
+2151
+00:48:15,800 --> 00:48:19,480
+introduction video to that as well cause
+
+2152
+00:48:20,160 --> 00:48:20,160
+
+
+
+2153
+00:48:20,170 --> 00:48:27,080
+Rakesh Sharma asks me are the courses by
+
+2154
+00:48:24,730 --> 00:48:27,080
+
+
+
+2155
+00:48:24,740 --> 00:48:28,850
+pentester academy i believe you're
+
+2156
+00:48:27,070 --> 00:48:28,850
+
+
+
+2157
+00:48:27,080 --> 00:48:34,430
+talking about the sake yes there are
+
+2158
+00:48:28,840 --> 00:48:34,430
+
+
+
+2159
+00:48:28,850 --> 00:48:36,110
+really good courses apologies one of my
+
+2160
+00:48:34,420 --> 00:48:36,110
+
+
+
+2161
+00:48:34,430 --> 00:48:39,550
+Android devices here is giving me
+
+2162
+00:48:36,100 --> 00:48:39,550
+
+
+
+2163
+00:48:36,110 --> 00:48:39,550
+notifications sorry about that
+
+2164
+00:48:41,520 --> 00:48:41,520
+
+
+
+2165
+00:48:41,530 --> 00:48:46,400
+hello M Ron it's good seeing you as well
+
+2166
+00:48:44,470 --> 00:48:46,400
+
+
+
+2167
+00:48:44,480 --> 00:48:51,050
+it's been a long time how you got how
+
+2168
+00:48:46,390 --> 00:48:51,050
+
+
+
+2169
+00:48:46,400 --> 00:48:52,550
+you doing oh nice
+
+2170
+00:48:51,040 --> 00:48:52,550
+
+
+
+2171
+00:48:51,050 --> 00:48:56,360
+sorry about that Hughes I didn't see
+
+2172
+00:48:52,540 --> 00:48:56,360
+
+
+
+2173
+00:48:52,550 --> 00:48:59,320
+that 6:23 a.m. yep that that's
+
+2174
+00:48:56,350 --> 00:48:59,320
+
+
+
+2175
+00:48:56,360 --> 00:48:59,320
+definitely Australia
+
+2176
+00:49:04,339 --> 00:49:04,339
+
+
+
+2177
+00:49:04,349 --> 00:49:09,570
+Eric risk oh I like your recent collab
+
+2178
+00:49:07,220 --> 00:49:09,570
+
+
+
+2179
+00:49:07,230 --> 00:49:12,330
+with IT career questions yes I just made
+
+2180
+00:49:09,560 --> 00:49:12,330
+
+
+
+2181
+00:49:09,570 --> 00:49:13,680
+the video yesterday very very good
+
+2182
+00:49:12,320 --> 00:49:13,680
+
+
+
+2183
+00:49:12,330 --> 00:49:17,730
+questions you can check that out as well
+
+2184
+00:49:13,670 --> 00:49:17,730
+
+
+
+2185
+00:49:13,680 --> 00:49:28,619
+I have about one minute left to ask your
+
+2186
+00:49:17,720 --> 00:49:28,619
+
+
+
+2187
+00:49:17,730 --> 00:49:31,230
+questions so go ahead and shoot you know
+
+2188
+00:49:28,609 --> 00:49:31,230
+
+
+
+2189
+00:49:28,619 --> 00:49:33,030
+any rapped with eternal blue exploit I'm
+
+2190
+00:49:31,220 --> 00:49:33,030
+
+
+
+2191
+00:49:31,230 --> 00:49:35,730
+not sure what you mean by that remote
+
+2192
+00:49:33,020 --> 00:49:35,730
+
+
+
+2193
+00:49:33,030 --> 00:49:37,530
+access tool usually as the payload and
+
+2194
+00:49:35,720 --> 00:49:37,530
+
+
+
+2195
+00:49:35,730 --> 00:49:39,060
+then which you install on the client and
+
+2196
+00:49:37,520 --> 00:49:39,060
+
+
+
+2197
+00:49:37,530 --> 00:49:39,900
+then you have the server sitting on the
+
+2198
+00:49:39,050 --> 00:49:39,900
+
+
+
+2199
+00:49:39,060 --> 00:49:42,180
+server really
+
+2200
+00:49:39,890 --> 00:49:42,180
+
+
+
+2201
+00:49:39,900 --> 00:49:43,710
+so I'm guessing you're talking about the
+
+2202
+00:49:42,170 --> 00:49:43,710
+
+
+
+2203
+00:49:42,180 --> 00:49:45,570
+exploit the actual exploit is getting
+
+2204
+00:49:43,700 --> 00:49:45,570
+
+
+
+2205
+00:49:43,710 --> 00:49:47,970
+the payload installed so you can
+
+2206
+00:49:45,560 --> 00:49:47,970
+
+
+
+2207
+00:49:45,570 --> 00:49:50,040
+consider the eternal blue exploit a form
+
+2208
+00:49:47,960 --> 00:49:50,040
+
+
+
+2209
+00:49:47,970 --> 00:49:51,330
+of a remote access tool however remote
+
+2210
+00:49:50,030 --> 00:49:51,330
+
+
+
+2211
+00:49:50,040 --> 00:49:57,030
+access tool does give you more
+
+2212
+00:49:51,320 --> 00:49:57,030
+
+
+
+2213
+00:49:51,330 --> 00:49:58,740
+functionality a wife a dentist yes I
+
+2214
+00:49:57,020 --> 00:49:58,740
+
+
+
+2215
+00:49:57,030 --> 00:50:00,930
+have videos on that you can check out my
+
+2216
+00:49:58,730 --> 00:50:00,930
+
+
+
+2217
+00:49:58,740 --> 00:50:04,160
+the playlists I have the wpa2
+
+2218
+00:50:00,920 --> 00:50:04,160
+
+
+
+2219
+00:50:00,930 --> 00:50:04,160
+penetration testing videos
+
+2220
+00:50:10,750 --> 00:50:10,750
+
+
+
+2221
+00:50:10,760 --> 00:50:16,780
+life of arc I think I'm Allah sent a
+
+2222
+00:50:12,760 --> 00:50:16,780
+
+
+
+2223
+00:50:12,770 --> 00:50:19,640
+notification on your form let me check I
+
+2224
+00:50:16,770 --> 00:50:19,640
+
+
+
+2225
+00:50:16,780 --> 00:50:23,380
+don't think it got any other emails here
+
+2226
+00:50:19,630 --> 00:50:23,380
+
+
+
+2227
+00:50:19,640 --> 00:50:23,380
+anyway that's that's that
+
+2228
+00:50:27,750 --> 00:50:27,750
+
+
+
+2229
+00:50:27,760 --> 00:50:34,900
+antwuan you from India no not from India
+
+2230
+00:50:32,400 --> 00:50:34,900
+
+
+
+2231
+00:50:32,410 --> 00:50:38,510
+although India is a pretty cool place
+
+2232
+00:50:34,890 --> 00:50:38,510
+
+
+
+2233
+00:50:34,900 --> 00:50:40,550
+would love to visit one one one time it
+
+2234
+00:50:38,500 --> 00:50:40,550
+
+
+
+2235
+00:50:38,510 --> 00:50:43,210
+looks like a really interesting place
+
+2236
+00:50:40,540 --> 00:50:43,210
+
+
+
+2237
+00:50:40,550 --> 00:50:43,210
+culturally
+
+2238
+00:50:53,930 --> 00:50:53,930
+
+
+
+2239
+00:50:53,940 --> 00:50:58,440
+to iron from YouTube yes the the channel
+
+2240
+00:50:56,779 --> 00:50:58,440
+
+
+
+2241
+00:50:56,789 --> 00:51:00,210
+is monetized to a certain extent but
+
+2242
+00:50:58,430 --> 00:51:00,210
+
+
+
+2243
+00:50:58,440 --> 00:51:01,470
+again because of the limitations in
+
+2244
+00:51:00,200 --> 00:51:01,470
+
+
+
+2245
+00:51:00,210 --> 00:51:03,750
+regards to the videos that I can't
+
+2246
+00:51:01,460 --> 00:51:03,750
+
+
+
+2247
+00:51:01,470 --> 00:51:05,789
+monetize I don't earn a lotta really
+
+2248
+00:51:03,740 --> 00:51:05,789
+
+
+
+2249
+00:51:03,750 --> 00:51:09,660
+just goes into the hosting and stuff
+
+2250
+00:51:05,779 --> 00:51:09,660
+
+
+
+2251
+00:51:05,789 --> 00:51:13,670
+like that yeah I'll definitely check on
+
+2252
+00:51:09,650 --> 00:51:13,670
+
+
+
+2253
+00:51:09,660 --> 00:51:13,670
+your message out a life of a hacker
+
+2254
+00:51:16,480 --> 00:51:16,480
+
+
+
+2255
+00:51:16,490 --> 00:51:22,069
+thank you very much
+
+2256
+00:51:18,440 --> 00:51:22,069
+
+
+
+2257
+00:51:18,450 --> 00:51:22,069
+Krishna appreciate it
+
+2258
+00:51:32,650 --> 00:51:32,650
+
+
+
+2259
+00:51:32,660 --> 00:51:39,140
+phoned bugs in which I believe I found a
+
+2260
+00:51:35,950 --> 00:51:39,140
+
+
+
+2261
+00:51:35,960 --> 00:51:41,660
+bug in well there was actually a a free
+
+2262
+00:51:39,130 --> 00:51:41,660
+
+
+
+2263
+00:51:39,140 --> 00:51:44,180
+bug bounty or actually God I think the
+
+2264
+00:51:41,650 --> 00:51:44,180
+
+
+
+2265
+00:51:41,660 --> 00:51:47,840
+community score that was the first site
+
+2266
+00:51:44,170 --> 00:51:47,840
+
+
+
+2267
+00:51:44,180 --> 00:51:50,450
+that I got a bounty on was humble bundle
+
+2268
+00:51:47,830 --> 00:51:50,450
+
+
+
+2269
+00:51:47,840 --> 00:51:52,820
+which as you already know is the site
+
+2270
+00:51:50,440 --> 00:51:52,820
+
+
+
+2271
+00:51:50,450 --> 00:51:55,910
+that has all of these bundles which I am
+
+2272
+00:51:52,810 --> 00:51:55,910
+
+
+
+2273
+00:51:52,820 --> 00:51:58,640
+to do a giveaway on by the way I then I
+
+2274
+00:51:55,900 --> 00:51:58,640
+
+
+
+2275
+00:51:55,910 --> 00:52:01,580
+believe it was a startup company that a
+
+2276
+00:51:58,630 --> 00:52:01,580
+
+
+
+2277
+00:51:58,640 --> 00:52:03,920
+video a platform that I found the second
+
+2278
+00:52:01,570 --> 00:52:03,920
+
+
+
+2279
+00:52:01,580 --> 00:52:06,830
+bug it was remote code execution I
+
+2280
+00:52:03,910 --> 00:52:06,830
+
+
+
+2281
+00:52:03,920 --> 00:52:10,250
+believe I'll have to actually post all
+
+2282
+00:52:06,820 --> 00:52:10,250
+
+
+
+2283
+00:52:06,830 --> 00:52:13,120
+of these these exact details in regards
+
+2284
+00:52:10,240 --> 00:52:13,120
+
+
+
+2285
+00:52:10,250 --> 00:52:13,120
+to the bounties
+
+2286
+00:52:25,620 --> 00:52:25,620
+
+
+
+2287
+00:52:25,630 --> 00:52:34,750
+this channel been on YouTube for about
+
+2288
+00:52:28,080 --> 00:52:34,750
+
+
+
+2289
+00:52:28,090 --> 00:52:37,030
+three years now the the exploit
+
+2290
+00:52:34,740 --> 00:52:37,030
+
+
+
+2291
+00:52:34,750 --> 00:52:38,550
+application has been inactive know cause
+
+2292
+00:52:37,020 --> 00:52:38,550
+
+
+
+2293
+00:52:37,030 --> 00:52:40,990
+it was kicked off the Google Play Store
+
+2294
+00:52:38,540 --> 00:52:40,990
+
+
+
+2295
+00:52:38,550 --> 00:52:44,310
+sadly because of the content that it has
+
+2296
+00:52:40,980 --> 00:52:44,310
+
+
+
+2297
+00:52:40,990 --> 00:52:49,090
+Google has really release strict
+
+2298
+00:52:44,300 --> 00:52:49,090
+
+
+
+2299
+00:52:44,310 --> 00:52:50,650
+Community Guidelines now I'll recommend
+
+2300
+00:52:49,080 --> 00:52:50,650
+
+
+
+2301
+00:52:49,090 --> 00:52:53,140
+getting the CH first if you are
+
+2302
+00:52:50,640 --> 00:52:53,140
+
+
+
+2303
+00:52:50,650 --> 00:52:55,180
+interested in it and then get the OU SCP
+
+2304
+00:52:53,130 --> 00:52:55,180
+
+
+
+2305
+00:52:53,140 --> 00:52:57,390
+you have security plus that's pretty
+
+2306
+00:52:55,170 --> 00:52:57,390
+
+
+
+2307
+00:52:55,180 --> 00:52:57,390
+cool
+
+2308
+00:53:08,560 --> 00:53:08,560
+
+
+
+2309
+00:53:08,570 --> 00:53:13,580
+also my hacking machine setup I don't
+
+2310
+00:53:10,930 --> 00:53:13,580
+
+
+
+2311
+00:53:10,940 --> 00:53:18,260
+have a dedicated setup but I do have an
+
+2312
+00:53:13,570 --> 00:53:18,260
+
+
+
+2313
+00:53:13,580 --> 00:53:20,120
+environment that I do create with I do
+
+2314
+00:53:18,250 --> 00:53:20,120
+
+
+
+2315
+00:53:18,260 --> 00:53:21,590
+have a collection of tools that I do use
+
+2316
+00:53:20,110 --> 00:53:21,590
+
+
+
+2317
+00:53:20,120 --> 00:53:23,420
+constantly so I'll probably make a video
+
+2318
+00:53:21,580 --> 00:53:23,420
+
+
+
+2319
+00:53:21,590 --> 00:53:32,660
+on that yes the video will be uploaded
+
+2320
+00:53:23,410 --> 00:53:32,660
+
+
+
+2321
+00:53:23,420 --> 00:53:35,000
+when the broadcast is complete all right
+
+2322
+00:53:32,650 --> 00:53:35,000
+
+
+
+2323
+00:53:32,660 --> 00:53:37,180
+I'll just be here for a few more seconds
+
+2324
+00:53:34,990 --> 00:53:37,180
+
+
+
+2325
+00:53:35,000 --> 00:53:37,180
+now
+
+2326
+00:53:44,489 --> 00:53:44,489
+
+
+
+2327
+00:53:44,499 --> 00:53:50,150
+yeah I think I'll pretty much end the
+
+2328
+00:53:46,900 --> 00:53:50,150
+
+
+
+2329
+00:53:46,910 --> 00:53:51,949
+video here thank you very much guys for
+
+2330
+00:53:50,140 --> 00:53:51,949
+
+
+
+2331
+00:53:50,150 --> 00:53:52,789
+joining me on the stream I really really
+
+2332
+00:53:51,939 --> 00:53:52,789
+
+
+
+2333
+00:53:51,949 --> 00:53:55,430
+appreciate it
+
+2334
+00:53:52,779 --> 00:53:55,430
+
+
+
+2335
+00:53:52,789 --> 00:53:57,109
+let me just answer one more question how
+
+2336
+00:53:55,420 --> 00:53:57,109
+
+
+
+2337
+00:53:55,430 --> 00:53:59,420
+to act the same network without using
+
+2338
+00:53:57,099 --> 00:53:59,420
+
+
+
+2339
+00:53:57,109 --> 00:54:01,489
+payload I'm not sure what you mean and
+
+2340
+00:53:59,410 --> 00:54:01,489
+
+
+
+2341
+00:53:59,420 --> 00:54:04,910
+what devices you're talking about car
+
+2342
+00:54:01,479 --> 00:54:04,910
+
+
+
+2343
+00:54:01,489 --> 00:54:06,680
+hacking videos yes I am working on a
+
+2344
+00:54:04,900 --> 00:54:06,680
+
+
+
+2345
+00:54:04,910 --> 00:54:09,559
+large project on that but that is going
+
+2346
+00:54:06,670 --> 00:54:09,559
+
+
+
+2347
+00:54:06,680 --> 00:54:11,989
+to involve obd the obd connection to the
+
+2348
+00:54:09,549 --> 00:54:11,989
+
+
+
+2349
+00:54:09,559 --> 00:54:19,369
+vehicle because that is the most common
+
+2350
+00:54:11,979 --> 00:54:19,369
+
+
+
+2351
+00:54:11,989 --> 00:54:21,079
+connector yeah so thank you so much for
+
+2352
+00:54:19,359 --> 00:54:21,079
+
+
+
+2353
+00:54:19,369 --> 00:54:21,979
+watching the stream guys I really really
+
+2354
+00:54:21,069 --> 00:54:21,979
+
+
+
+2355
+00:54:21,079 --> 00:54:23,509
+appreciate it
+
+2356
+00:54:21,969 --> 00:54:23,509
+
+
+
+2357
+00:54:21,979 --> 00:54:26,779
+you can post any of the other questions
+
+2358
+00:54:23,499 --> 00:54:26,779
+
+
+
+2359
+00:54:23,509 --> 00:54:28,789
+on my on my social networks or you can
+
+2360
+00:54:26,769 --> 00:54:28,789
+
+
+
+2361
+00:54:26,779 --> 00:54:32,299
+actually contact me on my forum hag
+
+2362
+00:54:28,779 --> 00:54:32,299
+
+
+
+2363
+00:54:28,789 --> 00:54:34,519
+exploit or org and yeah I'll be seeing
+
+2364
+00:54:32,289 --> 00:54:34,519
+
+
+
+2365
+00:54:32,299 --> 00:54:37,359
+you guys later so thank you so much and
+
+2366
+00:54:34,509 --> 00:54:37,359
+
+
+
+2367
+00:54:34,519 --> 00:54:37,359
+yeah peace
+

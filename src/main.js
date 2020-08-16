@@ -6,6 +6,7 @@ function createWindow() {
     mainWindow = new BrowserWindow({width: 800, height: 600})
     mainWindow.loadURL('http://localhost:3000')
     // mainWindow.webContents.openDevTools()
+    // mainWindow.setMenu(null)
 
     mainWindow.on('closed', () => { mainWindow = null })
 }
