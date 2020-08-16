@@ -5,6 +5,7 @@ import SearchBar from '../components/SearchBar'
 import SettingsIcon from '@material-ui/icons/Settings'
 import { SimpleNav } from '../templates/StyledNavbar'
 import { StyledInputSelect } from '../templates/StyledInput'
+import uuid from 'uuid'
 
 const Page = styled.div`
     display: flex;
@@ -49,7 +50,7 @@ const Library = () => {
             <SimpleNav className="Navbar">
                 <SearchBar />
                 <ul className="rightItems">
-                    <li>
+                    <li key={uuid.v4()}>
                         <StyledInputSelect>
                             <option> All </option>
                             <option> Unfinished </option>

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import ListItemBadges from './ListItemBadges'
+// import ListItemBadges from './ListItemBadges'
 
 const Desc = styled.div`
     text-align: center;
