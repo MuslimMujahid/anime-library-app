@@ -90,7 +90,7 @@ function Library() {
             </SimpleNav>    
             <div className="pageBody">
                 <div className="pageTitle">Library</div>
-                <LibraryList MovieList={listData} />
+                <LibraryList MovieList={listData} reloadMovieList={() => setListType(listType)} />
             </div>
         </Page>
     )

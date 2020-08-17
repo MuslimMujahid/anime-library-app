@@ -4,6 +4,7 @@ import { SimpleNav } from '../templates/StyledNavbar'
 import { Link } from 'react-router-dom'
 import CloseIcon from '@material-ui/icons/Close';
 import axios from 'axios' 
+import uuid from 'uuid'
 
 const Container = styled.div`
     background-color: #ffffff;
@@ -109,22 +110,40 @@ const Options = styled.div`
     justify-content: flex-end;
 `
 
-function MovieDetail({ itemDisplayed, removeDisplay }) {
+function MovieDetail({ itemDisplayed, removeDisplay, watchedList, setWatchedList }) {
 
     const [data, setData] = useState(null)
+    // const [selected, setSelected] = useState([])
 
     useEffect(() => {
         axios
             .get(`http://localhost:5000/anime/v2/${itemDisplayed.title}`)
-            .then(res => { setData(res.data.data) })
+            .then(res => { 
+                setData(res.data.data) 
+            })
     }, [itemDisplayed])
 
+    const markAsWatchedHandler = (event) => {
+        event.persist()
+        const epTitle = event.target.value
+        axios
+            .post('http://localhost:5000/anime/v2/update/watched', {
+                title: itemDisplayed.title,
+                epTitle: epTitle
+            }).then(() => {
+                console.log('request sent')
+            })
+        
+        watchedList.includes(epTitle)
+        ? setWatchedList(watchedList.filter(x => x !== epTitle))
+        : setWatchedList([...watchedList, epTitle]);
+    }
 
     if (!data) return 'Loading ...'
     return (
         <Container>
             <CustomNav> 
-                <div className="title"> Akame ga kill! </div>
+                <div className="title"> {itemDisplayed.title} </div>
                 <button onClick={removeDisplay}><CloseIcon className="closeIcon"/></button>
             </CustomNav>
             <LeftContainer>
@@ -140,10 +159,16 @@ function MovieDetail({ itemDisplayed, removeDisplay }) {
                 <ul>
                 {
                     data.map((item, index) => 
-                        <ListItem key={item.filename}>
+                        <ListItem key={uuid.v4()}>
                             <div className="Index">{index+1}</div>
                             <div className="epTitle">{item.filename}</div>
-                            <input type="checkbox" />
+                            <input 
+                                key={item.filename} 
+                                type="checkbox" 
+                                onChange={ markAsWatchedHandler } 
+                                checked={watchedList.includes(item.filename)}
+                                value={item.filename}
+                                />
                         </ListItem>    
                     )
                 }

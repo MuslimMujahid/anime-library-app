@@ -3,7 +3,6 @@ import ListItemImage from './ListItemImage'
 import ListItemDescription from './ListItemDescription'
 import styled from 'styled-components'
 import { SimpleCard } from '../templates/Card'
-import EditIcon from '@material-ui/icons/Edit';
 
 const CustomCardStyle = styled(SimpleCard)`
 
@@ -45,7 +44,6 @@ const ListItemCard = ({title, cover, status}) => {
     const imageUrl = cover ? cover : "/no-image.jpg"
     return (
         <CustomCardStyle>                  
-            <EditIcon className="editIcon"/>           
             <ListItemImage className="itemImage" imageUrl={imageUrl} />
             <ListItemDescription className="itemDesc" title={title} status={status} />
         </CustomCardStyle>
