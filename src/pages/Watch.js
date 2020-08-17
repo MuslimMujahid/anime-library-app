@@ -8,11 +8,9 @@ import { Link } from 'react-router-dom'
 import Player from '../components/VideoPlayer'
 
 const Page = styled.div`
-    /* position: relative; */
     .Player {
         width: 100%;
         margin-top: 70px;
-        /* position: absolute; */
     }
 `
 
@@ -37,15 +35,13 @@ const reducer = (state, action) => {
     switch (action.type) {
         case Action.FETCH_SUCCESS:
             return {
-                ...state,
                 loading: false,
-                data: action.payload
+                eps: action.payload
             }
         case Action.FETCH_ERROR:
             return {
-                ...state,
                 loading: true,
-                data: {}
+                eps: {}
             }
         default:
             return state
@@ -56,7 +52,7 @@ function Watch(props) {
 
     const initialState = {
         loading: true,
-        data: {}
+        eps: {}
     }
     
     const [state, dispatch] = useReducer(reducer, initialState)
@@ -64,9 +60,9 @@ function Watch(props) {
 
     useEffect(() => {
         axios
-            .get(`http://localhost:5000/anime/${props.match.params.title}`)
+            .get(`http://localhost:5000/anime/v2/${props.match.params.title}`)
             .then(res => {
-                dispatch({ type: Action.FETCH_SUCCESS, payload: res.data })
+                dispatch({ type: Action.FETCH_SUCCESS, payload: res.data.data })
             }).catch(error => {
                 dispatch({ type: Action.FETCH_ERROR })
             })
@@ -79,10 +75,10 @@ function Watch(props) {
 
     if (state.loading) return 'Loading ...'
 
-    const { epsLink } = state.data
+    const eps = state.eps
     const title = props.match.params.title
-    const VideoUrl = `http://localhost:5000/library/${title}/${epsLink[epsPlaying]}` 
-    const epsList = epsLink.map((eps, index) => <option key={eps} value={index}>{index+1}</option>)
+    const VideoUrl = eps[epsPlaying].epHttpPath 
+    const epsList = eps.map((ep, index) => <option key={ep.epHttpPath} value={index}>{index+1}</option>)
     return (    
         <Page>
             <CustomNav>

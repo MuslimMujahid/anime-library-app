@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-// import ListItemBadges from './ListItemBadges'
+import ListItemBadges from './ListItemBadges'
 
 const Desc = styled.div`
     text-align: center;
@@ -19,11 +19,12 @@ const Desc = styled.div`
     .Badges {}
 `
 
-const ListItemDescription = ({title}) => {
+const ListItemDescription = ({title, status}) => {
+    const marks = [status]
     return (
         <Desc>
             <div className="title">{title}</div>
-            {/* <ListItemBadges className="Badges" Badges={['finished']} /> */}
+            <ListItemBadges className="Badges" marks={marks} />
         </Desc>
     )
 }

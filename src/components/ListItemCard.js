@@ -15,12 +15,12 @@ const CustomCardStyle = styled(SimpleCard)`
     }
 `
 
-const ListItemCard = ({title, cover}) => {
+const ListItemCard = ({title, cover, status}) => {
     const imageUrl = cover ? cover : "/no-image.jpg"
     return (
         <CustomCardStyle>                             
             <ListItemImage className="itemImage" imageUrl={imageUrl} />
-            <ListItemDescription className="itemDesc" title={title} />
+            <ListItemDescription className="itemDesc" title={title} status={status} />
         </CustomCardStyle>
     )
 }

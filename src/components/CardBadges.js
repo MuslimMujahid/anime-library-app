@@ -10,6 +10,7 @@ const Badge = styled.div`
 
 export const BadgePrimary = styled(Badge)`
     background-color: #0075F2;
+    color: #ffffff;
 `
 
 export const BadgeWarning = styled(Badge)`
@@ -18,4 +19,9 @@ export const BadgeWarning = styled(Badge)`
 
 export const BadgeSuccess = styled(Badge)`
     background-color: #64F58D;
+    color: #ffffff;
+`
+export const BadgeError = styled(Badge)`
+    background-color: #FD151B;
+    color: #ffffff;
 `

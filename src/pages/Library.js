@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import LibraryList from '../components/LibraryList'
 import SearchBar from '../components/SearchBar'
 import SettingsIcon from '@material-ui/icons/Settings'
 import { SimpleNav } from '../templates/StyledNavbar'
 import { StyledInputSelect } from '../templates/StyledInput'
-import uuid from 'uuid'
+import axios from 'axios'
 
 const Page = styled.div`
     display: flex;
@@ -44,16 +44,42 @@ const Page = styled.div`
     }
 `
 
-const Library = () => {
+const DISPLAY = {
+    ALL: '',
+    UNFINISHED: 'unfinished',
+    UNWATCHED: 'unwatched'
+}
+
+function Library() {
+
+    // const [MovieList, setMovieList] = useState()
+    const [listType, setListType] = useState(DISPLAY.ALL)
+    const [listData, setListData] = useState([])
+
+    useEffect(() => {
+        const url = `http://localhost:5000/anime/v2/all/${listType}`
+        axios.get(url)
+        .then(res => {
+            setListData(res.data.data)
+        })
+    }, [listType])
+
+    function SelectInputHandler(event) {
+        event.persist()
+        setListType(event.target.value)
+    }
+
     return (
         <Page>
             <SimpleNav className="Navbar">
                 <SearchBar />
                 <ul className="rightItems">
-                    <li key={uuid.v4()}>
-                        <StyledInputSelect>
-                            <option> All </option>
-                            <option> Unfinished </option>
+                    <li>
+                        <StyledInputSelect onChange={SelectInputHandler}>
+                            <option value=''> All </option>
+                            <option value='finished'> Finished </option>
+                            <option value='unfinished'> Unfinished </option>
+                            <option value='unwatched'> Unwatched </option>
                         </StyledInputSelect>
                     </li>
                     <li>
@@ -64,7 +90,7 @@ const Library = () => {
             </SimpleNav>    
             <div className="pageBody">
                 <div className="pageTitle">Library</div>
-                <LibraryList />
+                <LibraryList MovieList={listData} />
             </div>
         </Page>
     )

@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
 import ListItemCard from './ListItemCard'
-import { MovieListContext } from '../contexts/MovieListContext'
 import { Link } from 'react-router-dom' 
 
 const List = styled.div`
@@ -9,17 +8,14 @@ const List = styled.div`
     flex-wrap: wrap;
     justify-content: center;
 `
-function LibraryList()  {
-    const data = useContext(MovieListContext)
-    if (!data) return 'Loading ...'
-    
-    const { titles, covers } = data
-    const MovieList = titles.map((title, index) => 
-        <Link key={title} to={`/watch/${title}`}>
-            <ListItemCard title={title} cover={covers[index]}/>
+function LibraryList({ MovieList })  {
+    if (!MovieList) return 'Loading ...'
+    const MovieListElements = MovieList.map(item => 
+        <Link key={item.title} to={`/watch/${item.title}`}>
+            <ListItemCard title={item.title} cover={item.coverHttpPath} status={item.status}/>
         </Link>
     )
-    return <List>{MovieList}</List>
+    return <List>{MovieListElements}</List>
 }
 
 export default LibraryList
