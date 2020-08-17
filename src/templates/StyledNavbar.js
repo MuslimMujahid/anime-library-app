@@ -10,9 +10,3 @@ export const SimpleNav = styled.nav`
     position: fixed;
     z-index: 3;
 `
-
-// function Navbar() {
-//     return StyledNav
-// } 
-
-// export default Navbar

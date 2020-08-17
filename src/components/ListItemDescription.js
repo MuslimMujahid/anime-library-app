@@ -15,8 +15,6 @@ const Desc = styled.div`
     .title {
         margin-bottom: 12px;
     }
-
-    .Badges {}
 `
 
 const ListItemDescription = ({title, status}) => {

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useReducer } from 'react'
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import Library from './pages/Library'
 import Watch from './pages/Watch'

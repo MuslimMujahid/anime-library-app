@@ -10,7 +10,7 @@ function ListItemBadges({marks}) {
             case 'unfinished':
                 return <BadgeWarning key={uuid.v4()}>Unfinished</BadgeWarning>
             case 'unwatched':
-                return <BadgeError key={uuid.v4()}>Unfinished</BadgeError>
+                return <BadgeError key={uuid.v4()}>Unwatched</BadgeError>
             default:
                 return <BadgePrimary key={uuid.v4()}>Unfinished</BadgePrimary>
         }

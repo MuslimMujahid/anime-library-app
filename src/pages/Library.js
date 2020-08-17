@@ -6,6 +6,7 @@ import SettingsIcon from '@material-ui/icons/Settings'
 import { SimpleNav } from '../templates/StyledNavbar'
 import { StyledInputSelect } from '../templates/StyledInput'
 import axios from 'axios'
+// import MovieDetail from '../components/MovieDetail'
 
 const Page = styled.div`
     display: flex;
@@ -37,7 +38,6 @@ const Page = styled.div`
 
     .pageBody .pageTitle {
         font-size: 42px;
-        /* font-weight: bold; */
         text-align: center;
         margin-bottom: 24px;
         letter-spacing: .4rem
