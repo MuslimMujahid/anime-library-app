@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import styled from 'styled-components'
 import { SimpleNav } from '../templates/StyledNavbar'
 import { Link } from 'react-router-dom'
 import CloseIcon from '@material-ui/icons/Close';
 import axios from 'axios' 
 import uuid from 'uuid'
+import { DatabaseContext, getHttpPath, getHttpCoverPath, updateWatched } from '../contexts/DatabaseContext'
 
 const Container = styled.div`
     background-color: #ffffff;
@@ -112,45 +113,30 @@ const Options = styled.div`
 
 function MovieDetail({ itemDisplayed, removeDisplay, watchedList, setWatchedList }) {
 
-    const [data, setData] = useState(null)
-    // const [selected, setSelected] = useState([])
-
-    useEffect(() => {
-        axios
-            .get(`http://localhost:5000/anime/v2/${itemDisplayed.title}`)
-            .then(res => { 
-                setData(res.data.data) 
-            })
-    }, [itemDisplayed])
+    const { database, setDatabase } = useContext(DatabaseContext)
 
     const markAsWatchedHandler = (event) => {
         event.persist()
-        const epTitle = event.target.value
-        axios
-            .post('http://localhost:5000/anime/v2/update/watched', {
-                title: itemDisplayed.title,
-                epTitle: epTitle
-            }).then(() => {
-                console.log('request sent')
-            })
-        
-        watchedList.includes(epTitle)
-        ? setWatchedList(watchedList.filter(x => x !== epTitle))
-        : setWatchedList([...watchedList, epTitle]);
+        const eps = parseInt(event.target.value)
+        console.log('toggle mark index ', eps)
+        updateWatched(database, setDatabase, itemDisplayed.id, eps)
+
+        watchedList.includes(eps)
+        ? setWatchedList(watchedList.filter(x => x !== eps))
+        : setWatchedList([...watchedList, eps]);
     }
 
-    if (!data) return 'Loading ...'
     return (
         <Container>
             <CustomNav> 
-                <div className="title"> {itemDisplayed.title} </div>
+                <div className="title"> {itemDisplayed.epTitle} </div>
                 <button onClick={removeDisplay}><CloseIcon className="closeIcon"/></button>
             </CustomNav>
             <LeftContainer>
-                <img src={itemDisplayed.coverHttpPath} alt="temporary"/>
+                <img src={getHttpCoverPath(database, itemDisplayed.id)} alt="temporary"/>
             </LeftContainer>
             <RightContainer>
-                <Link to={`/watch/${itemDisplayed.title}`} className="watchButton">
+                <Link to={`/watch/${itemDisplayed.id}`} className="watchButton">
                     <CustomButton>
                         Watch
                     </CustomButton>
@@ -158,16 +144,15 @@ function MovieDetail({ itemDisplayed, removeDisplay, watchedList, setWatchedList
                 <CustomButton> Check all </CustomButton>
                 <ul>
                 {
-                    data.map((item, index) => 
-                        <ListItem key={uuid.v4()}>
+                    itemDisplayed.eps.map((item, index) => 
+                        <ListItem key={item.epTitle}>
                             <div className="Index">{index+1}</div>
-                            <div className="epTitle">{item.filename}</div>
+                            <div className="epTitle">{item.epTitle}</div>
                             <input 
-                                key={item.filename} 
                                 type="checkbox" 
                                 onChange={ markAsWatchedHandler } 
-                                checked={watchedList.includes(item.filename)}
-                                value={item.filename}
+                                checked={watchedList.includes(index)}
+                                value={index}
                                 />
                         </ListItem>    
                     )

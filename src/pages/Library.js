@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import styled from 'styled-components'
 import LibraryList from '../components/LibraryList'
 import SearchBar from '../components/SearchBar'
@@ -6,7 +6,7 @@ import SettingsIcon from '@material-ui/icons/Settings'
 import { SimpleNav } from '../templates/StyledNavbar'
 import { StyledInputSelect } from '../templates/StyledInput'
 import axios from 'axios'
-// import MovieDetail from '../components/MovieDetail'
+import { DatabaseContext, filterDatabase } from '../contexts/DatabaseContext'
 
 const Page = styled.div`
     display: flex;
@@ -52,22 +52,18 @@ const DISPLAY = {
 
 function Library() {
 
-    // const [MovieList, setMovieList] = useState()
-    const [listType, setListType] = useState(DISPLAY.ALL)
-    const [listData, setListData] = useState([])
-
-    useEffect(() => {
-        const url = `http://localhost:5000/anime/v2/all/${listType}`
-        axios.get(url)
-        .then(res => {
-            setListData(res.data.data)
-        })
-    }, [listType])
+    const { database, setDatabase } = useContext(DatabaseContext)
+    const [localDB, setLocalDB] = useState(database)
+    const [loading, setLoading] = useState(false)
 
     function SelectInputHandler(event) {
         event.persist()
-        setListType(event.target.value)
+        setLoading(true)
+        const newDB = filterDatabase(database, event.target.value)
+        setLocalDB(newDB)
+        setLoading(false)
     }
+
 
     return (
         <Page>
@@ -90,7 +86,7 @@ function Library() {
             </SimpleNav>    
             <div className="pageBody">
                 <div className="pageTitle">Library</div>
-                <LibraryList MovieList={listData} reloadMovieList={() => setListType(listType)} />
+                <LibraryList LibraryDB={localDB} />
             </div>
         </Page>
     )

@@ -4,6 +4,8 @@ import ListItemCard from './ListItemCard'
 import { Link } from 'react-router-dom' 
 import MovieDetail from './MovieDetail'
 import axios from 'axios'
+import { selectById, getHttpPath, getHttpCoverPath } from '../contexts/DatabaseContext'
+import uuid from 'uuid'
 
 const List = styled.div`
     display: flex;
@@ -15,40 +17,37 @@ const CustomButton = styled.button`
     all: unset;
 `
 
-function LibraryList({ MovieList, reloadMovieList })  {
+function LibraryList({ LibraryDB })  {
 
     const [itemDisplayed, setItemDisplayed] = useState(null)
-    const [watchedList, setWatchedList] = useState(['Akame ga Kill! BD 24 720p.mkv'])
+    const [watchedList, setWatchedList] = useState([])
 
     useEffect(() => {
-        console.log('Use effect run ...')
 
         if (itemDisplayed) {
-            console.log('item displayed')
-            async function getData() {
-                const res = await axios(`http://localhost:5000/anime/v2/${itemDisplayed.title}`)
-                return await res.data.data                
-            }
-            getData().then(async data => {
-                const result = await Promise.all(data.map(async a => a.watched ? a.filename : "" ))
-                setWatchedList(result)
+            const watched = []
+            itemDisplayed.eps.forEach((ep, index) => {
+                if (ep.watched) {
+                    watched.push(index)
+                }
             })
+            setWatchedList(watched)
+        } else {
+            setWatchedList([])
         }
     }, [itemDisplayed])
 
     const removeDisplay = () => {
         setItemDisplayed(null)
-        reloadMovieList()
     }
 
-    const MovieListElements = MovieList.map(item => 
-        <CustomButton onClick={() => setItemDisplayed(item)}>
-            <ListItemCard 
-                key={item.title}
-                title={item.title} 
-                cover={item.coverHttpPath} 
-                status={item.status}
-            />
+    const MovieListElements = LibraryDB.map(item => 
+        <CustomButton key={item.title} onClick={() => setItemDisplayed(item)}>
+             <ListItemCard 
+                 title={item.title} 
+                 cover={getHttpCoverPath(LibraryDB, item.id)} 
+                 status={item.status}
+             />
         </CustomButton>
     )
     return (
