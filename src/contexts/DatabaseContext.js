@@ -24,10 +24,34 @@ export const merge = (db, select) => {
     return [...db, select]
 }
 
-export const updateWatched = (db, setDatabase, id, eps) => {
+export const updateDatabaseStatus = (db, id) => {
     const select = selectById(db, id)
-    db = removeById(db, id)
-    select.eps[eps].watched = !select.eps[eps].watched
+    axios
+        .post('http://localhost:5000/anime/v2/update/status', {
+            id: id,
+            status: select.status
+        })
+        .then(res => {
+            console.log(res)
+        })
+}
+
+export const updateDatabaseWatched = (db, id, epIndex) => {
+    const select = selectById(db, id)
+    axios
+        .post('http://localhost:5000/anime/v2/update/watched', {
+            id: id,
+            epIndex: epIndex
+        })
+        .then(res => {
+            console.log(res)
+        })
+}
+
+export const updateWatched = (db, setDatabase, id, epIndex) => {
+    const select = selectById(db, id)
+    const prevSelect = JSON.parse(JSON.stringify(select))
+    select.eps[epIndex].watched = !select.eps[epIndex].watched
 
     if (select.eps.filter(ep => ep.watched).length == 0) {
         select.status = 'unwatched'
@@ -37,37 +61,20 @@ export const updateWatched = (db, setDatabase, id, eps) => {
         select.status = 'unfinished'
     }
 
-    db = merge(db, select)
-    db = sortDB(db)
     setDatabase(db)   
-
-    Promise.all([
-        axios
-            .post('http://localhost:5000/anime/v2/update/watched', {
-                title: select.title,
-                epTitle: select.eps[eps].epTitle
-            }),
-        axios
-            .post('http://localhost:5000/anime/v2/update/status', {
-                title: select.title,
-                status: select.status
-            })
-    ]).then(async ([res1, res2]) => {
-        console.log(res1)
-        console.log(res2)
-    }).catch(error => {
-        console.log(error)
-    })
+    
+    if (select.status != prevSelect.status) {
+        updateDatabaseStatus(db, id)
+    } 
+    updateDatabaseWatched(db, id, epIndex)
 
     console.log('Local database updated')
 }
 
+
 export const updateStatus = (db, setDatabase, id, newStatus) => {
     const select = selectById(db, id)
-    db = removeById(db, id)
     select.status = newStatus
-    db = merge(db, select)
-    db = sortDB(db)
     setDatabase(db)
     console.log('Local database updated')
 }

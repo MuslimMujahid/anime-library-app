@@ -12,7 +12,11 @@ function App() {
   useEffect(() => {
     axios
       .get('http://localhost:5000/database')
-      .then(res => { setDatabase(res.data) })
+      .then(res => res.data)
+      .then(data => setDatabase(data))
+      .catch(error => {
+        console.log(error)
+      })
     
   }, [])
 

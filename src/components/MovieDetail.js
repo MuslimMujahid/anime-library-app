@@ -118,12 +118,25 @@ function MovieDetail({ itemDisplayed, removeDisplay, watchedList, setWatchedList
     const markAsWatchedHandler = (event) => {
         event.persist()
         const eps = parseInt(event.target.value)
-        console.log('toggle mark index ', eps)
         updateWatched(database, setDatabase, itemDisplayed.id, eps)
 
         watchedList.includes(eps)
         ? setWatchedList(watchedList.filter(x => x !== eps))
         : setWatchedList([...watchedList, eps]);
+    }
+
+    const checkAllHandler = () => {
+        itemDisplayed.eps.forEach((ep, index) => {
+            if (!watchedList.includes(index)) {
+                (async () => {
+                    await setWatchedList(await [...watchedList, index])
+                    return await index
+                })()
+                .then(ep => {
+                    updateWatched(database, setDatabase, itemDisplayed.id, ep)
+                })
+            }
+        })
     }
 
     return (
@@ -141,7 +154,7 @@ function MovieDetail({ itemDisplayed, removeDisplay, watchedList, setWatchedList
                         Watch
                     </CustomButton>
                 </Link>
-                <CustomButton> Check all </CustomButton>
+                <CustomButton onClick={ checkAllHandler }> Check all </CustomButton>
                 <ul>
                 {
                     itemDisplayed.eps.map((item, index) => 
